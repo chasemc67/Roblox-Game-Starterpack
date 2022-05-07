@@ -1,2 +1,2 @@
 # Shipwrecked
-A cool Roblox Game
+A cool Roblox Game, you should try it
