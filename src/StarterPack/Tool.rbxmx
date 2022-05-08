@@ -1,0 +1,265 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Tool" referent="RBX98338552b8274d229659598143b19f84">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="CanBeDropped">true</bool>
+			<bool name="Enabled">true</bool>
+			<CoordinateFrame name="Grip">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<bool name="ManualActivationOnly">false</bool>
+			<string name="Name">Tool</string>
+			<bool name="RequiresHandle">true</bool>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<Content name="TextureId"><null></null></Content>
+			<string name="ToolTip"></string>
+		</Properties>
+		<Item class="Part" referent="RBXbe019fe411af47ce8076c3967c7b74f3">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
+				<string name="Name">Handle</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>4</X>
+					<Y>1</Y>
+					<Z>2</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="ModuleScript" referent="RBXd2439994ba9941ea88fdcc0995792bd3">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Settings</string>
+				<string name="ScriptGuid">{1e9eac21-d1e3-4c61-9a65-380598f255f3}</string>
+				<ProtectedString name="Source"><![CDATA[local gameSettings = {
+	fireMod = "SEMI";
+	damage = 15;
+	headshotMultiplier = 1.5;
+	rateOfFire = 300;
+	range = 500;
+	rayColor = Color3.fromRGB(255, 160, 75);
+	raySize = Vector2.new(0.25, 0.25);
+	debrisTime = 0.05;
+}
+
+return gameSettings
+]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+			</Properties>
+		</Item>
+		<Item class="LocalScript" referent="RBXf400375c95d94de4a500eb55ee0a1f06">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ToolHandler</string>
+				<string name="ScriptGuid">{05221d71-6b29-4a9f-aeef-aaaef9130c91}</string>
+				<ProtectedString name="Source"><![CDATA[local playerService = game:GetService("Player")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local hitRemote = replicatedStorage.Hit
+local replicateRemote = replicatedStorage.Replicate
+local player = playerService.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local mouse = player:GetMouse()
+
+local tool = script.Parent
+local firePoint = tool:WaitForChild("Handle")
+local gunSettings = require(tool:WaitForChild("Settings"))
+local equipped = false
+
+tool.Equipped:Connect(function()
+	equipped = true
+end)
+
+tool.Unequipped:Connect(function()
+	equipped = false
+end)
+
+local ignoreList = {char, workspace.Effects}
+local debris = game:GetService("Debris")
+
+local function castRay()
+	local origin = firePoint.Position
+	local direction = (mouse.Hit.p - firePoint.Position).Unit
+	
+	local ray = Ray.new(origin, direction)
+	local hit, pos = workspace:FindPartOnRayWithIgnoreList(ray, ignoreList)
+	
+	replicatedStorage.Replicate:FireServer(tool, origin, pos)
+	local visual = Instance.new("Part")
+	local length = (pos-origin).Magnitude
+	visual.Anchored = true
+	visual.CanCollide = false
+	visual.Material = Enum.Material.Neon
+	visual.Color = gunSettings.rayColor
+	visual.Size = Vector3.new(gunSettings.raySize.X, gunSettings.raySize.Y, length)
+	visual.CFrame = CFrame.new(origin, pos) * CFrame.new(0,0,-length/2)
+	visual.Parent = workspace.Effects
+	debris:AddItem(visual, gunSettings.debrisTime)
+	
+	return hit, pos, direction, origin
+end
+
+-- Make sure RespectFilteringEnabled property of SoundService is unchecked in Explorer for this to work
+local function gunEffects()
+	for _, effect in pairs(firePoint:GetChildren()) do
+		if effect:IsA("ParticleEmitter") then
+			effect:Emit(50)
+		end
+		
+		if effect:IsA("Sound") then
+			effect.Play()
+		end
+	end
+end
+
+local doFire = false
+
+local function fire()
+	local waitTime = 60/gunSettings.rateOfFire
+	
+	repeat 
+		if equipped and not tool.Debounce.Value = true then
+			tool.Debounce.Value = true
+			
+			delay(waitTime, function()
+				tool.Debounce.Value = false
+			end)
+			
+			gunEffects()
+			local hit, pos, direction, origin = castRay()
+			
+			if hit then
+				local relCFrame = hit.CFrame:Inverse() * CFrame.new(pos)
+				hitRemote:FireServer(tool, hit, direction, origin, relCFrame)
+			end
+		end
+		wait(waitTime)
+	until not equipped or not doFire or gunSettings.fireMod ~= "AUTO"
+end
+
+mouse.Button1Down:Connect(function()
+	doFire = true
+	
+	if char.Humanoid.Health > 0 then
+		fire()
+	end
+end)
+
+mouse.Button1Up:Connect(function()
+	doFire = false
+end)]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+			</Properties>
+		</Item>
+		<Item class="BoolValue" referent="RBXd6f3a680cf854ec6ba6de98101bdd230">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<string name="Name">Debounce</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<bool name="Value">false</bool>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>
