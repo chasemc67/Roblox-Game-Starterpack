@@ -1,0 +1,864 @@
+<roblox version="4">
+  <Item class="Lighting" referent="0">
+    <Properties>
+      <string name="Name">Lighting</string>
+      <Color3 name="Ambient">
+        <R>0</R>
+        <G>0</G>
+        <B>0</B>
+      </Color3>
+      <float name="Brightness">2</float>
+      <bool name="GlobalShadows">true</bool>
+      <bool name="Outlines">false</bool>
+      <token name="Technology">1</token>
+    </Properties>
+  </Item>
+  <Item class="ReplicatedStorage" referent="1">
+    <Properties>
+      <string name="Name">ReplicatedStorage</string>
+    </Properties>
+    <Item class="Folder" referent="2">
+      <Properties>
+        <string name="Name">Common</string>
+      </Properties>
+      <Item class="ModuleScript" referent="3">
+        <Properties>
+          <string name="Name">Hello</string>
+          <string name="Source">return function()
+	print("Hello, world!, I'm editing this, in VS again")
+end</string>
+        </Properties>
+      </Item>
+    </Item>
+  </Item>
+  <Item class="ServerScriptService" referent="4">
+    <Properties>
+      <string name="Name">ServerScriptService</string>
+    </Properties>
+    <Item class="Script" referent="5">
+      <Properties>
+        <string name="Name">Server</string>
+        <string name="Source">print("Hello world, from server!")</string>
+      </Properties>
+      <Item class="ModuleScript" referent="6">
+        <Properties>
+          <string name="Name">Data</string>
+          <string name="Source"><![CDATA[local playerService = game:GetService("Players")
+local dataService = game:GetService("DataStoreService")
+local store = dataService:GetDataStore("DataStoreV1")
+
+local sessionData = {}
+local dataMod = {}
+local AUTOSAVE_INTERVAL = 120
+
+
+dataMod.recursiveCopy = function(dataTable)
+	local tableCopy = {}
+	
+	for index, value in pairs(dataTable) do
+		if type(value) == "table" then
+			value = dataMod.recursiveCopy(value)
+		end
+		tableCopy[index] = value
+	end
+	
+	return tableCopy
+end
+
+local defaultData = {
+	Coins = 0;
+	Wins = 0;
+	Kills = 0;
+}
+
+dataMod.load = function(player)
+	local key = player.UserId
+	local data 
+	local success, err = pcall(function()
+		data = store:GetAsync(key)
+	end)
+	
+	if not success then
+		data = dataMod.load(player)
+	end
+	
+	return data
+end
+
+dataMod.setupData = function(player)
+	local key = player.UserId
+	local data = dataMod.load(player)
+	
+	sessionData[key] = dataMod.recursiveCopy(defaultData)
+	
+	if data then
+		for index, value in pairs(data) do
+			print(index, value)
+			dataMod.set(player, index, value)
+		end
+		
+		print(player.Name.. "'s data has been loaded!")
+	else
+		print(player.Name.. " is a new player!")
+	end
+end
+
+playerService.PlayerAdded:Connect(function(player)
+	local folder = Instance.new("Folder")
+	folder.Name = "leaderstats"
+	folder.Parent = player
+	
+	local coins = Instance.new("IntValue")
+	coins.Name = "Coins"
+	coins.Parent = folder
+	coins.Value = defaultData.Coins
+	
+	local wins = Instance.new("IntValue")
+	wins.Name = "Wins"
+	wins.Parent = folder
+	wins.Value = defaultData.Wins
+	
+	local kills = Instance.new("IntValue")
+	kills.Name = "Kills"
+	kills.Parent = folder
+	kills.Value = defaultData.Kills
+	
+	dataMod.setupData(player)
+end)
+
+dataMod.set = function(player, stat, value)
+	local key = player.UserId
+	sessionData[key][stat] = value
+	player.leaderstats[stat].Value = value
+end
+
+dataMod.increment = function(player, stat, value)
+	local key = player.UserId
+	sessionData[key][stat] = dataMod.get(player, stat) + value
+	player.leaderstats[stat].Value = dataMod.get(player, stat)
+end
+
+dataMod.get = function(player, stat)
+	local key = player.UserId
+	return sessionData[key][stat]
+end
+
+dataMod.save = function(player)
+	local key = player.UserId
+	local data = dataMod.recursiveCopy(sessionData[key])
+	
+	local success, err = pcall(function()
+		store:SetAsync(key, data)
+	end)
+	
+	if success then
+		print(player.Name.. "'s data has been saved!")
+	else
+		dataMod.save(player)
+	end
+end
+
+dataMod.removeSessionData = function(player)
+	local key = player.UserId
+	sessionData[key] = nil
+end
+
+playerService.PlayerRemoving:Connect(function(player)
+	dataMod.save(player)
+	dataMod.removeSessionData(player)
+end)
+
+
+local function autoSave()
+	while wait(AUTOSAVE_INTERVAL) do
+		print("Auto-saving data for all players")
+		
+		for key, dataTable in pairs(sessionData) do
+			local player = playerService:GetPlayerByUserId(key)
+			dataMod.save(player)
+		end
+	end
+end
+
+spawn(autoSave) --Initialize autosave loop
+
+game:BindToClose(function()
+	for _, player in pairs(playerService:GetPlayers()) do
+		dataMod.save(player)
+		player:Kick("Shutting down game. All data saved.")
+	end
+end)
+
+return dataMod
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="7">
+        <Properties>
+          <string name="Name">GameRunner</string>
+          <string name="Source">local playerService = game:GetService("Players")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local dataMod = require(script.Parent.Data)
+local lootMod = require(script.Parent.Loot)
+local random = Random.new()
+local message = replicatedStorage.Message
+local remaining = replicatedStorage.Remaining
+local gameRunner = {}
+local competitors = {}
+
+local MIN_PLAYERS = 2
+local INTERMISSION_LENGTH = 5
+local ROUND_LENGTH = 300
+local PRIZE_AMOUNT = 100
+
+local getCompetitors = replicatedStorage.GetCompetitors
+local updateCompetitors = replicatedStorage.UpdateCompetitors
+
+getCompetitors.OnServerInvoke = function()
+	return competitors
+end
+
+local function getPlayerInTable(player)
+	for i, competitor in pairs(competitors) do
+		if competitor == player then
+			return i, player
+		end
+	end
+end
+
+local function removePlayerFromTable(player)
+	local index, _ = getPlayerInTable(player)
+	if index then
+		table.remove(competitors, index)
+		updateCompetitors:FireAllClients(competitors)
+	end
+end
+
+local function spawnPlayers()
+	local spawnPoints = workspace.Spawns:GetChildren()
+	
+	for _, player in pairs(competitors) do
+		local char = player.Character or player.CharacterAdded:Wait()
+		local randomIndex = random:NextInteger(1, #spawnPoints)
+		local spawnPoint = spawnPoints[randomIndex]
+		table.remove(spawnPoints, randomIndex)
+		
+		char:SetPrimaryPartCFrame(spawnPoint.CFrame * CFrame.new(0,2,0))
+	end
+end
+
+local function preparePlayer(player)
+	local char = player.Character or player.CharacterAdded:Wait()
+	local hum = char:WaitForChild("Humanoid")
+
+	local defaultWeapon = replicatedStorage.Weapons.M1911:Clone()
+	defaultWeapon.Parent = player.Backpack
+	
+	hum.Died:Connect(function()
+		removePlayerFromTable(player)
+	end)
+end
+
+local function addPlayersToTable()
+	for _, player in pairs(playerService:GetPlayers()) do
+		local char = player.Character or player.CharacterAdded:Wait()
+		
+		if char.Humanoid.Health > 0 then
+			table.insert(competitors, player)
+			preparePlayer(player)
+		end
+	end
+end
+
+local function loadAllPlayers()
+	for _, player in pairs(competitors) do
+		player:LoadCharacter()
+	end
+end
+
+playerService.PlayerRemoving:Connect(function(player)
+	removePlayerFromTable(player)
+end)
+
+gameRunner.gameLoop = function()
+	while wait(0.5) do
+		if #playerService:GetPlayers() &lt; MIN_PLAYERS then
+			message.Value = "There must be ".. MIN_PLAYERS.. " players to start."
+		else
+			local intermission = INTERMISSION_LENGTH
+			repeat
+				message.Value = "Intermission: ".. intermission
+				intermission = intermission - 1
+				wait(1)
+			until intermission == 0
+
+			message.Value = "Get ready..."
+			wait(2)
+			addPlayersToTable()
+			spawnPlayers()
+			lootMod.spawnWeapons()
+			updateCompetitors:FireAllClients(competitors)
+
+			local gameTime = ROUND_LENGTH
+			repeat
+				message.Value = "Time remaining: ".. gameTime
+				remaining.Value = #competitors.. " remaining"
+				gameTime = gameTime - 1
+				wait(1)
+			until #competitors &lt;= 1 or gameTime == 0
+			
+			loadAllPlayers()
+			remaining.Value = ""
+
+			if gameTime == 0 or #competitors == 0 then
+				message.Value = "There were no victors..."
+			else
+				local winner = competitors[1]
+				dataMod.increment(winner, "Wins", 1)
+				dataMod.increment(winner, "Coins", PRIZE_AMOUNT)
+				message.Value = winner.Name.. " has won the round!"
+			end
+			
+			competitors = {}
+			updateCompetitors:FireAllClients(competitors)
+			wait(5)
+		end
+	end
+end
+
+spawn(gameRunner.gameLoop)
+
+
+return gameRunner</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="8">
+        <Properties>
+          <string name="Name">Loot</string>
+          <string name="Source">local replicatedStorage = game:GetService("ReplicatedStorage")
+local lootSpawns = workspace.LootSpawns
+local weaponFolder = replicatedStorage.Weapons
+local random = Random.new()
+local weapons = require(script.Parent.Weapons)
+local loot = {}
+
+local function makeWeaponModel(weapon)
+	local weaponModel = Instance.new("Model")
+
+	for _, child in pairs(weapon:GetDescendants()) do
+		if child:IsA("BasePart") then
+			child.Parent = weaponModel
+			child.Anchored = true
+			child:ClearAllChildren()
+		end
+	end
+	
+	weapon:Destroy()
+
+	return weaponModel
+end
+
+loot.spawnWeapons = function()
+	for _, spawnPoint in pairs(lootSpawns:GetChildren()) do
+		local oldModel = spawnPoint:FindFirstChildOfClass("Model")
+		if oldModel then
+			oldModel:Destroy()
+		end
+		
+		local weaponPool = weaponFolder:GetChildren()
+		local randomIndex = random:NextInteger(1, #weaponPool)
+		local weapon = weaponPool[randomIndex]:Clone()
+		local weaponName = weapon.Name
+		local weaponModel = makeWeaponModel(weapon)
+		weaponModel.Parent = spawnPoint
+				
+		local primaryPart = Instance.new("Part")
+		primaryPart.Anchored = true
+		primaryPart.CanCollide = false
+		primaryPart.Transparency = 1
+		primaryPart.CFrame, primaryPart.Size = weaponModel:GetBoundingBox()
+		primaryPart.Parent = weaponModel
+		
+		weaponModel.PrimaryPart = primaryPart
+		local newCFrame = CFrame.new(spawnPoint.CFrame.p) * CFrame.new(0,2,0)
+		weaponModel:SetPrimaryPartCFrame(newCFrame)
+		
+		primaryPart.Touched:Connect(function(hit)
+			local player, char = weapons.playerFromHit(hit)
+			if player and char then
+				local tool = weaponFolder:FindFirstChild(weaponName):Clone()
+				tool.Parent = player.Backpack
+				char.Humanoid:EquipTool(tool)
+				weaponModel:Destroy()
+			end
+		end)
+	end
+end
+
+for _, spawnPoint in pairs(lootSpawns:GetChildren()) do
+	spawnPoint.Anchored = true
+	spawnPoint.CanCollide = false
+	spawnPoint.Transparency = 1
+end
+
+return loot</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="9">
+        <Properties>
+          <string name="Name">ServerHandler</string>
+          <string name="Source">for _, module in pairs(script:GetChildren()) do
+	local loadMod = coroutine.create(function()
+		require(module)
+	end)
+
+	coroutine.resume(loadMod)
+end</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="10">
+        <Properties>
+          <string name="Name">Weapons</string>
+          <string name="Source"><![CDATA[local playerService = game:GetService("Players")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local hitRemote = replicatedStorage.Hit
+local replicateRemote = replicatedStorage.Replicate
+local dataMod = require(script.Parent.Data)
+local weapons = {}
+
+weapons.playerFromHit = function(hit)
+	local char = hit:FindFirstAncestorOfClass("Model")
+	local player = playerService:GetPlayerFromCharacter(char)
+
+	return player, char
+end
+
+local SECURITY_ANGLE = 15
+
+local function verifyHit(hit, direction, origin, relCFrame, gunSettings)
+	local target = (hit.CFrame * relCFrame).p
+	local serverDirection = target - origin
+	
+	if serverDirection.Magnitude > gunSettings.range then return end
+	
+	if serverDirection.Magnitude == 0 or direction.Magnitude == 0 then return end
+
+	local combinedVectors = serverDirection:Dot(direction)
+	local angle = combinedVectors/(direction.Magnitude * serverDirection.Magnitude)
+
+	if angle > 1 then
+		angle = 0
+	elseif angle < -1 then
+		angle = math.pi
+	else
+		angle = math.acos(angle)
+	end
+	angle = math.deg(angle)
+
+	if angle <= SECURITY_ANGLE then
+		return true
+	end
+end
+
+hitRemote.OnServerEvent:Connect(function(player, weapon, hit, direction, origin, relCFrame)	
+	local otherPlayer, char = weapons.playerFromHit(hit)
+	
+	if char and char:FindFirstChildOfClass("Humanoid") and not weapon.Debounce.Value then
+		local gunSettings = require(weapon.Settings)
+		
+		if verifyHit(hit, direction, origin, relCFrame, gunSettings) then
+			weapon.Debounce.Value = true
+			local waitTime = 60/gunSettings.rateOfFire
+			delay(waitTime, function()
+				weapon.Debounce.Value = false
+			end)
+			
+			local hum = char:FindFirstChildOfClass("Humanoid")
+
+			if hum.Health > 0 then
+				local damage = gunSettings.damage
+				if hit.Name == "Head" then
+					damage = damage * gunSettings.headshotMultiplier
+				end
+				
+				
+				hum.Health = hum.Health - damage
+				
+				if hum.Health <= 0 then
+					dataMod.increment(player, "Kills", 1)
+				end
+			end
+		end
+	end
+end)
+
+replicateRemote.OnServerEvent:Connect(function(player, weapon, origin, target)
+	local length = (target - origin).Magnitude
+	local visualCFrame = CFrame.new(origin, target) * CFrame.new(0,0,-length/2)
+	local gunSettings = require(weapon.Settings)
+	
+	replicatedStorage.Replicate:FireAllClients(player, gunSettings, visualCFrame, length)
+end)
+
+return weapons
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="11">
+        <Properties>
+          <string name="Name">serverScriptModule</string>
+          <string name="Source">print("Hello from serverScriptModule.lua")</string>
+        </Properties>
+      </Item>
+    </Item>
+  </Item>
+  <Item class="SoundService" referent="12">
+    <Properties>
+      <string name="Name">SoundService</string>
+      <bool name="RespectFilteringEnabled">true</bool>
+    </Properties>
+  </Item>
+  <Item class="StarterPlayer" referent="13">
+    <Properties>
+      <string name="Name">StarterPlayer</string>
+    </Properties>
+    <Item class="StarterPlayerScripts" referent="14">
+      <Properties>
+        <string name="Name">StarterPlayerScripts</string>
+      </Properties>
+      <Item class="LocalScript" referent="15">
+        <Properties>
+          <string name="Name">Client</string>
+          <string name="Source">print("Hello world, from client!")</string>
+        </Properties>
+        <Item class="ModuleScript" referent="16">
+          <Properties>
+            <string name="Name">Display</string>
+            <string name="Source"><![CDATA[local replicatedStorage = game:GetService("ReplicatedStorage")
+local gui = script.Parent.Parent
+local message = replicatedStorage.Message
+local remaining = replicatedStorage.Remaining
+local display = {}
+
+local messageLabel = gui:WaitForChild("Message")
+local remainingLabel = gui:WaitForChild("Remaining")
+
+messageLabel.Text = message.Value
+remainingLabel.Text = remaining.Value
+
+message:GetPropertyChangedSignal("Value"):Connect(function()
+	messageLabel.Text = message.Value
+end)
+
+remaining:GetPropertyChangedSignal("Value"):Connect(function()
+	remainingLabel.Text = remaining.Value
+end)
+
+return display
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="17">
+          <Properties>
+            <string name="Name">LocalHandler</string>
+            <string name="Source">for _, module in pairs(script:GetChildren()) do
+	local loadMod = coroutine.create(function()
+		require(module)
+	end)
+
+	coroutine.resume(loadMod)
+end</string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="18">
+          <Properties>
+            <string name="Name">Replication</string>
+            <string name="Source">local playerService = game:GetService("Players")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local player = playerService.LocalPlayer
+local replication = {}
+local replicateRemote = replicatedStorage.Replicate
+
+replicateRemote.OnClientEvent:Connect(function(otherPlayer, gunSettings, cframe, length)
+	if otherPlayer ~= player then
+		local visual = Instance.new("Part")
+		visual.Anchored = true
+		visual.CanCollide = false
+		visual.Material = Enum.Material.Neon
+		visual.Color = gunSettings.rayColor
+		visual.Size = Vector3.new(gunSettings.raySize.X, gunSettings.raySize.Y, length)
+		visual.CFrame = cframe
+		visual.Parent = workspace.Effects
+		game.Debris:AddItem(visual, gunSettings.debrisTime)
+	end
+end)
+
+return replication</string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="19">
+          <Properties>
+            <string name="Name">Settings</string>
+            <string name="Source">local gunSettings = {
+	fireMode = "SEMI";
+	damage = 25;
+	headshotMultiplier = 1.5;
+	rateOfFire = 300; --Rounds per minute
+	range = 500;
+	rayColor = Color3.fromRGB(255, 160, 75);
+	raySize = Vector2.new(0.25, 0.25); --Width and height
+	debrisTime = 0.075;
+}
+
+return gunSettings</string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="20">
+          <Properties>
+            <string name="Name">Spectate</string>
+            <string name="Source">local replicatedStorage = game:GetService("ReplicatedStorage")
+local playerService = game:GetService("Players")
+local getCompetitors = replicatedStorage.GetCompetitors
+local updateCompetitors = replicatedStorage.UpdateCompetitors
+local player = playerService.LocalPlayer
+local cam = workspace.CurrentCamera
+local spectate = {}
+
+local gui = script.Parent.Parent
+local spectateFrame = gui:WaitForChild("Spectate")
+local toggle = gui:WaitForChild("Toggle")
+local nameLabel = spectateFrame:WaitForChild("NameLabel")
+local nextPlayer = spectateFrame:WaitForChild("NextPlayer")
+local lastPlayer = spectateFrame:WaitForChild("LastPlayer")
+
+local competitors = {}
+local curIndex = 1
+local spectating = false
+spectateFrame.Visible = false
+
+spectate.getCompetitors = function()
+	competitors = getCompetitors:InvokeServer()
+end
+
+updateCompetitors.OnClientEvent:Connect(function(list)
+	competitors = list
+	
+	for _, competitor in pairs(competitors) do
+		if competitor == player then
+			toggle.Visible = false
+			
+			if spectating then
+				spectate.toggleSpectate()
+			end
+			return
+		end
+	end
+	
+	if spectating then
+		spectate.focusCamera(competitors[curIndex])
+	end
+end)
+
+spectate.toggleSpectate = function()
+	if not spectating then
+		spectating = true
+		spectate.getCompetitors()
+		spectateFrame.Visible = true
+		local targetPlayer = competitors[1]
+		spectate.focusCamera(targetPlayer)
+	else
+		spectating = false
+		spectateFrame.Visible = false
+		spectate.focusCamera(player)
+	end
+end
+
+spectate.focusCamera = function(targetPlayer)
+	if #competitors == 0 and spectating then
+		spectate.toggleSpectate()
+	else
+		if targetPlayer then
+			cam.CameraSubject = targetPlayer.Character
+			nameLabel.Text = targetPlayer.Name
+		else
+			spectate.getCompetitors()
+			local newTargetPlayer = competitors[1]
+			spectate.focusCamera(newTargetPlayer)
+		end
+	end
+end
+
+toggle.MouseButton1Click:Connect(function()
+	spectate.toggleSpectate()
+end)
+
+nextPlayer.MouseButton1Click:Connect(function()
+	spectate.getCompetitors()
+	
+	curIndex = curIndex + 1
+	if curIndex > #competitors then
+		curIndex = 1
+	end
+	
+	local targetPlayer = competitors[curIndex]
+	spectate.focusCamera(targetPlayer)
+end)
+
+lastPlayer.MouseButton1Click:Connect(function()
+	spectate.getCompetitors()
+	
+	curIndex = curIndex - 1
+	if curIndex &lt; 1 then
+		curIndex = #competitors
+	end
+	
+	local targetPlayer = competitors[curIndex]
+	spectate.focusCamera(targetPlayer)
+end)
+
+return spectate</string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="21">
+          <Properties>
+            <string name="Name">ToolHandler</string>
+            <string name="Source"><![CDATA[local playerService = game:GetService("Players")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local replicateRemote = replicatedStorage.Replicate
+local hitRemote = replicatedStorage.Hit
+local player = playerService.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local mouse = player:GetMouse()
+
+local tool = script.Parent
+local firePoint = tool:WaitForChild("Handle") --This is where the bullet comes from
+local gunSettings = require(tool:WaitForChild("Settings"))
+local equipped = false
+
+tool.Equipped:Connect(function()
+	equipped = true
+end)
+
+tool.Unequipped:Connect(function()
+	equipped = false
+end)
+
+local ignoreList = {char, workspace.Effects}
+local debris = game:GetService("Debris")
+
+local function castRay()
+	local origin = firePoint.Position
+	local direction = (mouse.Hit.p - firePoint.Position).Unit
+	direction = direction * gunSettings.range
+
+	local ray = Ray.new(origin, direction)
+	local hit, pos = workspace:FindPartOnRayWithIgnoreList(ray, ignoreList)
+
+	replicatedStorage.Replicate:FireServer(tool, origin, pos)
+	local visual = Instance.new("Part")
+	local length = (pos - origin).Magnitude
+	visual.Anchored = true
+	visual.CanCollide = false
+	visual.Material = Enum.Material.Neon
+	visual.Color = gunSettings.rayColor
+	visual.Size = Vector3.new(gunSettings.raySize.X, gunSettings.raySize.Y, length)
+	visual.CFrame = CFrame.new(origin, pos) * CFrame.new(0,0,-length/2)
+	visual.Parent = workspace.Effects
+	debris:AddItem(visual, gunSettings.debrisTime)
+
+	return hit, pos, direction, origin
+end
+
+local function gunEffects()
+	for _, effect in pairs(firePoint:GetChildren()) do
+		if effect:IsA("ParticleEmitter") then
+			effect:Emit(50)
+		end
+		
+		if effect:IsA("Sound") then
+			effect:Play()
+		end
+	end
+end
+
+
+local doFire = false
+
+local function fire()
+	local waitTime = 60/gunSettings.rateOfFire
+
+	repeat
+		if equipped and not tool.Debounce.Value then
+			tool.Debounce.Value = true
+
+			delay(waitTime, function()
+				tool.Debounce.Value = false
+			end)
+
+			gunEffects()
+			local hit, pos, direction, origin = castRay()
+
+			if hit then
+				local relCFrame = hit.CFrame:Inverse() * CFrame.new(pos)
+				hitRemote:FireServer(tool, hit, direction, origin, relCFrame)
+			end			
+		end
+		wait(waitTime)
+
+	until not equipped or not doFire or gunSettings.fireMode ~= "AUTO"
+end
+
+
+mouse.Button1Down:Connect(function()
+	doFire = true
+	if char.Humanoid.Health > 0 then
+		fire()
+	end
+end)
+
+mouse.Button1Up:Connect(function()
+	doFire = false
+end)
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="22">
+          <Properties>
+            <string name="Name">UIHandler</string>
+            <string name="Source">for _, module in pairs(script:GetChildren()) do
+	local loadMod = coroutine.create(function()
+		require(module)
+	end)
+
+	coroutine.resume(loadMod)
+end</string>
+          </Properties>
+        </Item>
+      </Item>
+    </Item>
+  </Item>
+  <Item class="Workspace" referent="23">
+    <Properties>
+      <string name="Name">Workspace</string>
+      <bool name="FilteringEnabled">true</bool>
+    </Properties>
+    <Item class="Part" referent="24">
+      <Properties>
+        <string name="Name">Baseplate</string>
+        <bool name="Anchored">true</bool>
+        <Color3uint8 name="Color3uint8">6512483</Color3uint8>
+        <bool name="Locked">true</bool>
+        <Vector3 name="Position">
+          <X>0</X>
+          <Y>-10</Y>
+          <Z>0</Z>
+        </Vector3>
+        <Vector3 name="size">
+          <X>512</X>
+          <Y>20</Y>
+          <Z>512</Z>
+        </Vector3>
+      </Properties>
+    </Item>
+  </Item>
+</roblox>
