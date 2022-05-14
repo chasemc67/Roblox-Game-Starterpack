@@ -1,4 +1,4 @@
-local playerService = game:GetService("Player")
+local playerService = game:GetService("Players")
 local replicatedStorage = game:GetService("ReplicatedStorage")
 local hitRemote = replicatedStorage.Hit
 local replicateRemote = replicatedStorage.Replicate
@@ -10,17 +10,13 @@ local tool = script.Parent
 local firePoint = tool:WaitForChild("Handle")
 local gunSettings = require(tool:WaitForChild("Settings"))
 local equipped = false
-
-tool.Equipped:Connect(function()
-	equipped = true
-end)
+local doFire = false
+local ignoreList = {char, workspace.Effects}
+local debris = game:GetService("Debris")
 
 tool.Unequipped:Connect(function()
 	equipped = false
 end)
-
-local ignoreList = {char, workspace.Effects}
-local debris = game:GetService("Debris")
 
 local function castRay()
 	local origin = firePoint.Position
@@ -57,11 +53,9 @@ local function gunEffects()
 	end
 end
 
-local doFire = false
-
 local function fire()
 	local waitTime = 60/gunSettings.rateOfFire
-	
+	print("Firing")
 	repeat 
 		if equipped and not tool.Debounce.Value then
 			tool.Debounce.Value = true
@@ -82,13 +76,26 @@ local function fire()
 	until not equipped or not doFire or gunSettings.fireMod ~= "AUTO"
 end
 
-mouse.Button1Down:Connect(function()
-	doFire = true
-	
-	if char.Humanoid.Health > 0 then
-		fire()
-	end
+tool.Equipped:Connect(function(mouse)
+	print("Tool was equipped")
+	equipped = true
+	mouse.Button1Down:Connect(function()
+		doFire = true
+		print("Button1Down")
+		if char.Humanoid.Health > 0 then
+			fire()
+		end
+	end)
 end)
+
+-- mouse.Button1Down:Connect(function()
+-- 	doFire = true
+-- 	print("Button1Down")
+-- 	if char.Humanoid.Health > 0 then
+-- 		fire()
+-- 	end
+-- end)
+
 
 mouse.Button1Up:Connect(function()
 	doFire = false
