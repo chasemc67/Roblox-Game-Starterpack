@@ -14,6 +14,10 @@ local doFire = false
 local ignoreList = {char, workspace.Effects}
 local debris = game:GetService("Debris")
 
+tool.Equipped:Connect(function()
+	equipped = true
+end)
+
 tool.Unequipped:Connect(function()
 	equipped = false
 end)
@@ -55,7 +59,6 @@ end
 
 local function fire()
 	local waitTime = 60/gunSettings.rateOfFire
-	print("Firing")
 	repeat 
 		if equipped and not tool.Debounce.Value then
 			tool.Debounce.Value = true
@@ -76,25 +79,12 @@ local function fire()
 	until not equipped or not doFire or gunSettings.fireMod ~= "AUTO"
 end
 
-tool.Equipped:Connect(function(mouse)
-	print("Tool was equipped")
-	equipped = true
-	mouse.Button1Down:Connect(function()
-		doFire = true
-		print("Button1Down")
-		if char.Humanoid.Health > 0 then
-			fire()
-		end
-	end)
+mouse.Button1Down:Connect(function()
+	doFire = true
+	if char.Humanoid.Health > 0 then
+		fire()
+	end
 end)
-
--- mouse.Button1Down:Connect(function()
--- 	doFire = true
--- 	print("Button1Down")
--- 	if char.Humanoid.Health > 0 then
--- 		fire()
--- 	end
--- end)
 
 
 mouse.Button1Up:Connect(function()
