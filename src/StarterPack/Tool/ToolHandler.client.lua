@@ -63,7 +63,7 @@ local function fire()
 	local waitTime = 60/gunSettings.rateOfFire
 	
 	repeat 
-		if equipped and not tool.Debounce.Value = true then
+		if equipped and not tool.Debounce.Value then
 			tool.Debounce.Value = true
 			
 			delay(waitTime, function()

@@ -62,6 +62,8 @@ for _, spawnPoint in pairs(lootSpawns:GetChildren()) do
 	spawnPoint.Anchored = true
 	spawnPoint.CanCollide = false
 	spawnPoint.Transparency = 1
+	spawnPoint.Material = Enum.Material.Plastic
+	spawnPoint.Color = Color3.fromRGB(255, 0, 0)
 end
 
 return loot
