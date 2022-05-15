@@ -15,6 +15,9 @@ local animationTrack = animator:LoadAnimation(animation)
 animationTrack.Priority = Enum.AnimationPriority.Action
 animationTrack.Looped = true
 
+local ProximityPromptService = game:GetService("ProximityPromptService")
+
+
 tool.Equipped:Connect(function()
 	equipped = true
 end)
@@ -23,14 +26,14 @@ tool.Unequipped:Connect(function()
 	equipped = false
 end)
 
-mouse.Button1Down:Connect(function()
+ProximityPromptService.PromptButtonHoldBegan:Connect(function()
 	print("Swing axe")
     humanoid.WalkSpeed = 0
     animationTrack:Play()
 end)
 
 
-mouse.Button1Up:Connect(function()
+ProximityPromptService.PromptButtonHoldEnded:Connect(function()
     print("Stop Swinging")
 	humanoid.WalkSpeed = startingWalkSpeed
     animationTrack:Stop()
