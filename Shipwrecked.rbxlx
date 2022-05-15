@@ -7720,7 +7720,7 @@ return display]]></ProtectedString>
 		<Item class="Script" referent="RBX66843c0fce814ab091ab177e8a647533">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
-				<bool name="Disabled">true</bool>
+				<bool name="Disabled">false</bool>
 				<Content name="LinkedSource"><null></null></Content>
 				<string name="Name">ServerHandler</string>
 				<string name="ScriptGuid">{5b17ff63-f99f-427d-ade0-825a919ec608}</string>
@@ -7733,8 +7733,7 @@ for _, module in pairs(script:GetChildren()) do
 	end)
 
 	coroutine.resume(loadMod)
-end
-]]></ProtectedString>
+end]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">60ac0bb170c84e0c0291a1c8000293d6</UniqueId>
@@ -7753,6 +7752,9 @@ local sessionData = {}
 local dataMod = {}
 local AUTOSAVE_INTERVAL = 120
 
+local defaultData = {
+	Wood = 0;
+}
 
 dataMod.recursiveCopy = function(dataTable)
 	local tableCopy = {}
@@ -7766,12 +7768,6 @@ dataMod.recursiveCopy = function(dataTable)
 	
 	return tableCopy
 end
-
-local defaultData = {
-	Coins = 0;
-	Wins = 0;
-	Kills = 0;
-}
 
 dataMod.load = function(player)
 	local key = player.UserId
@@ -7810,21 +7806,12 @@ playerService.PlayerAdded:Connect(function(player)
 	folder.Name = "leaderstats"
 	folder.Parent = player
 	
-	local coins = Instance.new("IntValue")
-	coins.Name = "Coins"
-	coins.Parent = folder
-	coins.Value = defaultData.Coins
+	local Wood = Instance.new("IntValue")
+	Wood.Name = "Wood"
+	Wood.Parent = folder
+	Wood.Value = defaultData.Wood
 	
-	local wins = Instance.new("IntValue")
-	wins.Name = "Wins"
-	wins.Parent = folder
-	wins.Value = defaultData.Wins
-	
-	local kills = Instance.new("IntValue")
-	kills.Name = "Kills"
-	kills.Parent = folder
-	kills.Value = defaultData.Kills
-	
+	print("setting up data for ".. player.Name)
 	dataMod.setupData(player)
 end)
 
@@ -7856,6 +7843,7 @@ dataMod.save = function(player)
 	if success then
 		print(player.Name.. "'s data has been saved!")
 	else
+		print("Loading data failed with error: " .. err .. ", trying again.")
 		dataMod.save(player)
 	end
 end
@@ -8215,6 +8203,74 @@ return weapons
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">60ac0bb170c84e0c0291a1c8000293da</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX1b41dcfbfb3f45a8a48e8645994b8bf6">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Harvesting</string>
+					<string name="ScriptGuid">{1bd680ef-c101-44af-b93b-6cdb72e6062f}</string>
+					<ProtectedString name="Source"><![CDATA[local CollectionService = game:GetService("CollectionService")
+local HARVESTABLE_TAG = require(script.Parent.Collections).tags.HARVESTABLE
+local Data = require(script.Parent.Data)
+
+local harvesting = {}
+
+local function OnHarvest(player, inst)
+    print("Destroying tree")
+    inst:Destroy()
+    Data.increment(player, "Wood", 1)
+end
+
+local function attachPromptLogic(inst)
+    if inst:IsA("Model") then
+        for _,part in pairs(inst:GetDescendants()) do
+            if part:IsA("ProximityPrompt") then
+                part.Triggered:Connect(function (player) 
+                    OnHarvest(player, inst)
+                end)
+            end
+        end
+    end
+end
+
+for _,inst in pairs(CollectionService:GetTagged(HARVESTABLE_TAG)) do
+    attachPromptLogic(inst)
+end
+
+CollectionService:GetInstanceAddedSignal(HARVESTABLE_TAG):Connect(attachPromptLogic)
+
+return harvesting]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0a060d02571e72680293141e000291fa</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXb165cc0172ec44b4bd3ff8390d40b55e">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Collections</string>
+					<string name="ScriptGuid">{b5a84df4-4762-4693-b896-e1b3cdc025e0}</string>
+					<ProtectedString name="Source"><![CDATA[-- Add tags to objects in workspace for collections service
+local collectionService = game:GetService("CollectionService")
+
+local collections = {}
+collections.tags = {
+    HARVESTABLE = "HARVESTABLE";
+}
+
+local palmTrees = workspace.InteractiveEnvironment.Palms
+
+for _, tree in pairs(palmTrees:GetChildren()) do
+    collectionService:AddTag(tree, collections.tags.HARVESTABLE)
+end
+
+return collections]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0a060d02571e72680293141e000291fc</UniqueId>
 				</Properties>
 			</Item>
 		</Item>
