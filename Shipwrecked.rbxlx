@@ -5317,27 +5317,27 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>32.1684914</X>
-					<Y>-179.680496</Y>
-					<Z>87.9236145</Z>
-					<R00>-0.999901891</R00>
-					<R01>0.00369633874</R01>
-					<R02>-0.0135116754</R02>
-					<R10>-0</R10>
-					<R11>0.964558125</R11>
-					<R12>0.263870597</R12>
-					<R20>0.0140081495</R20>
-					<R21>0.263844699</R21>
-					<R22>-0.964463532</R22>
+					<X>53.7776031</X>
+					<Y>-150.242828</Y>
+					<Z>146.977097</Z>
+					<R00>0.817101598</R00>
+					<R01>-0.365164131</R01>
+					<R02>0.446094364</R02>
+					<R10>-1.49011594e-08</R10>
+					<R11>0.773806095</R11>
+					<R12>0.633422613</R12>
+					<R20>-0.57649368</R20>
+					<R21>-0.517570615</R21>
+					<R22>0.632278204</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>32.1955147</X>
-					<Y>-180.208237</Y>
-					<Z>89.8525391</Z>
+					<X>52.8854141</X>
+					<Y>-151.509674</Y>
+					<Z>145.71254</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -6515,6 +6515,65 @@ end]]></ProtectedString>
 						</Properties>
 					</Item>
 				</Item>
+			</Item>
+			<Item class="LocalScript" referent="RBXc58c1ba95e23448a81a8bf243963041a">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">AxeHandler</string>
+					<string name="ScriptGuid">{bdd49c1c-d151-442e-afb0-ab4de9f08554}</string>
+					<ProtectedString name="Source"><![CDATA[local playerService = game:GetService("Players")
+local player = playerService.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local humanoid = char:WaitForChild("Humanoid")
+local animator = humanoid:WaitForChild("Animator")
+local mouse = player:GetMouse()
+
+local tool = script.Parent
+local equipped = false
+
+local startingWalkSpeed = humanoid.WalkSpeed
+
+local animation = tool:WaitForChild("Animation")
+local animationTrack = animator:LoadAnimation(animation)
+animationTrack.Priority = Enum.AnimationPriority.Action
+animationTrack.Looped = true
+
+tool.Equipped:Connect(function()
+	equipped = true
+end)
+
+tool.Unequipped:Connect(function()
+	equipped = false
+end)
+
+mouse.Button1Down:Connect(function()
+	print("Swing axe")
+    humanoid.WalkSpeed = 0
+    animationTrack:Play()
+end)
+
+
+mouse.Button1Up:Connect(function()
+    print("Stop Swinging")
+	humanoid.WalkSpeed = startingWalkSpeed
+    animationTrack:Stop()
+end)]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">19e55a1b22d2237d0291ec1b00071ad1</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="Animation" referent="RBX08a46b01fc7f48f6828793c19bbfe51f">
+				<Properties>
+					<Content name="AnimationId"><url>rbxassetid://9633674639</url></Content>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<string name="Name">Animation</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">19e55a1b22d2237d0291ec1b00071bac</UniqueId>
+				</Properties>
 			</Item>
 		</Item>
 	</Item>
@@ -7785,20 +7844,12 @@ return gameSettings
 					<string name="Name">ToolHandler</string>
 					<string name="ScriptGuid">{785a6d01-a23f-4a59-9b02-3400284db421}</string>
 					<ProtectedString name="Source"><![CDATA[local playerService = game:GetService("Players")
-local replicatedStorage = game:GetService("ReplicatedStorage")
-local hitRemote = replicatedStorage.Hit
-local replicateRemote = replicatedStorage.Replicate
 local player = playerService.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 local mouse = player:GetMouse()
 
 local tool = script.Parent
-local firePoint = tool:WaitForChild("Handle")
-local gunSettings = require(tool:WaitForChild("Settings"))
 local equipped = false
-local doFire = false
-local ignoreList = {char, workspace.Effects}
-local debris = game:GetService("Debris")
 
 tool.Equipped:Connect(function()
 	equipped = true
@@ -7808,74 +7859,14 @@ tool.Unequipped:Connect(function()
 	equipped = false
 end)
 
-local function castRay()
-	local origin = firePoint.Position
-	local direction = (mouse.Hit.p - firePoint.Position).Unit
-	direction = direction * gunSettings.range
-	
-	local ray = Ray.new(origin, direction)
-	local hit, pos = workspace:FindPartOnRayWithIgnoreList(ray, ignoreList)
-	
-	replicatedStorage.Replicate:FireServer(tool, origin, pos)
-	local visual = Instance.new("Part")
-	local length = (pos-origin).Magnitude
-	visual.Anchored = true
-	visual.CanCollide = false
-	visual.Material = Enum.Material.Neon
-	visual.Color = gunSettings.rayColor
-	visual.Size = Vector3.new(gunSettings.raySize.X, gunSettings.raySize.Y, length)
-	visual.CFrame = CFrame.new(origin, pos) * CFrame.new(0,0,-length/2)
-	visual.Parent = workspace.Effects
-	debris:AddItem(visual, gunSettings.debrisTime)
-	
-	return hit, pos, direction, origin
-end
-
--- Make sure RespectFilteringEnabled property of SoundService is unchecked in Explorer for this to work
-local function gunEffects()
-	for _, effect in pairs(firePoint:GetChildren()) do
-		if effect:IsA("ParticleEmitter") then
-			effect:Emit(50)
-		end
-		
-		if effect:IsA("Sound") then
-			effect.Play()
-		end
-	end
-end
-
-local function fire()
-	local waitTime = 60/gunSettings.rateOfFire
-	repeat 
-		if equipped and not tool.Debounce.Value then
-			tool.Debounce.Value = true
-			
-			delay(waitTime, function()
-				tool.Debounce.Value = false
-			end)
-			
-			gunEffects()
-			local hit, pos, direction, origin = castRay()
-			
-			if hit then
-				local relCFrame = hit.CFrame:Inverse() * CFrame.new(pos)
-				hitRemote:FireServer(tool, hit, direction, origin, relCFrame)
-			end
-		end
-		wait(waitTime)
-	until not equipped or not doFire or gunSettings.fireMod ~= "AUTO"
-end
 
 mouse.Button1Down:Connect(function()
-	doFire = true
-	if char.Humanoid.Health > 0 then
-		fire()
-	end
+	print("Swing axe")
 end)
 
 
 mouse.Button1Up:Connect(function()
-	doFire = false
+	
 end)]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
