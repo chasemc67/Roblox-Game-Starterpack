@@ -4,7 +4,7 @@ local harvestableTag = "HARVESTABLE"
 
 local collections = {}
 
-local palmTrees = workspace.InteractiveEnvironment.PalmTrees
+local palmTrees = workspace.InteractiveEnvironment.Palms
 
 for _, tree in pairs(palmTrees:GetChildren()) do
     collectionService:AddTag(tree, harvestableTag)
