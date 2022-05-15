@@ -9,8 +9,9 @@ for _, palm in pairs(palmFolder:GetChildren()) do
 		proximityPrompt.ObjectText = "Big Palm"
 		proximityPrompt.ActionText = "Hit that tree!"
 		proximityPrompt.KeyboardKeyCode = Enum.KeyCode.E
-		proximityPrompt.GamePadKeyCode = Enum.KeyCode.ButtonA
-		proximityPrompt.MaxDistance = 5
+		proximityPrompt.GamepadKeyCode = Enum.KeyCode.ButtonA
+		proximityPrompt.MaxActivationDistance = 500
+		proximityPrompt.HoldDuration = 3
 
 		proximityPrompt.Parent = palm
 	end
