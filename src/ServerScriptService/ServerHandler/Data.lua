@@ -6,6 +6,9 @@ local sessionData = {}
 local dataMod = {}
 local AUTOSAVE_INTERVAL = 120
 
+local defaultData = {
+	Wood = 0;
+}
 
 dataMod.recursiveCopy = function(dataTable)
 	local tableCopy = {}
@@ -19,10 +22,6 @@ dataMod.recursiveCopy = function(dataTable)
 	
 	return tableCopy
 end
-
-local defaultData = {
-	Wood = 0;
-}
 
 dataMod.load = function(player)
 	local key = player.UserId
@@ -66,6 +65,7 @@ playerService.PlayerAdded:Connect(function(player)
 	Wood.Parent = folder
 	Wood.Value = defaultData.Wood
 	
+	print("setting up data for ".. player.Name)
 	dataMod.setupData(player)
 end)
 
@@ -97,6 +97,7 @@ dataMod.save = function(player)
 	if success then
 		print(player.Name.. "'s data has been saved!")
 	else
+		print("Loading data failed with error: " .. err .. ", trying again.")
 		dataMod.save(player)
 	end
 end
