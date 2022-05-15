@@ -5317,27 +5317,27 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>53.7776031</X>
-					<Y>-150.242828</Y>
-					<Z>146.977097</Z>
-					<R00>0.817101598</R00>
-					<R01>-0.365164131</R01>
-					<R02>0.446094364</R02>
-					<R10>-1.49011594e-08</R10>
-					<R11>0.773806095</R11>
-					<R12>0.633422613</R12>
-					<R20>-0.57649368</R20>
-					<R21>-0.517570615</R21>
-					<R22>0.632278204</R22>
+					<X>-67.5340881</X>
+					<Y>-148.630966</Y>
+					<Z>146.026978</Z>
+					<R00>0.919106841</R00>
+					<R01>-0.169643313</R01>
+					<R02>0.355617642</R02>
+					<R10>-0</R10>
+					<R11>0.902563334</R11>
+					<R12>0.4305574</R12>
+					<R20>-0.394008577</R20>
+					<R21>-0.39572826</R21>
+					<R22>0.829551995</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>52.8854141</X>
-					<Y>-151.509674</Y>
-					<Z>145.71254</Z>
+					<X>-68.2453232</X>
+					<Y>-149.492081</Y>
+					<Z>144.367874</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -5824,23 +5824,47 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 						</Vector3>
 					</Properties>
 				</Item>
-				<Item class="Script" referent="RBXe4abbe8ed21c4cfbabec72749205e6d8">
+				<Item class="Script" referent="RBXe2ee52d829064047a13a0ad8c5f645ad">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<bool name="Disabled">false</bool>
 						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">palmProperties</string>
-						<string name="ScriptGuid">{c2e72689-834f-47f2-afd6-d2a6c8a3e323}</string>
+						<string name="Name">palmScripts</string>
+						<string name="ScriptGuid">{68944191-922f-4e3e-950f-02d5fd25221d}</string>
 						<ProtectedString name="Source"><![CDATA[local palmFolder = script.Parent
 
 for _, palm in pairs(palmFolder:GetChildren()) do
 	if (palm:IsA("BasePart")) then
 		palm.Anchored = true
+
+		local proximityPrompt = Instance.new("ProximityPrompt")
+		proximityPrompt.Name = "ProximityPrompt"
+		proximityPrompt.ObjectText = "Big Palm"
+		proximityPrompt.ActionText = "Hit that tree!"
+		proximityPrompt.KeyboardKeyCode = Enum.KeyCode.E
+		proximityPrompt.GamepadKeyCode = Enum.KeyCode.ButtonA
+		proximityPrompt.MaxActivationDistance = 500
+		proximityPrompt.HoldDuration = 3
+		
+		
+		-- get the CFrame
+		-- get the length of the size 
+		-- get a new CFrame which is 3/4s of the length down the CFrame (ideally respecting position)
+		-- or, better yet, some number of units away from the end of the frame
+		local palmSize = palm.Size
+		print("Palm X: " .. palmSize.X .. "Palm Y: " .. palmSize.Y .. "Palm Z: " .. palmSize.Z)
+		local proximityPosition = CFrame.new(palm.Position + Vector3.new(0, palmSize.Y/2 - 5, 0))
+		
+		local promptPart = Instance.new("Part")
+		promptPart.Size(0,0,0)
+		promptPart.Parent = palm
+		promptPart.CFrame = proximityPosition
+		proximityPrompt.Parent = promptPart
 	end
 end]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">60ac0bb170c84e0c0291a1c8001647ba</UniqueId>
+						<UniqueId name="UniqueId">077adbccf30644080292177d00029408</UniqueId>
 					</Properties>
 				</Item>
 			</Item>
@@ -6540,6 +6564,9 @@ local animationTrack = animator:LoadAnimation(animation)
 animationTrack.Priority = Enum.AnimationPriority.Action
 animationTrack.Looped = true
 
+local ProximityPromptService = game:GetService("ProximityPromptService")
+
+
 tool.Equipped:Connect(function()
 	equipped = true
 end)
@@ -6548,14 +6575,14 @@ tool.Unequipped:Connect(function()
 	equipped = false
 end)
 
-mouse.Button1Down:Connect(function()
+ProximityPromptService.PromptButtonHoldBegan:Connect(function()
 	print("Swing axe")
     humanoid.WalkSpeed = 0
     animationTrack:Play()
 end)
 
 
-mouse.Button1Up:Connect(function()
+ProximityPromptService.PromptButtonHoldEnded:Connect(function()
     print("Stop Swinging")
 	humanoid.WalkSpeed = startingWalkSpeed
     animationTrack:Stop()
@@ -7844,12 +7871,20 @@ return gameSettings
 					<string name="Name">ToolHandler</string>
 					<string name="ScriptGuid">{785a6d01-a23f-4a59-9b02-3400284db421}</string>
 					<ProtectedString name="Source"><![CDATA[local playerService = game:GetService("Players")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local hitRemote = replicatedStorage.Hit
+local replicateRemote = replicatedStorage.Replicate
 local player = playerService.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 local mouse = player:GetMouse()
 
 local tool = script.Parent
+local firePoint = tool:WaitForChild("Handle")
+local gunSettings = require(tool:WaitForChild("Settings"))
 local equipped = false
+local doFire = false
+local ignoreList = {char, workspace.Effects}
+local debris = game:GetService("Debris")
 
 tool.Equipped:Connect(function()
 	equipped = true
@@ -7859,14 +7894,74 @@ tool.Unequipped:Connect(function()
 	equipped = false
 end)
 
+local function castRay()
+	local origin = firePoint.Position
+	local direction = (mouse.Hit.p - firePoint.Position).Unit
+	direction = direction * gunSettings.range
+	
+	local ray = Ray.new(origin, direction)
+	local hit, pos = workspace:FindPartOnRayWithIgnoreList(ray, ignoreList)
+	
+	replicatedStorage.Replicate:FireServer(tool, origin, pos)
+	local visual = Instance.new("Part")
+	local length = (pos-origin).Magnitude
+	visual.Anchored = true
+	visual.CanCollide = false
+	visual.Material = Enum.Material.Neon
+	visual.Color = gunSettings.rayColor
+	visual.Size = Vector3.new(gunSettings.raySize.X, gunSettings.raySize.Y, length)
+	visual.CFrame = CFrame.new(origin, pos) * CFrame.new(0,0,-length/2)
+	visual.Parent = workspace.Effects
+	debris:AddItem(visual, gunSettings.debrisTime)
+	
+	return hit, pos, direction, origin
+end
+
+-- Make sure RespectFilteringEnabled property of SoundService is unchecked in Explorer for this to work
+local function gunEffects()
+	for _, effect in pairs(firePoint:GetChildren()) do
+		if effect:IsA("ParticleEmitter") then
+			effect:Emit(50)
+		end
+		
+		if effect:IsA("Sound") then
+			effect.Play()
+		end
+	end
+end
+
+local function fire()
+	local waitTime = 60/gunSettings.rateOfFire
+	repeat 
+		if equipped and not tool.Debounce.Value then
+			tool.Debounce.Value = true
+			
+			delay(waitTime, function()
+				tool.Debounce.Value = false
+			end)
+			
+			gunEffects()
+			local hit, pos, direction, origin = castRay()
+			
+			if hit then
+				local relCFrame = hit.CFrame:Inverse() * CFrame.new(pos)
+				hitRemote:FireServer(tool, hit, direction, origin, relCFrame)
+			end
+		end
+		wait(waitTime)
+	until not equipped or not doFire or gunSettings.fireMod ~= "AUTO"
+end
 
 mouse.Button1Down:Connect(function()
-	print("Swing axe")
+	doFire = true
+	if char.Humanoid.Health > 0 then
+		fire()
+	end
 end)
 
 
 mouse.Button1Up:Connect(function()
-	
+	doFire = false
 end)]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
