@@ -21,9 +21,7 @@ dataMod.recursiveCopy = function(dataTable)
 end
 
 local defaultData = {
-	Coins = 0;
-	Wins = 0;
-	Kills = 0;
+	Wood = 0;
 }
 
 dataMod.load = function(player)
@@ -63,20 +61,10 @@ playerService.PlayerAdded:Connect(function(player)
 	folder.Name = "leaderstats"
 	folder.Parent = player
 	
-	local coins = Instance.new("IntValue")
-	coins.Name = "Coins"
-	coins.Parent = folder
-	coins.Value = defaultData.Coins
-	
-	local wins = Instance.new("IntValue")
-	wins.Name = "Wins"
-	wins.Parent = folder
-	wins.Value = defaultData.Wins
-	
-	local kills = Instance.new("IntValue")
-	kills.Name = "Kills"
-	kills.Parent = folder
-	kills.Value = defaultData.Kills
+	local Wood = Instance.new("IntValue")
+	Wood.Name = "Wood"
+	Wood.Parent = folder
+	Wood.Value = defaultData.Wood
 	
 	dataMod.setupData(player)
 end)
