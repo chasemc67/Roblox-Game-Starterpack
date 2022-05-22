@@ -1,6 +1,6 @@
 local CollectionService = game:GetService("CollectionService")
 local HARVESTABLE_TAG = "HARVESTABLE"
-local Data = require(script.Parent.Data)
+local Data = require(script.Parent.ServerHandler.Data)
 
 local function OnHarvest(player, inst)
     print("Destroying tree")
