@@ -5318,27 +5318,27 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>61.1812706</X>
-					<Y>-105.032173</Y>
-					<Z>6.79296112</Z>
+					<X>67.8225327</X>
+					<Y>-74.4319763</Y>
+					<Z>-44.0370331</Z>
 					<R00>-0.942043066</R00>
-					<R01>-0.160080135</R01>
-					<R02>0.294837952</R02>
-					<R10>-0</R10>
-					<R11>0.878822029</R11>
-					<R12>0.477149963</R12>
-					<R20>-0.335492283</R20>
-					<R21>0.449495822</R21>
-					<R22>-0.827888012</R22>
+					<R01>-0.160079956</R01>
+					<R02>0.294837832</R02>
+					<R10>1.49011612e-08</R10>
+					<R11>0.878822088</R11>
+					<R12>0.477149785</R12>
+					<R20>-0.335492074</R20>
+					<R21>0.449495643</R21>
+					<R22>-0.827888191</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>60.5915947</X>
-					<Y>-105.986473</Y>
-					<Z>8.44873714</Z>
+					<X>67.2328568</X>
+					<Y>-75.3862762</Y>
+					<Z>-42.3812561</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
