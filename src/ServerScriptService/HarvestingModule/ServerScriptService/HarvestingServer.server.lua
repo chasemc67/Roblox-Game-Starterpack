@@ -3,8 +3,6 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local HARVESTABLE_TAG = require(script.Parent.Collections).tags.HARVESTABLE
 local Data = require(script.Parent.Data)
 
-local harvesting = {}
-
 local function OnHarvest(player, inst)
     print("Destroying tree")
     inst:Destroy()
@@ -29,5 +27,3 @@ for _,inst in pairs(CollectionService:GetTagged(HARVESTABLE_TAG)) do
 end
 
 CollectionService:GetInstanceAddedSignal(HARVESTABLE_TAG):Connect(attachPromptLogic)
-
-return harvesting
