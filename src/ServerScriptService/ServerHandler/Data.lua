@@ -2,7 +2,15 @@ local playerService = game:GetService("Players")
 local dataService = game:GetService("DataStoreService")
 
 -- Getting store will fail if game isn't published
-local store = dataService:GetDataStore("DataStoreV1")
+local store = nil
+local success, err = pcall(function()
+    return dataService:GetDataStore("DataStoreV1")
+end)
+if success then
+    store = success
+else
+	print("Unable to load data store, is this game published?") 
+end
 
 local sessionData = {}
 local dataMod = {}
@@ -33,7 +41,11 @@ dataMod.load = function(player)
 	end)
 	
 	if not success then
-		data = dataMod.load(player)
+		if store ~= nil then
+			data = dataMod.load(player)
+		else
+			print("Failed to load data, store is nil")
+		end
 	end
 	
 	return data
@@ -99,8 +111,12 @@ dataMod.save = function(player)
 	if success then
 		print(player.Name.. "'s data has been saved!")
 	else
-		print("Loading data failed with error: " .. err .. ", trying again.")
-		dataMod.save(player)
+		if store ~= nil then
+			print("Loading data failed with error: " .. err .. ", trying again.")
+			dataMod.save(player)
+		else
+			print("Failed to save data, store is nil")
+		end
 	end
 end
 
