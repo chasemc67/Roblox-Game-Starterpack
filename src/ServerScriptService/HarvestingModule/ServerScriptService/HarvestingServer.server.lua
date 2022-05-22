@@ -1,6 +1,5 @@
 local CollectionService = game:GetService("CollectionService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local HARVESTABLE_TAG = require(script.Parent.Collections).tags.HARVESTABLE
+local HARVESTABLE_TAG = "HARVESTABLE"
 local Data = require(script.Parent.Data)
 
 local function OnHarvest(player, inst)
