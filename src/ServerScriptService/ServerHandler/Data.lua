@@ -2,15 +2,7 @@ local playerService = game:GetService("Players")
 local dataService = game:GetService("DataStoreService")
 
 -- Getting store will fail if game isn't published
-local store = nil
-local success, err = pcall(function()
-    return dataService:GetDataStore("DataStoreV1")
-end)
-if success then
-    store = success
-else
-	print("Unable to load data store, is this game published?") 
-end
+local store = dataService:GetDataStore("DataStoreV1")
 
 local sessionData = {}
 local dataMod = {}
