@@ -5318,18 +5318,18 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>67.8225327</X>
-					<Y>-74.4319763</Y>
-					<Z>-44.0370331</Z>
-					<R00>-0.942043066</R00>
-					<R01>-0.160079956</R01>
-					<R02>0.294837832</R02>
-					<R10>1.49011612e-08</R10>
-					<R11>0.878822088</R11>
-					<R12>0.477149785</R12>
-					<R20>-0.335492074</R20>
-					<R21>0.449495643</R21>
-					<R22>-0.827888191</R22>
+					<X>67.7460403</X>
+					<Y>-74.0636749</Y>
+					<Z>-43.7909927</Z>
+					<R00>-0.939675212</R00>
+					<R01>-0.226210192</R01>
+					<R02>0.256592155</R02>
+					<R10>-1.49011612e-08</R10>
+					<R11>0.750120163</R11>
+					<R12>0.661301613</R12>
+					<R20>-0.342068076</R20>
+					<R21>0.621408761</R21>
+					<R22>-0.70486933</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
@@ -7022,58 +7022,6 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 					</Item>
 				</Item>
 			</Item>
-			<Item class="LocalScript" referent="RBXc58c1ba95e23448a81a8bf243963041a">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<bool name="Disabled">false</bool>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">AxeHandler</string>
-					<string name="ScriptGuid">{bdd49c1c-d151-442e-afb0-ab4de9f08554}</string>
-					<ProtectedString name="Source"><![CDATA[local playerService = game:GetService("Players")
-local player = playerService.LocalPlayer
-local char = player.Character or player.CharacterAdded:Wait()
-local humanoid = char:WaitForChild("Humanoid")
-local animator = humanoid:WaitForChild("Animator")
-local mouse = player:GetMouse()
-
-local tool = script.Parent
-local equipped = false
-
-local startingWalkSpeed = humanoid.WalkSpeed
-
-local animation = tool:WaitForChild("Animation")
-local animationTrack = animator:LoadAnimation(animation)
-animationTrack.Priority = Enum.AnimationPriority.Action
-animationTrack.Looped = true
-
-local ProximityPromptService = game:GetService("ProximityPromptService")
-
-
-tool.Equipped:Connect(function()
-	equipped = true
-end)
-
-tool.Unequipped:Connect(function()
-	equipped = false
-end)
-
-ProximityPromptService.PromptButtonHoldBegan:Connect(function()
-	print("Swing axe")
-    humanoid.WalkSpeed = 0
-    animationTrack:Play()
-end)
-
-
-ProximityPromptService.PromptButtonHoldEnded:Connect(function()
-    print("Stop Swinging")
-	humanoid.WalkSpeed = startingWalkSpeed
-    animationTrack:Stop()
-end)]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">19e55a1b22d2237d0291ec1b00071ad1</UniqueId>
-				</Properties>
-			</Item>
 			<Item class="Animation" referent="RBX08a46b01fc7f48f6828793c19bbfe51f">
 				<Properties>
 					<Content name="AnimationId"><url>rbxassetid://9633674639</url></Content>
@@ -7295,7 +7243,17 @@ end]]></ProtectedString>
 					<string name="ScriptGuid">{370e8615-b31e-4d8d-97df-aada6609ad40}</string>
 					<ProtectedString name="Source"><![CDATA[local playerService = game:GetService("Players")
 local dataService = game:GetService("DataStoreService")
-local store = dataService:GetDataStore("DataStoreV1")
+
+-- Getting store will fail if game isn't published
+local store = nil
+local success, err = pcall(function()
+    return dataService:GetDataStore("DataStoreV1")
+end)
+if success then
+    store = success
+else
+	print("Unable to load data store, is this game published?")
+end
 
 local sessionData = {}
 local dataMod = {}
@@ -7326,7 +7284,11 @@ dataMod.load = function(player)
 	end)
 	
 	if not success then
-		data = dataMod.load(player)
+		if store ~= nil then
+			data = dataMod.load(player)
+		else
+			print("Failed to load data, store is nil")
+		end
 	end
 	
 	return data
@@ -7392,8 +7354,12 @@ dataMod.save = function(player)
 	if success then
 		print(player.Name.. "'s data has been saved!")
 	else
-		print("Loading data failed with error: " .. err .. ", trying again.")
-		dataMod.save(player)
+		if store ~= nil then
+			print("Loading data failed with error: " .. err .. ", trying again.")
+			dataMod.save(player)
+		else
+			print("Failed to save data, store is nil")
+		end
 	end
 end
 
@@ -7839,7 +7805,7 @@ return require(value :: ModuleScript)
 						<string name="ScriptGuid">{6560b656-252e-465b-ac09-5eadd4f1ddab}</string>
 						<ProtectedString name="Source"><![CDATA[local CollectionService = game:GetService("CollectionService")
 local HARVESTABLE_TAG = "HARVESTABLE"
-local Data = require(script.Parent.Data)
+local Data = require(script.Parent.ServerHandler.Data)
 
 local function OnHarvest(player, inst)
     print("Destroying tree")
@@ -7896,13 +7862,18 @@ CollectionService:GetInstanceAddedSignal(HARVESTABLE_TAG):Connect(attachPromptLo
 							<string name="ScriptGuid">{2d650297-5e64-4095-9bf8-c778b114ada9}</string>
 							<ProtectedString name="Source"><![CDATA[local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ProximityPromptService = game:GetService("ProximityPromptService")
 local HARVESTABLE_TAG = "HARVESTABLE"
 
 local playerService = game:GetService("Players")
 local player = playerService.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
+local humanoid = char:WaitForChild("Humanoid")
+local startingWalkSpeed = humanoid.WalkSpeed
 
 local ToolChangedEvent = ReplicatedStorage.ToolChanged
+
+local runningAnimationTrack = nil
 
 local setAllProxPrompts = function(enabled)
     for _,inst in pairs(CollectionService:GetTagged(HARVESTABLE_TAG)) do
@@ -7916,7 +7887,14 @@ end
 
 local setProxPrompt = function()
     -- get currently equipped tool of local player
-    if char:FindFirstChild("Tiny Axe") and char["Tiny Axe"]:IsA("Tool") then
+    local tool
+    for _,child in pairs(char:GetChildren()) do
+        if child:IsA("Tool") then
+            tool = child
+            break
+        end
+    end
+    if tool then
         setAllProxPrompts(true)
     else
         setAllProxPrompts(false)
@@ -7929,6 +7907,61 @@ char.ChildAdded:Connect(function(tool)
 	if tool:IsA("Tool") then
 		ToolChangedEvent:Fire()
 	end
+end)
+
+local getAnimationTrackForCurrentToolOrDefault = function()
+    local defaultAnimation = Instance.new("Animation")
+    defaultAnimation.AnimationId = "rbxassetid://9633674639"
+
+    local animator = humanoid:WaitForChild("Animator")
+
+    local tool
+    for _,child in pairs(char:GetChildren()) do
+        if child:IsA("Tool") then
+            tool = child
+            break
+        end
+    end
+
+    local animation
+    for _,child in pairs(tool:GetChildren()) do
+        if child:IsA("Animation") then
+            animation = child
+            break
+        end
+    end
+
+    if not animation then
+        defaultAnimation.Parent = tool
+    end
+
+    local animationTrack
+    if animation then
+        animationTrack = animator:LoadAnimation(animation)
+    else
+        animationTrack = animator:LoadAnimation(defaultAnimation)
+    end
+
+    animationTrack.Priority = Enum.AnimationPriority.Action
+    animationTrack.Looped = true
+
+    return animationTrack
+end
+
+ProximityPromptService.PromptButtonHoldBegan:Connect(function()
+	print("Swing axe")
+    humanoid.WalkSpeed = 0
+    runningAnimationTrack = getAnimationTrackForCurrentToolOrDefault()
+    runningAnimationTrack:Play()
+end)
+
+ProximityPromptService.PromptButtonHoldEnded:Connect(function()
+    print("Stop Swinging")
+	humanoid.WalkSpeed = startingWalkSpeed
+    if runningAnimationTrack then
+        runningAnimationTrack:Stop()
+    end
+    runningAnimationTrack = nil
 end)]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
@@ -7994,6 +8027,15 @@ ZWUHAAAAVmlzaWJsZQMB]]></BinaryString>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">60ac0bb170c84e0c0291a1c80001e19b</UniqueId>
 		</Properties>
+		<Item class="RemoteFunction" referent="RBX34b5d316c79642fbbe9790ebefb7b486">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<string name="Name">GetCompetitors</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2083c4ebef34d176029c2a2600029e8e</UniqueId>
+			</Properties>
+		</Item>
 	</Item>
 	<Item class="LuaWebService" referent="RBX8a603ce304304667bfc63c9d3ffeedc9">
 		<Properties>

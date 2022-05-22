@@ -9,7 +9,7 @@ end)
 if success then
     store = success
 else
-	print("Unable to load data store, is this game published?") 
+	print("Unable to load data store, is this game published?")
 end
 
 local sessionData = {}
