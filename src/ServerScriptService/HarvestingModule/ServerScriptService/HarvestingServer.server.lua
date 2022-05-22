@@ -1,4 +1,5 @@
 local CollectionService = game:GetService("CollectionService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local HARVESTABLE_TAG = "HARVESTABLE"
 local Data = require(script.Parent.ServerHandler.Data)
 
@@ -6,6 +7,7 @@ local function OnHarvest(player, inst)
     print("Destroying tree")
     inst:Destroy()
     Data.increment(player, "Wood", 1)
+    ReplicatedStorage.InventoryChanged:FireClient(player)
 end
 
 local function attachPromptLogic(inst)
