@@ -33,7 +33,12 @@ dataMod.recursiveCopy = function(dataTable)
 	return tableCopy
 end
 
-dataMod.load = function(player)
+dataMod.load = function(player, count)
+	count = count or 1
+	if count > 3 then
+		return
+	end
+
 	local key = player.UserId
 	local data 
 	local success, err = pcall(function()
@@ -42,7 +47,7 @@ dataMod.load = function(player)
 	
 	if not success then
 		if store ~= nil then
-			data = dataMod.load(player)
+			data = dataMod.load(player, count + 1)
 		else
 			print("Failed to load data, store is nil")
 		end
@@ -100,7 +105,12 @@ dataMod.get = function(player, stat)
 	return sessionData[key][stat]
 end
 
-dataMod.save = function(player)
+dataMod.save = function(player, count)
+	count = count or 1
+	if count > 3 then
+		return
+	end
+
 	local key = player.UserId
 	local data = dataMod.recursiveCopy(sessionData[key])
 	
@@ -113,7 +123,7 @@ dataMod.save = function(player)
 	else
 		if store ~= nil then
 			print("Loading data failed with error: " .. err .. ", trying again.")
-			dataMod.save(player)
+			dataMod.save(player, count + 1)
 		else
 			print("Failed to save data, store is nil")
 		end
