@@ -7029,8 +7029,7 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">AxeHandler</string>
 					<string name="ScriptGuid">{bdd49c1c-d151-442e-afb0-ab4de9f08554}</string>
-					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local playerService = game:GetService("Players")
+					<ProtectedString name="Source"><![CDATA[local playerService = game:GetService("Players")
 local player = playerService.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 local humanoid = char:WaitForChild("Humanoid")
@@ -7048,19 +7047,14 @@ animationTrack.Priority = Enum.AnimationPriority.Action
 animationTrack.Looped = true
 
 local ProximityPromptService = game:GetService("ProximityPromptService")
-local ToolChangedEvent = ReplicatedStorage.ToolChanged
 
 
 tool.Equipped:Connect(function()
 	equipped = true
-    -- broadcast event that tool was equipped to enable proximity prompts
-    ToolChangedEvent:Fire()
 end)
 
 tool.Unequipped:Connect(function()
 	equipped = false
-    -- broadcast event that tool was unequipped to disable proximity prompts
-    ToolChangedEvent:Fire()
 end)
 
 ProximityPromptService.PromptButtonHoldBegan:Connect(function()
@@ -7929,12 +7923,36 @@ local setProxPrompt = function()
     end
 end
 
-ToolChangedEvent.Event:Connect(setProxPrompt)]]></ProtectedString>
+ToolChangedEvent.Event:Connect(setProxPrompt)
+
+char.ChildAdded:Connect(function(tool)
+	if tool:IsA("Tool") then
+		ToolChangedEvent:Fire()
+	end
+end)]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
 							<UniqueId name="UniqueId">2f127d22d44fdbb0029c228300029c5c</UniqueId>
 						</Properties>
 					</Item>
+				</Item>
+			</Item>
+			<Item class="Folder" referent="RBX31b94cf4377f4a79be1dd1b77ccc0eed">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<string name="Name">ReplicatedStorage</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">2f127d22d44fdbb0029c228300093b28</UniqueId>
+				</Properties>
+				<Item class="BindableEvent" referent="RBXe1dc48e8036646b5a0d1d39050cb7583">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<string name="Name">ToolChanged</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2f127d22d44fdbb0029c228300093b29</UniqueId>
+					</Properties>
 				</Item>
 			</Item>
 		</Item>
@@ -7976,15 +7994,6 @@ ZWUHAAAAVmlzaWJsZQMB]]></BinaryString>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">60ac0bb170c84e0c0291a1c80001e19b</UniqueId>
 		</Properties>
-		<Item class="BindableEvent" referent="RBX85da22817fbf474eaade926fda032424">
-			<Properties>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<string name="Name">ToolChanged</string>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">43ac80366198ec390293150d000293d6</UniqueId>
-			</Properties>
-		</Item>
 	</Item>
 	<Item class="LuaWebService" referent="RBX8a603ce304304667bfc63c9d3ffeedc9">
 		<Properties>

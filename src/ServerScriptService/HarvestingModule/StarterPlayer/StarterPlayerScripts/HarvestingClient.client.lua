@@ -28,3 +28,9 @@ local setProxPrompt = function()
 end
 
 ToolChangedEvent.Event:Connect(setProxPrompt)
+
+char.ChildAdded:Connect(function(tool)
+	if tool:IsA("Tool") then
+		ToolChangedEvent:Fire()
+	end
+end)
