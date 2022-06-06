@@ -7,7 +7,6 @@ local InventoryUIButton = require(ReplicatedStorage.Components.InventoryUIButton
 local Inventory = require(ReplicatedStorage.Components.Inventory)
 
 local openInventory = require(ReplicatedStorage.Actions.openInventory)
-local increment = require(ReplicatedStorage.Actions.increment)
 
 local App = Roact.Component:extend("App")
 
@@ -35,9 +34,6 @@ end
 
 local function mapDispatchToProps(dispatch)
     return {
-        onIncrement = function()
-            dispatch(increment(1))
-        end,
         onOpenInventory = function()
             dispatch(openInventory())
         end
