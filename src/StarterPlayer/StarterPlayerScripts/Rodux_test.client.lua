@@ -3,12 +3,11 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Rodux = require(ReplicatedStorage.Rodux)
 
 -- Action creator for the ReceivedNewPhoneNumber action
-local function ReceivedNewPhoneNumber(phoneNumber)
+local ReceivedNewPhoneNumber = Rodux.makeActionCreator("ReceivedNewPhoneNumber", function(phoneNumber)
     return {
-        type = "ReceivedNewPhoneNumber",
         phoneNumber = phoneNumber,
     }
-end
+end)
 
 -- Action creator for the MadeNewFriends action
 local function MadeNewFriends(listOfNewFriends)
@@ -52,8 +51,10 @@ local store = Rodux.Store.new(reducer, nil, {
     Rodux.loggerMiddleware,
 })
 
-store:dispatch(ReceivedNewPhoneNumber("15552345678"))
-store:dispatch(MadeNewFriends({
-    "Cassandra",
-    "Joe",
-}))
+-- store:dispatch(ReceivedNewPhoneNumber("15552345678"))
+-- store:dispatch(MadeNewFriends({
+--     "Cassandra",
+--     "Joe",
+-- }))
+
+return store

@@ -6816,86 +6816,76 @@ Roact.unmount(handle)]]></ProtectedString>
 					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d000296a2</UniqueId>
 				</Properties>
 			</Item>
-			<Item class="LocalScript" referent="RBX5dd39e120e45440995cf926ec0b92133">
+			<Item class="LocalScript" referent="RBX39fc1bbd9c7a4b4ea9625c5bda95c34f">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Disabled">false</bool>
 					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">InventoryUI</string>
-					<string name="ScriptGuid">{fbe06d2f-0ab8-4c23-a994-99470ef32f83}</string>
+					<string name="Name">Rodux_test</string>
+					<string name="ScriptGuid">{a63d943a-9b11-4ef2-ab2d-e7ec705c47a4}</string>
 					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
 
-local Roact = require(ReplicatedStorage.Roact)
+local Rodux = require(ReplicatedStorage.Rodux)
 
-local Inventory = Roact.Component:extend("Inventory")
+-- Action creator for the ReceivedNewPhoneNumber action
+local ReceivedNewPhoneNumber = Rodux.makeActionCreator("ReceivedNewPhoneNumber", function(phoneNumber)
+    return {
+        phoneNumber = phoneNumber,
+    }
+end)
 
-function Inventory:init()
-    -- In init, we can use setState to set up our initial component state.
-    self:setState({
-        wood = 0
-    })
+-- Action creator for the MadeNewFriends action
+local function MadeNewFriends(listOfNewFriends)
+    return {
+        type = "MadeNewFriends",
+        newFriends = listOfNewFriends,
+    }
 end
 
--- This render function is almost completely unchanged from the first example.
-function Inventory:render()
-    -- As a convention, we'll pull currentTime out of state right away.
-    local currentWood = self.state.wood
+-- Reducer for the current user's phone number
+local phoneNumberReducer = Rodux.createReducer("", {
+    ReceivedNewPhoneNumber = function(state, action)
+        return action.phoneNumber
+    end,
+})
 
-    return Roact.createElement("ScreenGui", {
+-- Reducer for the current user's list of friends
+local friendsReducer = Rodux.createReducer({}, {
+    MadeNewFriends = function(state, action)
+        local newState = {}
 
-    }, {
-        WoodLabel = Roact.createElement("TextButton", {
-            Size = UDim2.new(0, 100, 0, 100),
-            Position = UDim2.new(0, 20, 0.5, 0),
-            Text = "Wood Collected: " .. currentWood,
-            [Roact.Event.MouseButton1Click] = function()
-                print("Wood Button Clicked")
-            end
-        })
-    })
-end
+        -- Since state is read-only, we copy it into newState
+        for index, friend in ipairs(state) do
+            newState[index] = friend
+        end
 
--- Set up our loop in didMount, so that it starts running when our
--- component is created.
-function Inventory:didMount()
-    -- Set a value that we can change later to stop our loop
-    self.running = true
+        for _, friend in ipairs(action.newFriends) do
+            table.insert(newState, friend)
+        end
 
-    -- -- We don't want to block the main thread, so we spawn a new one!
-    -- spawn(function()
-    --     while self.running do
-    --         -- Because we depend on the previous state, we use the function
-    --         -- variant of setState. This will matter more when Roact gets
-    --         -- asynchronous rendering!
-    --         self:setState(function(state)
-    --             return {
-    --                 currentTime = state.currentTime + 1
-    --             }
-    --         end)
+        return newState
+    end,
+})
 
-    --         wait(1)
-    --     end
-    -- end)
-end
+local reducer = Rodux.combineReducers({
+    myPhoneNumber = phoneNumberReducer,
+    myFriends = friendsReducer,
+})
 
--- Stop the loop in willUnmount, so that our loop terminates when the
--- component is destroyed.
-function Inventory:willUnmount()
-    self.running = false
-end
+local store = Rodux.Store.new(reducer, nil, {
+    Rodux.loggerMiddleware,
+})
 
-local PlayerGui = Players.LocalPlayer.PlayerGui
+-- store:dispatch(ReceivedNewPhoneNumber("15552345678"))
+-- store:dispatch(MadeNewFriends({
+--     "Cassandra",
+--     "Joe",
+-- }))
 
--- Create our UI, which now runs on its own!
-local handle = Roact.mount(Roact.createElement(Inventory), PlayerGui, "Inventory UI")
-
--- Later, we can destroy our UI and disconnect everything correctly.
-wait(10)
-Roact.unmount(handle)]]></ProtectedString>
+return store]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d001eb41f</UniqueId>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da34</UniqueId>
 				</Properties>
 			</Item>
 		</Item>
@@ -7962,6 +7952,7 @@ return require(value :: ModuleScript)
 						<string name="Name">HarvestingServer</string>
 						<string name="ScriptGuid">{6560b656-252e-465b-ac09-5eadd4f1ddab}</string>
 						<ProtectedString name="Source"><![CDATA[local CollectionService = game:GetService("CollectionService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local HARVESTABLE_TAG = "HARVESTABLE"
 local Data = require(script.Parent.ServerHandler.Data)
 
@@ -7969,6 +7960,7 @@ local function OnHarvest(player, inst)
     print("Destroying tree")
     inst:Destroy()
     Data.increment(player, "Wood", 1)
+    ReplicatedStorage.InventoryChanged:FireClient(player)
 end
 
 local function attachPromptLogic(inst)
@@ -8143,6 +8135,15 @@ end)]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<UniqueId name="UniqueId">2f127d22d44fdbb0029c228300093b29</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="RemoteEvent" referent="RBX73de9eaca32a420fafb887bbe1ccd66c">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<string name="Name">InventoryChanged</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da0b</UniqueId>
 					</Properties>
 				</Item>
 			</Item>
@@ -18852,6 +18853,3045 @@ return BindingInternalApi
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d000295d8</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="ModuleScript" referent="RBXa006e5cfe56e42a29dcec7a9ffbe46ef">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Rodux</string>
+				<string name="ScriptGuid">{c7c119d4-5d38-4d88-bdc6-fa29b75966ea}</string>
+				<ProtectedString name="Source"><![CDATA[local Store = require(script.Store)
+local createReducer = require(script.createReducer)
+local combineReducers = require(script.combineReducers)
+local makeActionCreator = require(script.makeActionCreator)
+local loggerMiddleware = require(script.loggerMiddleware)
+local thunkMiddleware = require(script.thunkMiddleware)
+
+return {
+	Store = Store,
+	createReducer = createReducer,
+	combineReducers = combineReducers,
+	makeActionCreator = makeActionCreator,
+	loggerMiddleware = loggerMiddleware.middleware,
+	thunkMiddleware = thunkMiddleware,
+}
+]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da0c</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="RBXeb6f2bc588eb4da2bbc37a957622464e">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">thunkMiddleware.spec</string>
+					<string name="ScriptGuid">{161929ca-1d8c-4fea-9593-8630d65a58f9}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local Store = require(script.Parent.Store)
+	local thunkMiddleware = require(script.Parent.thunkMiddleware)
+
+	it("should dispatch thunks", function()
+		local function reducer(state, action)
+			return state
+		end
+
+		local store = Store.new(reducer, {}, { thunkMiddleware })
+		local thunkCount = 0
+
+		local function thunk(_store)
+			thunkCount = thunkCount + 1
+		end
+
+		store:dispatch(thunk)
+
+		expect(thunkCount).to.equal(1)
+	end)
+
+	it("should allow normal actions to pass through", function()
+		local reducerCount = 0
+
+		local function reducer(state, action)
+			reducerCount = reducerCount + 1
+			return state
+		end
+
+		local store = Store.new(reducer, {}, { thunkMiddleware })
+
+		store:dispatch({
+			type = "test",
+		})
+
+		-- Reducer will be invoked twice:
+		-- Once when creating the store (@@INIT action)
+		-- Once when the test action is dispatched
+		expect(reducerCount).to.equal(2)
+	end)
+
+	it("should return the value from the thunk", function()
+		local function reducer(state, action)
+			return state
+		end
+
+		local store = Store.new(reducer, {}, { thunkMiddleware })
+		local thunkValue = "test"
+
+		local function thunk(_store)
+			return thunkValue
+		end
+
+		local result = store:dispatch(thunk)
+
+		expect(result).to.equal(thunkValue)
+	end)
+
+	it("should report errors captured in thunks via the provided error reporter", function()
+		local caughtState, caughtAction, caughtErrorResult
+		local errorReporter = {
+			reportReducerError = function(state, action, errorResult)
+				caughtState = state
+				caughtAction = action
+				caughtErrorResult = errorResult
+			end
+		}
+
+		local function reducer(state, action)
+			return state
+		end
+
+		local store = Store.new(reducer, {
+			Value = 1
+		}, { thunkMiddleware }, errorReporter)
+
+		local innerErrorMessage = "thunk failed"
+		local function thunk(_store)
+			error(innerErrorMessage)
+		end
+
+		store:dispatch(thunk)
+
+		expect(caughtState.Value).to.equal(1)
+		expect(caughtAction).to.equal(thunk)
+		expect(caughtErrorResult.message).to.equal("Caught error in thunk")
+	end)
+
+	it("should recover and continue to update after a thunk errors", function()
+		local caughtErrorResult
+		local errorReporter = {
+			reportReducerError = function(_state, _action, errorResult)
+				caughtErrorResult = errorResult
+			end
+		}
+
+		local function reducer(state, action)
+			return state
+		end
+
+		local store = Store.new(reducer, {
+			Value = 1
+		}, { thunkMiddleware }, errorReporter)
+
+		local innerErrorMessage = "thunk failed"
+		local function errorThunk(_store)
+			error(innerErrorMessage)
+		end
+		local ranSafeThunk = false
+		local function safeThunk(_store)
+			ranSafeThunk = true
+		end
+
+		store:dispatch(errorThunk)
+		expect(caughtErrorResult.message).to.equal("Caught error in thunk")
+
+		store:dispatch(safeThunk)
+		expect(ranSafeThunk).to.equal(true)
+	end)
+end
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da0d</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX349c817ee1a347b0b63e555ae60728cd">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">thunkMiddleware</string>
+					<string name="ScriptGuid">{25c40b1f-b2fa-44d0-8957-1fa1e460ff18}</string>
+					<ProtectedString name="Source"><![CDATA[--[[
+	A middleware that allows for functions to be dispatched.
+	Functions will receive a single argument, the store itself.
+	This middleware consumes the function; middleware further down the chain
+	will not receive it.
+]]
+local function tracebackReporter(message)
+	return debug.traceback(message)
+end
+
+local function thunkMiddleware(nextDispatch, store)
+	return function(action)
+		if typeof(action) == "function" then
+			local ok, result = xpcall(function()
+				return action(store)
+			end, tracebackReporter)
+
+			if not ok then
+				-- report the error and move on so it's non-fatal app
+				store._errorReporter.reportReducerError(store:getState(), action, {
+					message = "Caught error in thunk",
+					thrownValue = result,
+				})
+				return nil
+			end
+
+			return result
+		end
+
+		return nextDispatch(action)
+	end
+end
+
+return thunkMiddleware
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da0e</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXca7f3823be1c4a6397f158ec8eae6035">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">prettyPrint</string>
+					<string name="ScriptGuid">{f9ac67c4-6428-4134-a493-b25de49e8e80}</string>
+					<ProtectedString name="Source"><![CDATA[local indent = "    "
+
+local function prettyPrint(value, indentLevel)
+	indentLevel = indentLevel or 0
+	local output = {}
+
+	if typeof(value) == "table" then
+		table.insert(output, "{\n")
+
+		for tableKey, tableValue in pairs(value) do
+			table.insert(output, indent:rep(indentLevel + 1))
+			table.insert(output, tostring(tableKey))
+			table.insert(output, " = ")
+
+			table.insert(output, prettyPrint(tableValue, indentLevel + 1))
+			table.insert(output, "\n")
+		end
+
+		table.insert(output, indent:rep(indentLevel))
+		table.insert(output, "}")
+	elseif typeof(value) == "string" then
+		table.insert(output, string.format("%q", value))
+		table.insert(output, " (string)")
+	else
+		table.insert(output, tostring(value))
+		table.insert(output, " (")
+		table.insert(output, typeof(value))
+		table.insert(output, ")")
+	end
+
+	return table.concat(output, "")
+end
+
+return prettyPrint]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da0f</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX1c95fa25af3f437a8fed591fb60714ba">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">makeActionCreator.spec</string>
+					<string name="ScriptGuid">{89d97458-c4d2-4de0-af7d-ffefb6a6fd89}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local makeActionCreator = require(script.Parent.makeActionCreator)
+
+	it("should set the name of the actionCreator creator", function()
+		local FooAction = makeActionCreator("foo", function()
+			return {}
+		end)
+
+		expect(FooAction.name).to.equal("foo")
+	end)
+
+	it("should return a table when called as a function", function()
+		local FooAction = makeActionCreator("foo", function()
+			return {}
+		end)
+
+		expect(FooAction()).to.be.a("table")
+	end)
+
+	it("should set the type of the action creator", function()
+		local FooAction = makeActionCreator("foo", function()
+			return {}
+		end)
+
+		expect(FooAction().type).to.equal("foo")
+	end)
+
+	it("should set values", function()
+		local FooAction = makeActionCreator("foo", function(value)
+			return {
+				value = value
+			}
+		end)
+
+		expect(FooAction(100).value).to.equal(100)
+	end)
+
+	it("should throw when its result does not return a table", function()
+		local FooAction = makeActionCreator("foo", function()
+			return function() end
+		end)
+
+		expect(FooAction).to.throw()
+	end)
+
+	it("should throw if the first argument is not a string", function()
+		expect(function()
+			makeActionCreator(nil, function()
+				return {}
+			end)
+		end).to.throw()
+
+		expect(function()
+			makeActionCreator(100, function()
+				return {}
+			end)
+		end).to.throw()
+	end)
+
+	it("should throw if the second argument is not a function", function()
+		expect(function()
+			makeActionCreator("foo", nil)
+		end).to.throw()
+
+		expect(function()
+			makeActionCreator("foo", {})
+		end).to.throw()
+	end)
+end]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da10</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXb2ccfc9ff78047919e76543d1ca0d057">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">makeActionCreator</string>
+					<string name="ScriptGuid">{549b6126-ee26-4231-9f9b-63fa93b78290}</string>
+					<ProtectedString name="Source"><![CDATA[--[[
+	A helper function to define a Rodux action creator with an associated name.
+]]
+local function makeActionCreator(name, fn)
+	assert(type(name) == "string", "Bad argument #1: Expected a string name for the action creator")
+
+	assert(type(fn) == "function", "Bad argument #2: Expected a function that creates action objects")
+
+	return setmetatable({
+		name = name,
+	}, {
+		__call = function(self, ...)
+			local result = fn(...)
+
+			assert(type(result) == "table", "Invalid action: An action creator must return a table")
+
+			result.type = name
+
+			return result
+		end
+	})
+end
+
+return makeActionCreator
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da11</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXcb03c9b1558a47bb83dc477592150005">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">loggerMiddleware.spec</string>
+					<string name="ScriptGuid">{708ee061-bbe0-4e51-87ae-0090c31b4e2c}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local Store = require(script.Parent.Store)
+	local loggerMiddleware = require(script.Parent.loggerMiddleware)
+
+	it("should print whenever an action is dispatched", function()
+		local outputCount = 0
+		local outputMessage
+
+		local function reducer(state, action)
+			return state
+		end
+
+		local store = Store.new(reducer, {
+			fooValue = 12345,
+			barValue = {
+				bazValue = "hiBaz",
+			},
+		}, { loggerMiddleware.middleware })
+
+		loggerMiddleware.outputFunction = function(message)
+			outputCount = outputCount + 1
+			outputMessage = message
+		end
+
+		store:dispatch({
+			type = "testActionType",
+		})
+
+		expect(outputCount).to.equal(1)
+		expect(outputMessage:find("testActionType")).to.be.ok()
+		expect(outputMessage:find("fooValue")).to.be.ok()
+		expect(outputMessage:find("12345")).to.be.ok()
+		expect(outputMessage:find("barValue")).to.be.ok()
+		expect(outputMessage:find("bazValue")).to.be.ok()
+		expect(outputMessage:find("hiBaz")).to.be.ok()
+
+		loggerMiddleware.outputFunction = print
+	end)
+end
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da12</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX4a6e50f81e5944c989d76b39563f3411">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">loggerMiddleware</string>
+					<string name="ScriptGuid">{e4b8b5b4-c3de-4721-b142-751de43aa98e}</string>
+					<ProtectedString name="Source"><![CDATA[-- We want to be able to override outputFunction in tests, so the shape of this
+-- module is kind of unconventional.
+--
+-- We fix it this weird shape in init.lua.
+local prettyPrint = require(script.Parent.prettyPrint)
+local loggerMiddleware = {
+	outputFunction = print,
+}
+
+function loggerMiddleware.middleware(nextDispatch, store)
+	return function(action)
+		local result = nextDispatch(action)
+
+		loggerMiddleware.outputFunction(("Action dispatched: %s\nState changed to: %s"):format(
+			prettyPrint(action),
+			prettyPrint(store:getState())
+		))
+
+		return result
+	end
+end
+
+return loggerMiddleware
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da13</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX1d1cd6d6de82443ab8899c80984c1098">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">init.spec</string>
+					<string name="ScriptGuid">{b493b615-9683-453c-ab5c-bef5954a0791}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	describe("Rodux", function()
+		it("should load", function()
+			local Rodux = require(script.Parent)
+
+			expect(Rodux.Store).to.be.ok()
+		end)
+	end)
+end]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da14</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX0ee07bc555d7402e88f7795f6531f492">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">createReducer.spec</string>
+					<string name="ScriptGuid">{0168b550-7527-402e-b7b6-cbe490220627}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local createReducer = require(script.Parent.createReducer)
+
+	it("should handle actions", function()
+		local reducer = createReducer({
+			a = 0,
+			b = 0,
+		}, {
+			a = function(state, action)
+				return {
+					a = state.a + 1,
+					b = state.b,
+				}
+			end,
+			b = function(state, action)
+				return {
+					a = state.a,
+					b = state.b + 2,
+				}
+			end,
+		})
+
+		local newState = reducer({
+			a = 0,
+			b = 0,
+		}, {
+			type = "a",
+		})
+
+		expect(newState.a).to.equal(1)
+
+		newState = reducer(newState, {
+			type = "b",
+		})
+
+		expect(newState.b).to.equal(2)
+	end)
+
+	it("should return the initial state if the state is nil", function()
+		local reducer = createReducer({
+			a = 0,
+			b = 0,
+		-- We don't care about the actions here
+		}, {})
+
+		local newState = reducer(nil, {})
+		expect(newState).to.be.ok()
+		expect(newState.a).to.equal(0)
+		expect(newState.b).to.equal(0)
+	end)
+
+	it("should still run action handlers if the state is nil", function()
+		local callCount = 0
+
+		local reducer = createReducer(0, {
+			foo = function(state, action)
+				callCount = callCount + 1
+				return nil
+			end
+		})
+
+		expect(callCount).to.equal(0)
+
+		local newState = reducer(nil, {
+			type = "foo",
+		})
+
+		expect(callCount).to.equal(1)
+		expect(newState).to.equal(nil)
+
+		newState = reducer(newState, {
+			type = "foo",
+		})
+
+		expect(callCount).to.equal(2)
+		expect(newState).to.equal(nil)
+	end)
+
+	it("should return the same state if the action is not handled", function()
+		local initialState = {
+			a = 0,
+			b = 0,
+		}
+
+		local reducer = createReducer(initialState, {
+			a = function(state, action)
+				return {
+					a = state.a + 1,
+					b = state.b,
+				}
+			end,
+			b = function(state, action)
+				return {
+					a = state.a,
+					b = state.b + 2,
+				}
+			end,
+		})
+
+		local newState = reducer(initialState, {
+			type = "c",
+		})
+
+		expect(newState).to.equal(initialState)
+	end)
+end
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da15</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX9785abc84c5e48aeb3602b918c0a0050">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">createReducer</string>
+					<string name="ScriptGuid">{c4223569-eeef-4011-8d25-336e06fb70d7}</string>
+					<ProtectedString name="Source"><![CDATA[return function(initialState, handlers)
+	return function(state, action)
+		if state == nil then
+			state = initialState
+		end
+
+		local handler = handlers[action.type]
+
+		if handler then
+			return handler(state, action)
+		end
+
+		return state
+	end
+end
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da16</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXc7c2570881eb46cc8d652905452c766d">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">combineReducers.spec</string>
+					<string name="ScriptGuid">{5ce5708c-4749-48ca-8fd0-9600b66d4bfe}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local combineReducers = require(script.Parent.combineReducers)
+
+	it("should invoke each sub-reducer for every action", function()
+		local aCount = 0
+		local bCount = 0
+
+		local reducer = combineReducers({
+			a = function(state, action)
+				aCount = aCount + 1
+			end,
+			b = function(state, action)
+				bCount = bCount + 1
+			end,
+		})
+
+		-- Mock reducer invocation
+		reducer({}, {})
+		expect(aCount).to.equal(1)
+		expect(bCount).to.equal(1)
+	end)
+
+	it("should assign each sub-reducer's value to the new state", function()
+		local reducer = combineReducers({
+			a = function(state, action)
+				return (state or 0) + 1
+			end,
+			b = function(state, action)
+				return (state or 0) + 3
+			end,
+		})
+
+		local newState = reducer({}, {})
+		expect(newState.a).to.equal(1)
+		expect(newState.b).to.equal(3)
+	end)
+
+	it("should not throw when state is nil", function()
+		local reducer = combineReducers({
+			a = function(state, action)
+				return (state or 0) + 1
+			end,
+			b = function(state, action)
+				return (state or 0) + 3
+			end,
+		})
+
+		expect(function()
+			reducer(nil, {})
+		end).to.never.throw()
+	end)
+end
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da17</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX0431e2ab36c4433b9e3d6da3635f4f87">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">combineReducers</string>
+					<string name="ScriptGuid">{3564bebc-0033-4690-bf28-9985a8cbc78e}</string>
+					<ProtectedString name="Source"><![CDATA[--[[
+	Create a composite reducer from a map of keys and sub-reducers.
+]]
+local function combineReducers(map)
+	return function(state, action)
+		-- If state is nil, substitute it with a blank table.
+		if state == nil then
+			state = {}
+		end
+
+		local newState = {}
+
+		for key, reducer in pairs(map) do
+			-- Each reducer gets its own state, not the entire state table
+			newState[key] = reducer(state[key], action)
+		end
+
+		return newState
+	end
+end
+
+return combineReducers
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da18</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXcc01507d87bb4164908a6fa62d425ec3">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Store.spec</string>
+					<string name="ScriptGuid">{60894004-8b0a-4a73-924d-3e977dae539a}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local Store = require(script.Parent.Store)
+
+	describe("new", function()
+		it("should instantiate with a reducer", function()
+			local store = Store.new(function(state, action)
+				return "hello, world"
+			end)
+
+			expect(store).to.be.ok()
+			expect(store:getState()).to.equal("hello, world")
+
+			store:destruct()
+		end)
+
+		it("should instantiate with a reducer and an initial state", function()
+			local store = Store.new(function(state, action)
+				return state
+			end, "initial state")
+
+			expect(store).to.be.ok()
+			expect(store:getState()).to.equal("initial state")
+
+			store:destruct()
+		end)
+
+		it("should instantiate with a reducer, initial state, and middlewares", function()
+			local store = Store.new(function(state, action)
+				return state
+			end, "initial state", {})
+
+			expect(store).to.be.ok()
+			expect(store:getState()).to.equal("initial state")
+
+			store:destruct()
+		end)
+
+		it("should modify the dispatch method when middlewares are passed", function()
+			local middlewareInstantiateCount = 0
+			local middlewareInvokeCount = 0
+			local passedDispatch
+			local passedStore
+			local passedAction
+
+			local function reducer(state, action)
+				if action.type == "test" then
+					return "test state"
+				end
+
+				return state
+			end
+
+			local function testMiddleware(nextDispatch, store)
+				middlewareInstantiateCount = middlewareInstantiateCount + 1
+				passedDispatch = nextDispatch
+				passedStore = store
+
+				return function(action)
+					middlewareInvokeCount = middlewareInvokeCount + 1
+					passedAction = action
+
+					nextDispatch(action)
+				end
+			end
+
+			local store = Store.new(reducer, "initial state", { testMiddleware })
+
+			expect(middlewareInstantiateCount).to.equal(1)
+			expect(middlewareInvokeCount).to.equal(0)
+			expect(passedDispatch).to.be.a("function")
+			expect(passedStore).to.equal(store)
+
+			store:dispatch({
+				type = "test",
+			})
+
+			expect(middlewareInstantiateCount).to.equal(1)
+			expect(middlewareInvokeCount).to.equal(1)
+			expect(passedAction.type).to.equal("test")
+
+			store:flush()
+
+			expect(store:getState()).to.equal("test state")
+
+			store:destruct()
+		end)
+
+		it("should execute middleware left-to-right", function()
+			local events = {}
+
+			local function reducer(state)
+				return state
+			end
+
+			local function middlewareA(nextDispatch, store)
+				table.insert(events, "instantiate a")
+				return function(action)
+					table.insert(events, "execute a")
+					return nextDispatch(action)
+				end
+			end
+
+			local function middlewareB(nextDispatch, store)
+				table.insert(events, "instantiate b")
+				return function(action)
+					table.insert(events, "execute b")
+					return nextDispatch(action)
+				end
+			end
+
+			local store = Store.new(reducer, 5, { middlewareA, middlewareB })
+
+			expect(#events).to.equal(2)
+			expect(events[1]).to.equal("instantiate b")
+			expect(events[2]).to.equal("instantiate a")
+
+			store:dispatch({
+				type = "test",
+			})
+
+			expect(#events).to.equal(4)
+			expect(events[3]).to.equal("execute a")
+			expect(events[4]).to.equal("execute b")
+
+			store:destruct()
+		end)
+
+		it("should send an initial action with a 'type' field", function()
+			local lastAction
+			local callCount = 0
+
+			local store = Store.new(function(state, action)
+				lastAction = action
+				callCount = callCount + 1
+
+				return state
+			end)
+
+			expect(callCount).to.equal(1)
+			expect(lastAction).to.be.a("table")
+			expect(lastAction.type).to.be.ok()
+
+			store:destruct()
+		end)
+
+		it("should report a reducer error thrown when handling the INIT action", function()
+			local caughtState, caughtAction, caughtErrorResult
+			local mockErrorReporter = {
+				reportReducerError = function(state, action, errorResult)
+					caughtState = state
+					caughtAction = action
+					caughtErrorResult = errorResult
+				end,
+				reportUpdateError = function()
+					-- no op
+				end
+			}
+
+			local innerErrorMessage = "Z4PH0D"
+			local reducerThatErrors = function(state, action)
+				error(innerErrorMessage)
+			end
+
+			local store
+			store = Store.new(reducerThatErrors, {
+				Value = 1
+			}, nil, mockErrorReporter)
+
+			expect(caughtState.Value).to.equal(1)
+			expect(caughtAction.type).to.equal("@@INIT")
+			expect(caughtErrorResult.message).to.equal("Caught error in reducer with init")
+			expect(string.find(
+				caughtErrorResult.thrownValue,
+				innerErrorMessage
+			)).to.be.ok()
+			-- We want to verify that this is a stacktrace without caring too
+			-- much about the format, so we look for the stack frame associated
+			-- with this test file
+			expect(string.find(
+				caughtErrorResult.thrownValue,
+				script.Name
+			)).to.be.ok()
+
+			store:destruct()
+		end)
+
+		it("should report a reducer error thrown when handling a subsequent action", function()
+			local caughtState, caughtAction, caughtErrorResult
+			local mockErrorReporter = {
+				reportReducerError = function(state, action, errorResult)
+					caughtState = state
+					caughtAction = action
+					caughtErrorResult = errorResult
+				end,
+				reportUpdateError = function()
+					-- no op
+				end
+			}
+
+			local innerErrorMessage = "Z4PH0D"
+			local reducerThatErrorsAfterInit = function(state, action)
+				if action.type == "ThrowError" then
+					error(innerErrorMessage)
+				elseif action.type == "Increment" then
+					return {
+						Value = state.Value + 1
+					}
+				end
+				return state
+			end
+
+			local store
+			store = Store.new(reducerThatErrorsAfterInit, {
+				Value = 1,
+			}, nil, mockErrorReporter)
+
+			expect(caughtState).to.equal(nil)
+			expect(caughtAction).to.equal(nil)
+			expect(caughtErrorResult).to.equal(nil)
+
+			store:dispatch({type = "Increment"})
+			store:dispatch({type = "ThrowError"})
+
+			expect(caughtState.Value).to.equal(2)
+			expect(caughtAction.type).to.equal("ThrowError")
+			expect(caughtErrorResult.message).to.equal("Caught error in reducer")
+			expect(string.find(
+				caughtErrorResult.thrownValue,
+				innerErrorMessage
+			)).to.be.ok()
+			-- We want to verify that this is a stacktrace without caring too
+			-- much about the format, so we look for the stack frame associated
+			-- with this test file
+			expect(string.find(
+				caughtErrorResult.thrownValue,
+				script.Name
+			)).to.be.ok()
+
+			store:destruct()
+		end)
+
+	end)
+
+	describe("getState", function()
+		it("should get the current state", function()
+			local store = Store.new(function(state, action)
+				return "foo"
+			end)
+
+			local state = store:getState()
+
+			expect(state).to.equal("foo")
+
+			store:destruct()
+		end)
+
+		it("should throw errors if triggered during dispatches", function()
+			local store
+			store = Store.new(function(state, action)
+				if action.type ~= "@@INIT" then
+					store:getState()
+				end
+			end)
+
+			expect(function()
+				store:dispatch({ type = "SomeAction" })
+			end).to.throw()
+
+			store:destruct()
+		end)
+	end)
+
+	describe("dispatch", function()
+		it("should be sent through the reducer", function()
+			local store = Store.new(function(state, action)
+				state = state or "foo"
+
+				if action.type == "act" then
+					return "bar"
+				end
+
+				return state
+			end)
+
+			expect(store).to.be.ok()
+			expect(store:getState()).to.equal("foo")
+
+			store:dispatch({
+				type = "act",
+			})
+
+			store:flush()
+
+			expect(store:getState()).to.equal("bar")
+
+			store:destruct()
+		end)
+
+		it("should trigger the changed event after a flush", function()
+			local store = Store.new(function(state, action)
+				state = state or 0
+
+				if action.type == "increment" then
+					return state + 1
+				end
+
+				return state
+			end)
+
+			local callCount = 0
+
+			store.changed:connect(function(state, oldState)
+				expect(oldState).to.equal(0)
+				expect(state).to.equal(1)
+
+				callCount = callCount + 1
+			end)
+
+			store:dispatch({
+				type = "increment",
+			})
+
+			store:flush()
+
+			expect(callCount).to.equal(1)
+
+			store:destruct()
+		end)
+
+		it("should handle actions dispatched within the changed event", function()
+			local store = Store.new(function(state, action)
+				state = state or {
+					value = 0,
+				}
+
+				if action.type == "increment" then
+					return {
+						value = state.value + 1,
+					}
+				elseif action.type == "decrement" then
+					return {
+						value = state.value - 1,
+					}
+				end
+
+				return state
+			end)
+
+			local changeCount = 0
+
+			store.changed:connect(function(state, oldState)
+				expect(state).never.to.equal(oldState)
+
+				if state.value > 0 then
+					store:dispatch({
+						type = "decrement",
+					})
+				end
+
+				changeCount = changeCount + 1
+			end)
+
+			store:dispatch({
+				type = "increment",
+			})
+			store:flush()
+			store:flush()
+
+			expect(changeCount).to.equal(2)
+
+			store:destruct()
+		end)
+
+		it("should prevent yielding from changed handler", function()
+			local reportedErrorMessage, reportedErrorError
+			local mockErrorReporter = {
+				reportUpdateError = function(_, _, _, errorResult)
+					reportedErrorMessage = errorResult.message
+					reportedErrorError = errorResult.thrownValue
+				end,
+				reportReducerError = function()
+					-- noop
+				end,
+			}
+			local preCount = 0
+			local postCount = 0
+
+			local store = Store.new(function(state, action)
+				state = state or 0
+				return state + 1
+			end, nil, nil, mockErrorReporter)
+
+			store.changed:connect(function(state, oldState)
+				preCount = preCount + 1
+				wait()
+				postCount = postCount + 1
+			end)
+
+			store:dispatch({
+				type = "increment",
+			})
+
+			store:flush()
+
+			expect(preCount).to.equal(1)
+			expect(postCount).to.equal(0)
+
+			expect(reportedErrorMessage).to.equal("Caught error flushing store updates")
+			-- We want to verify that this is a stacktrace without caring too
+			-- much about the format, so we look for the stack frame associated
+			-- with this test file
+			expect(string.find(reportedErrorError, script.Name)).to.be.ok()
+			-- In vanilla lua, we get this message:
+			--   "attempt to yield across metamethod/C-call boundary"
+			-- In luau, we should end up wrapping our own NoYield message:
+			--   "Attempted to yield inside changed event!"
+			-- For convenience's sake, we just look for the common substring
+			local caughtErrorSubstring = "to yield"
+			expect(string.find(reportedErrorError, caughtErrorSubstring)).to.be.ok()
+
+			store:destruct()
+		end)
+
+		it("should throw if an action is dispatched without a type field", function()
+			local store = Store.new(function(state, action)
+				return state
+			end)
+
+			expect(function()
+				store:dispatch({})
+			end).to.throw()
+
+			store:destruct()
+		end)
+
+		it("should throw if the action is not a function or table", function()
+			local store = Store.new(function(state, action)
+				return state
+			end)
+
+			expect(function()
+				store:dispatch(1)
+			end).to.throw()
+
+			store:destruct()
+		end)
+
+		it("should report an error if the listeners error when flushing", function()
+			local caughtPrevState, caughtState, caughtActionLog, caughtErrorResult
+			local mockErrorReporter = {
+				reportReducerError = function()
+					-- no op
+				end,
+				reportUpdateError = function(prevState, state, actionLog, errorResult)
+					caughtPrevState = prevState
+					caughtState = state
+					caughtActionLog = actionLog
+					caughtErrorResult = errorResult
+				end
+			}
+
+			local reducer = function(state, action)
+				if action.type == "Increment" then
+					return {
+						Value = state.Value + action.amount
+					}
+				end
+				return state
+			end
+			local store = Store.new(reducer, {
+				Value = 1,
+			}, nil, mockErrorReporter)
+
+			local innerErrorMessage = "Z4PH0D"
+			store.changed:connect(function(state, prevState)
+				if state.Value == 15 then
+					error(innerErrorMessage)
+				end
+			end)
+
+			local actions = {
+				{type = "Increment", amount = 1},
+				{type = "Increment", amount = 3},
+				{type = "Increment", amount = 10},
+			}
+			for _, action in ipairs(actions) do
+				store:dispatch(action)
+			end
+			store:flush()
+
+			expect(caughtErrorResult.message).to.equal("Caught error flushing store updates")
+			-- We want to verify that this is a stacktrace without caring too
+			-- much about the format, so we look for the stack frame associated
+			-- with this test file
+			expect(string.find(caughtErrorResult.thrownValue, script.Name)).to.be.ok()
+
+			expect(caughtActionLog[1]).to.equal(actions[1])
+			expect(caughtActionLog[2]).to.equal(actions[2])
+			expect(caughtActionLog[3]).to.equal(actions[3])
+
+			-- This is before any of the actions were processed; the flush will
+			-- apply the new state from all three actions
+			expect(caughtPrevState.Value).to.equal(1)
+			expect(caughtState.Value).to.equal(15)
+
+			store:destruct()
+		end)
+
+		it("should throw errors if dispatching while a dispatch is already happening", function()
+			local store
+			store = Store.new(function(state, action)
+				if action.type == "SomeAction" then
+					store:dispatch({ type = "MidDispatchAction" })
+				end
+			end)
+
+			expect(function()
+				store:dispatch({ type = "SomeAction" })
+			end).to.throw()
+
+			store:destruct()
+		end)
+	end)
+
+	describe("flush", function()
+		it("should not fire a changed event if there were no dispatches", function()
+			local store = Store.new(function()
+			end)
+
+			local count = 0
+			store.changed:connect(function()
+				count = count + 1
+			end)
+
+			store:flush()
+
+			expect(count).to.equal(0)
+
+			store:dispatch({
+				type = "increment",
+			})
+			store:flush()
+
+			expect(count).to.equal(1)
+
+			store:flush()
+
+			expect(count).to.equal(1)
+
+			store:destruct()
+		end)
+	end)
+end
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da19</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXcdfabd2b764e42748091522cdc0f41f5">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Store</string>
+					<string name="ScriptGuid">{90c45df9-3802-43e4-9f97-9e3e75f7c61e}</string>
+					<ProtectedString name="Source"><![CDATA[local RunService = game:GetService("RunService")
+
+local Signal = require(script.Parent.Signal)
+local NoYield = require(script.Parent.NoYield)
+
+local ACTION_LOG_LENGTH = 3
+
+local rethrowErrorReporter = {
+	reportReducerError = function(prevState, action, errorResult)
+		error(string.format("Received error: %s\n\n%s", errorResult.message, errorResult.thrownValue))
+	end,
+	reportUpdateError = function(prevState, currentState, lastActions, errorResult)
+		error(string.format("Received error: %s\n\n%s", errorResult.message, errorResult.thrownValue))
+	end,
+}
+
+local function tracebackReporter(message)
+	return debug.traceback(tostring(message))
+end
+
+local Store = {}
+
+-- This value is exposed as a private value so that the test code can stay in
+-- sync with what event we listen to for dispatching the Changed event.
+-- It may not be Heartbeat in the future.
+Store._flushEvent = RunService.Heartbeat
+
+Store.__index = Store
+
+--[[
+	Create a new Store whose state is transformed by the given reducer function.
+
+	Each time an action is dispatched to the store, the new state of the store
+	is given by:
+
+		state = reducer(state, action)
+
+	Reducers do not mutate the state object, so the original state is still
+	valid.
+]]
+function Store.new(reducer, initialState, middlewares, errorReporter)
+	assert(typeof(reducer) == "function", "Bad argument #1 to Store.new, expected function.")
+	assert(middlewares == nil or typeof(middlewares) == "table", "Bad argument #3 to Store.new, expected nil or table.")
+	if middlewares ~= nil then
+		for i=1, #middlewares, 1 do
+			assert(
+				typeof(middlewares[i]) == "function",
+				("Expected the middleware ('%s') at index %d to be a function."):format(tostring(middlewares[i]), i)
+			)
+		end
+	end
+
+	local self = {}
+
+	self._errorReporter = errorReporter or rethrowErrorReporter
+	self._isDispatching = false
+	self._reducer = reducer
+	local initAction = {
+		type = "@@INIT",
+	}
+	self._actionLog = { initAction }
+	local ok, result = xpcall(function()
+		self._state = reducer(initialState, initAction)
+	end, tracebackReporter)
+	if not ok then
+		self._errorReporter.reportReducerError(initialState, initAction, {
+			message = "Caught error in reducer with init",
+			thrownValue = result,
+		})
+		self._state = initialState
+	end
+	self._lastState = self._state
+
+	self._mutatedSinceFlush = false
+	self._connections = {}
+
+	self.changed = Signal.new(self)
+
+	setmetatable(self, Store)
+
+	local connection = self._flushEvent:Connect(function()
+		self:flush()
+	end)
+	table.insert(self._connections, connection)
+
+	if middlewares then
+		local unboundDispatch = self.dispatch
+		local dispatch = function(...)
+			return unboundDispatch(self, ...)
+		end
+
+		for i = #middlewares, 1, -1 do
+			local middleware = middlewares[i]
+			dispatch = middleware(dispatch, self)
+		end
+
+		self.dispatch = function(_self, ...)
+			return dispatch(...)
+		end
+	end
+
+	return self
+end
+
+--[[
+	Get the current state of the Store. Do not mutate this!
+]]
+function Store:getState()
+	if self._isDispatching then
+		error(("You may not call store:getState() while the reducer is executing. " ..
+			"The reducer (%s) has already received the state as an argument. " ..
+			"Pass it down from the top reducer instead of reading it from the store."):format(tostring(self._reducer)))
+	end
+
+	return self._state
+end
+
+--[[
+	Dispatch an action to the store. This allows the store's reducer to mutate
+	the state of the application by creating a new copy of the state.
+
+	Listeners on the changed event of the store are notified when the state
+	changes, but not necessarily on every Dispatch.
+]]
+function Store:dispatch(action)
+	if typeof(action) ~= "table" then
+		error(("Actions must be tables. " ..
+			"Use custom middleware for %q actions."):format(typeof(action)),
+			2
+		)
+	end
+
+	if action.type == nil then
+		error("Actions may not have an undefined 'type' property. " ..
+			"Have you misspelled a constant? \n" ..
+			tostring(action), 2)
+	end
+
+	if self._isDispatching then
+		error("Reducers may not dispatch actions.")
+	end
+
+	local ok, result = pcall(function()
+		self._isDispatching = true
+		self._state = self._reducer(self._state, action)
+		self._mutatedSinceFlush = true
+	end)
+
+	self._isDispatching = false
+
+	if not ok then
+		self._errorReporter.reportReducerError(
+			self._state,
+			action,
+			{
+				message = "Caught error in reducer",
+				thrownValue = result,
+			}
+		)
+	end
+
+	if #self._actionLog == ACTION_LOG_LENGTH then
+		table.remove(self._actionLog, 1)
+	end
+	table.insert(self._actionLog, action)
+end
+
+--[[
+	Marks the store as deleted, disconnecting any outstanding connections.
+]]
+function Store:destruct()
+	for _, connection in ipairs(self._connections) do
+		connection:Disconnect()
+	end
+
+	self._connections = nil
+end
+
+--[[
+	Flush all pending actions since the last change event was dispatched.
+]]
+function Store:flush()
+	if not self._mutatedSinceFlush then
+		return
+	end
+
+	self._mutatedSinceFlush = false
+
+	-- On self.changed:fire(), further actions may be immediately dispatched, in
+	-- which case self._lastState will be set to the most recent self._state,
+	-- unless we cache this value first
+	local state = self._state
+
+	local ok, errorResult = xpcall(function()
+		-- If a changed listener yields, *very* surprising bugs can ensue.
+		-- Because of that, changed listeners cannot yield.
+		NoYield(function()
+			self.changed:fire(state, self._lastState)
+		end)
+	end, tracebackReporter)
+
+	if not ok then
+		self._errorReporter.reportUpdateError(
+			self._lastState,
+			state,
+			self._actionLog,
+			{
+				message = "Caught error flushing store updates",
+				thrownValue = errorResult,
+			}
+		)
+	end
+
+	self._lastState = state
+end
+
+return Store
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da1a</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX332adc974814449f9b55177cdceabf06">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Signal.spec</string>
+					<string name="ScriptGuid">{6086a5e3-3511-4ece-bcfd-17625f57c8ca}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local Signal = require(script.Parent.Signal)
+
+	it("should construct from nothing", function()
+		local signal = Signal.new()
+
+		expect(signal).to.be.ok()
+	end)
+
+	it("should fire connected callbacks", function()
+		local callCount = 0
+		local value1 = "Hello World"
+		local value2 = 7
+
+		local callback = function(arg1, arg2)
+			expect(arg1).to.equal(value1)
+			expect(arg2).to.equal(value2)
+			callCount = callCount + 1
+		end
+
+		local signal = Signal.new()
+
+		local connection = signal:connect(callback)
+		signal:fire(value1, value2)
+
+		expect(callCount).to.equal(1)
+
+		connection:disconnect()
+		signal:fire(value1, value2)
+
+		expect(callCount).to.equal(1)
+	end)
+
+	it("should disconnect handlers", function()
+		local callback = function()
+			error("Callback was called after disconnect!")
+		end
+
+		local signal = Signal.new()
+
+		local connection = signal:connect(callback)
+		connection:disconnect()
+
+		signal:fire()
+	end)
+
+	it("should fire handlers in order", function()
+		local signal = Signal.new()
+		local x = 0
+		local y = 0
+
+		local callback1 = function()
+			expect(x).to.equal(0)
+			expect(y).to.equal(0)
+			x = x + 1
+		end
+
+		local callback2 = function()
+			expect(x).to.equal(1)
+			expect(y).to.equal(0)
+			y = y + 1
+		end
+
+		signal:connect(callback1)
+		signal:connect(callback2)
+		signal:fire()
+
+		expect(x).to.equal(1)
+		expect(y).to.equal(1)
+	end)
+
+	it("should continue firing despite mid-event disconnection", function()
+		local signal = Signal.new()
+		local countA = 0
+		local countB = 0
+
+		local connectionA
+		connectionA = signal:connect(function()
+			connectionA:disconnect()
+			countA = countA + 1
+		end)
+
+		signal:connect(function()
+			countB = countB + 1
+		end)
+
+		signal:fire()
+
+		expect(countA).to.equal(1)
+		expect(countB).to.equal(1)
+	end)
+
+	it("should skip listeners that were disconnected during event evaluation", function()
+		local signal = Signal.new()
+		local countA = 0
+		local countB = 0
+
+		local connectionB
+
+		signal:connect(function()
+			countA = countA + 1
+			connectionB:disconnect()
+		end)
+
+		connectionB = signal:connect(function()
+			countB = countB + 1
+		end)
+
+		signal:fire()
+
+		expect(countA).to.equal(1)
+		expect(countB).to.equal(0)
+	end)
+
+	it("should throw an error if the argument to `connect` is not a function", function()
+		local signal = Signal.new()
+		expect(function()
+			signal:connect("not a function")
+		end).to.throw()
+	end)
+
+	it("should throw an error when disconnecting more than once", function()
+		local signal = Signal.new()
+
+		local connection = signal:connect(function() end)
+		-- Okay to disconnect once
+		expect(connection.disconnect).never.to.throw()
+
+		-- Throw an error if we disconnect twice
+		expect(connection.disconnect).to.throw()
+	end)
+
+	it("should throw an error when subscribing during dispatch", function()
+		local mockStore = {
+			_isDispatching = false
+		}
+		local signal = Signal.new(mockStore)
+
+		signal:connect(function()
+			-- Subscribe while listeners are being fired
+			signal:connect(function() end)
+		end)
+
+		mockStore._isDispatching = true
+		expect(function()
+			signal:fire()
+		end).to.throw()
+	end)
+
+	it("should throw an error when unsubscribing during dispatch", function()
+		local mockStore = {
+			_isDispatching = false
+		}
+		local signal = Signal.new(mockStore)
+
+		local connection
+		connection = signal:connect(function()
+			connection.disconnect()
+		end)
+
+		mockStore._isDispatching = true
+		expect(function()
+			signal:fire()
+		end).to.throw()
+	end)
+end]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da1b</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX06aa5a864d364a1f937162b68b72c242">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Signal</string>
+					<string name="ScriptGuid">{ab066751-5f17-45bf-a70e-507cb0f6b0da}</string>
+					<ProtectedString name="Source"><![CDATA[--[[
+	A limited, simple implementation of a Signal.
+
+	Handlers are fired in order, and (dis)connections are properly handled when
+	executing an event.
+]]
+local function immutableAppend(list, ...)
+	local new = {}
+	local len = #list
+
+	for key = 1, len do
+		new[key] = list[key]
+	end
+
+	for i = 1, select("#", ...) do
+		new[len + i] = select(i, ...)
+	end
+
+	return new
+end
+
+local function immutableRemoveValue(list, removeValue)
+	local new = {}
+
+	for i = 1, #list do
+		if list[i] ~= removeValue then
+			table.insert(new, list[i])
+		end
+	end
+
+	return new
+end
+
+local Signal = {}
+
+Signal.__index = Signal
+
+function Signal.new(store)
+	local self = {
+		_listeners = {},
+		_store = store
+	}
+
+	setmetatable(self, Signal)
+
+	return self
+end
+
+function Signal:connect(callback)
+	if typeof(callback) ~= "function" then
+		error("Expected the listener to be a function.")
+	end
+
+	if self._store and self._store._isDispatching then
+		error(
+			'You may not call store.changed:connect() while the reducer is executing. ' ..
+				'If you would like to be notified after the store has been updated, subscribe from a ' ..
+				'component and invoke store:getState() in the callback to access the latest state. '
+		)
+	end
+
+	local listener = {
+		callback = callback,
+		disconnected = false,
+		connectTraceback = debug.traceback(),
+		disconnectTraceback = nil
+	}
+
+	self._listeners = immutableAppend(self._listeners, listener)
+
+	local function disconnect()
+		if listener.disconnected then
+			error((
+				"Listener connected at: \n%s\n" ..
+				"was already disconnected at: \n%s\n"
+			):format(
+				tostring(listener.connectTraceback),
+				tostring(listener.disconnectTraceback)
+			))
+		end
+
+		if self._store and self._store._isDispatching then
+			error("You may not unsubscribe from a store listener while the reducer is executing.")
+		end
+
+		listener.disconnected = true
+		listener.disconnectTraceback = debug.traceback()
+		self._listeners = immutableRemoveValue(self._listeners, listener)
+	end
+
+	return {
+		disconnect = disconnect
+	}
+end
+
+function Signal:fire(...)
+	for _, listener in ipairs(self._listeners) do
+		if not listener.disconnected then
+			listener.callback(...)
+		end
+	end
+end
+
+return Signal]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da1c</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX61b869453a244ddc990624d52c6ee3db">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">NoYield.spec</string>
+					<string name="ScriptGuid">{c78f50e0-bed1-496a-a486-5ee150eb2bfb}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local NoYield = require(script.Parent.NoYield)
+
+	it("should call functions normally", function()
+		local callCount = 0
+
+		local function test(a, b)
+			expect(a).to.equal(5)
+			expect(b).to.equal(6)
+
+			callCount = callCount + 1
+
+			return 11, "hello"
+		end
+
+		local a, b = NoYield(test, 5, 6)
+
+		expect(a).to.equal(11)
+		expect(b).to.equal("hello")
+	end)
+
+	it("should throw on yield", function()
+		local preCount = 0
+		local postCount = 0
+
+		local function testMethod()
+			preCount = preCount + 1
+			wait()
+			postCount = postCount + 1
+		end
+
+		local ok, err = pcall(NoYield, testMethod)
+
+		expect(preCount).to.equal(1)
+		expect(postCount).to.equal(0)
+
+		expect(ok).to.equal(false)
+		expect(err:find("Attempted to yield inside changed event!")).to.be.ok()
+		expect(err:find("NoYield.spec")).to.be.ok()
+	end)
+
+	it("should propagate error messages", function()
+		local count = 0
+
+		local function test()
+			count = count + 1
+			error("foo")
+		end
+
+		local ok, err = pcall(NoYield, test)
+
+		expect(ok).to.equal(false)
+		expect(err:find("foo")).to.be.ok()
+		expect(err:find("NoYield.spec")).to.be.ok()
+	end)
+end]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da1d</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX6e3edf4abdd6443f87bdcd34cd6ff12d">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">NoYield</string>
+					<string name="ScriptGuid">{c94d3652-4847-49c9-8c23-23c5d440ad32}</string>
+					<ProtectedString name="Source"><![CDATA[--!nocheck
+
+--[[
+	Calls a function and throws an error if it attempts to yield.
+
+	Pass any number of arguments to the function after the callback.
+
+	This function supports multiple return; all results returned from the
+	given function will be returned.
+]]
+
+local function resultHandler(co, ok, ...)
+	if not ok then
+		local message = (...)
+		error(debug.traceback(co, message), 2)
+	end
+
+	if coroutine.status(co) ~= "dead" then
+		error(debug.traceback(co, "Attempted to yield inside changed event!"), 2)
+	end
+
+	return ...
+end
+
+local function NoYield(callback, ...)
+	local co = coroutine.create(callback)
+
+	return resultHandler(co, coroutine.resume(co, ...))
+end
+
+return NoYield
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da1e</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="ModuleScript" referent="RBX7e457ea8304a421b873f6357bf71ad6d">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">RoactRodux</string>
+				<string name="ScriptGuid">{ff0ac3f4-70a1-4188-a80e-54e123ec629a}</string>
+				<ProtectedString name="Source"><![CDATA[local StoreProvider = require(script.StoreProvider)
+local connect = require(script.connect)
+local getStore = require(script.getStore)
+local TempConfig = require(script.TempConfig)
+
+return {
+	StoreProvider = StoreProvider,
+	connect = connect,
+	UNSTABLE_getStore = getStore,
+	UNSTABLE_connect2 = connect,
+
+	TEMP_CONFIG = TempConfig,
+}]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da36</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="RBXdbedfa6d5f7c42ca94335309627856be">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">join</string>
+					<string name="ScriptGuid">{643fcb50-0d18-46f2-8f42-e0b1fcfdf24a}</string>
+					<ProtectedString name="Source"><![CDATA[local function join(...)
+	local result = {}
+
+	for i = 1, select("#", ...) do
+		local source = select(i, ...)
+
+		if source ~= nil then
+			for key, value in pairs(source) do
+				result[key] = value
+			end
+		end
+	end
+
+	return result
+end
+
+return join]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da37</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX2727cc8a60d34b209d9fec91736911b7">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">shallowEqual.spec</string>
+					<string name="ScriptGuid">{ad247a68-e736-4463-928a-1c9a5047d8ab}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local shallowEqual = require(script.Parent.shallowEqual)
+
+	it("should compare dictionaries", function()
+		local a = {
+			a = "a",
+			b = {},
+			c = 6,
+		}
+
+		local b = {
+			b = a.b,
+			c = a.c,
+			a = a.a,
+		}
+
+		local c = {
+			b = {},
+			a = a.a,
+			c = a.c,
+		}
+
+		local d = {
+			a = a.a,
+			b = a.b,
+			c = a.c,
+			d = "hello",
+		}
+
+		expect(shallowEqual(a, a)).to.equal(true)
+		expect(shallowEqual(a, b)).to.equal(true)
+		expect(shallowEqual(a, c)).to.equal(false)
+		expect(shallowEqual(b, c)).to.equal(false)
+		expect(shallowEqual(a, d)).to.equal(false)
+		expect(shallowEqual(b, d)).to.equal(false)
+	end)
+
+	it("should handle nil for either argument", function()
+		local a = {}
+
+		expect(shallowEqual(nil, nil)).to.equal(true)
+		expect(shallowEqual(a, nil)).to.equal(false)
+		expect(shallowEqual(nil, a)).to.equal(false)
+	end)
+end]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da38</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX27dcb07b103a4002950b7445ef5792f1">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">storeKey</string>
+					<string name="ScriptGuid">{58f67e10-5941-4fb9-a79c-52ea0d81cd72}</string>
+					<ProtectedString name="Source"><![CDATA[local Symbol = require(script.Parent.Symbol)
+
+return Symbol.named("RoduxStore")]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da39</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXecb20e00d75c409c8372803fa67edfdc">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">connect.spec</string>
+					<string name="ScriptGuid">{bec2fff2-3f28-4a01-8251-870786e0b5a7}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local connect = require(script.Parent.connect)
+
+	local StoreProvider = require(script.Parent.StoreProvider)
+
+	local Roact = require(script.Parent.Parent.Roact)
+	local Rodux = require(script.Parent.Parent.Rodux)
+
+	local TempConfig = require(script.Parent.TempConfig)
+
+	local function noop()
+		return nil
+	end
+
+	local function NoopComponent()
+		return nil
+	end
+
+	local function countReducer(state, action)
+		state = state or 0
+
+		if action.type == "increment" then
+			return state + 1
+		end
+
+		return state
+	end
+
+	local reducer = Rodux.combineReducers({
+		count = countReducer,
+	})
+
+	describe("Argument validation", function()
+		it("should accept no arguments", function()
+			connect()
+		end)
+
+		it("should accept one function", function()
+			connect(noop)
+		end)
+
+		it("should accept two functions", function()
+			connect(noop, noop)
+		end)
+
+		it("should accept only the second function", function()
+			connect(nil, function() end)
+		end)
+
+		it("should throw if not passed a component", function()
+			local selector = function(store)
+				return {}
+			end
+
+			expect(function()
+				connect(selector)(nil)
+			end).to.throw()
+		end)
+	end)
+
+	it("should throw if not mounted under a StoreProvider", function()
+		local ConnectedSomeComponent = connect()(NoopComponent)
+
+		expect(function()
+			Roact.mount(Roact.createElement(ConnectedSomeComponent))
+		end).to.throw()
+	end)
+
+	it("should accept a higher-order function mapStateToProps", function()
+		local function mapStateToProps()
+			return function(state)
+				return {
+					count = state.count,
+				}
+			end
+		end
+
+		local ConnectedSomeComponent = connect(mapStateToProps)(NoopComponent)
+
+		local store = Rodux.Store.new(reducer)
+		local tree = Roact.createElement(StoreProvider, {
+			store = store,
+		}, {
+			someComponent = Roact.createElement(ConnectedSomeComponent),
+		})
+
+		local handle = Roact.mount(tree)
+
+		Roact.unmount(handle)
+	end)
+
+	it("should not accept a higher-order mapStateToProps that returns a non-table value", function()
+		local function mapStateToProps()
+			return function(state)
+				return "nope"
+			end
+		end
+
+		local ConnectedSomeComponent = connect(mapStateToProps)(NoopComponent)
+
+		local store = Rodux.Store.new(reducer)
+		local tree = Roact.createElement(StoreProvider, {
+			store = store,
+		}, {
+			someComponent = Roact.createElement(ConnectedSomeComponent),
+		})
+
+		expect(function()
+			Roact.mount(tree)
+		end).to.throw()
+	end)
+
+	it("should not accept a mapStateToProps that returns a non-table value", function()
+		local function mapStateToProps()
+			return "nah"
+		end
+
+		local ConnectedSomeComponent = connect(mapStateToProps)(NoopComponent)
+
+		local store = Rodux.Store.new(reducer)
+		local tree = Roact.createElement(StoreProvider, {
+			store = store,
+		}, {
+			someComponent = Roact.createElement(ConnectedSomeComponent),
+		})
+
+		expect(function()
+			Roact.mount(tree)
+		end).to.throw()
+	end)
+
+	it("should abort renders when mapStateToProps returns the same data", function()
+		local function mapStateToProps(state)
+			return {
+				count = state.count,
+			}
+		end
+
+		local renderCount = 0
+		local function SomeComponent(props)
+			renderCount = renderCount + 1
+		end
+
+		local ConnectedSomeComponent = connect(mapStateToProps)(SomeComponent)
+
+		local store = Rodux.Store.new(reducer)
+		local tree = Roact.createElement(StoreProvider, {
+			store = store,
+		}, {
+			someComponent = Roact.createElement(ConnectedSomeComponent),
+		})
+
+		local handle = Roact.mount(tree)
+
+		expect(renderCount).to.equal(1)
+
+		store:dispatch({ type = "an unknown action" })
+		store:flush()
+
+		expect(renderCount).to.equal(1)
+
+		store:dispatch({ type = "increment" })
+		store:flush()
+
+		expect(renderCount).to.equal(2)
+
+		Roact.unmount(handle)
+	end)
+
+	it("should only call mapDispatchToProps once and never re-render if no mapStateToProps was passed", function()
+		local dispatchCount = 0
+		local mapDispatchToProps = function(dispatch)
+			dispatchCount = dispatchCount + 1
+
+			return {
+				increment = function()
+					return dispatch({ type = "increment" })
+				end,
+			}
+		end
+
+		local renderCount = 0
+		local function SomeComponent(props)
+			renderCount = renderCount + 1
+		end
+
+		local ConnectedSomeComponent = connect(nil, mapDispatchToProps)(SomeComponent)
+
+		local store = Rodux.Store.new(reducer)
+		local tree = Roact.createElement(StoreProvider, {
+			store = store,
+		}, {
+			someComponent = Roact.createElement(ConnectedSomeComponent),
+		})
+
+		local handle = Roact.mount(tree)
+
+		expect(dispatchCount).to.equal(1)
+		expect(renderCount).to.equal(1)
+
+		store:dispatch({ type = "an unknown action" })
+		store:flush()
+
+		expect(dispatchCount).to.equal(1)
+		expect(renderCount).to.equal(1)
+
+		store:dispatch({ type = "increment" })
+		store:flush()
+
+		expect(dispatchCount).to.equal(1)
+		expect(renderCount).to.equal(1)
+
+		Roact.unmount(handle)
+	end)
+
+	it("should return result values from the dispatch passed to mapDispatchToProps", function()
+		local function reducer()
+			return 0
+		end
+
+		local function fiveThunk()
+			return 5
+		end
+
+		local dispatch
+		local function SomeComponent(props)
+			dispatch = props.dispatch
+		end
+
+		local function mapDispatchToProps(dispatch)
+			return {
+				dispatch = dispatch
+			}
+		end
+
+		local ConnectedSomeComponent = connect(nil, mapDispatchToProps)(SomeComponent)
+
+		-- We'll use the thunk middleware, as it should always return its result
+		local store = Rodux.Store.new(reducer, nil, { Rodux.thunkMiddleware })
+		local tree = Roact.createElement(StoreProvider, {
+			store = store,
+		}, {
+			someComponent = Roact.createElement(ConnectedSomeComponent)
+		})
+
+		local handle = Roact.mount(tree)
+
+		expect(dispatch).to.be.a("function")
+		expect(dispatch(fiveThunk)).to.equal(5)
+
+		Roact.unmount(handle)
+	end)
+
+	it("should render parent elements before children", function()
+		local oldNewConnectionOrder = TempConfig.newConnectionOrder
+		TempConfig.newConnectionOrder = true
+
+		local function mapStateToProps(state)
+			return {
+				count = state.count,
+			}
+		end
+
+		local childWasRenderedFirst = false
+
+		local function ChildComponent(props)
+			if props.count > props.parentCount then
+				childWasRenderedFirst = true
+			end
+		end
+
+		local ConnectedChildComponent = connect(mapStateToProps)(ChildComponent)
+
+		local function ParentComponent(props)
+			return Roact.createElement(ConnectedChildComponent, {
+				parentCount = props.count,
+			})
+		end
+
+		local ConnectedParentComponent = connect(mapStateToProps)(ParentComponent)
+
+		local store = Rodux.Store.new(reducer)
+		local tree = Roact.createElement(StoreProvider, {
+			store = store,
+		}, {
+			parent = Roact.createElement(ConnectedParentComponent),
+		})
+
+		local handle = Roact.mount(tree)
+
+		store:dispatch({ type = "increment" })
+		store:flush()
+
+		store:dispatch({ type = "increment" })
+		store:flush()
+
+		Roact.unmount(handle)
+
+		expect(childWasRenderedFirst).to.equal(false)
+
+		TempConfig.newConnectionOrder = oldNewConnectionOrder
+	end)
+
+	it("should render child elements before children when TempConfig.newConnectionOrder is false", function()
+		local oldNewConnectionOrder = TempConfig.newConnectionOrder
+		TempConfig.newConnectionOrder = false
+
+		local function mapStateToProps(state)
+			return {
+				count = state.count,
+			}
+		end
+
+		local childWasRenderedFirst = false
+
+		local function ChildComponent(props)
+			if props.count > props.parentCount then
+				childWasRenderedFirst = true
+			end
+		end
+
+		local ConnectedChildComponent = connect(mapStateToProps)(ChildComponent)
+
+		local function ParentComponent(props)
+			return Roact.createElement(ConnectedChildComponent, {
+				parentCount = props.count,
+			})
+		end
+
+		local ConnectedParentComponent = connect(mapStateToProps)(ParentComponent)
+
+		local store = Rodux.Store.new(reducer)
+		local tree = Roact.createElement(StoreProvider, {
+			store = store,
+		}, {
+			parent = Roact.createElement(ConnectedParentComponent),
+		})
+
+		local handle = Roact.mount(tree)
+
+		store:dispatch({ type = "increment" })
+		store:flush()
+
+		store:dispatch({ type = "increment" })
+		store:flush()
+
+		Roact.unmount(handle)
+
+		expect(childWasRenderedFirst).to.equal(true)
+
+		TempConfig.newConnectionOrder = oldNewConnectionOrder
+	end)
+end]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da3a</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXcfce4f32ba8d427cab1233340b55c737">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">getStore.spec</string>
+					<string name="ScriptGuid">{5b83d76d-24d1-409a-b99e-c3a4ae9c8ffe}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local Roact = require(script.Parent.Parent.Roact)
+	local Rodux = require(script.Parent.Parent.Rodux)
+
+	local StoreProvider = require(script.Parent.StoreProvider)
+
+	local getStore = require(script.Parent.getStore)
+
+	it("should return the store when present", function()
+		local function reducer()
+			return 0
+		end
+
+		local store = Rodux.Store.new(reducer)
+		local consumedStore = nil
+
+		local StoreConsumer = Roact.Component:extend("StoreConsumer")
+
+		function StoreConsumer:init()
+			consumedStore = getStore(self)
+		end
+
+		function StoreConsumer:render()
+			return nil
+		end
+
+		local tree = Roact.createElement(StoreProvider, {
+			store = store,
+		}, {
+			Consumer = Roact.createElement(StoreConsumer),
+		})
+
+		local handle = Roact.mount(tree)
+
+		expect(consumedStore).to.equal(store)
+
+		Roact.unmount(handle)
+		store:destruct()
+	end)
+
+	it("should return nil when the store is not present", function()
+		-- Use a non-nil value to know for sure if StoreConsumer:init was called
+		local consumedStore = 6
+
+		local StoreConsumer = Roact.Component:extend("StoreConsumer")
+
+		function StoreConsumer:init()
+			consumedStore = getStore(self)
+		end
+
+		function StoreConsumer:render()
+			return nil
+		end
+
+		local tree = Roact.createElement(StoreConsumer)
+		local handle = Roact.mount(tree)
+
+		expect(consumedStore).to.equal(nil)
+
+		Roact.unmount(handle)
+	end)
+end]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da3b</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX02ff05b8484640df93dde7a6b299be60">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">connect</string>
+					<string name="ScriptGuid">{c39d3548-b882-40dc-af66-d335ed3a4bb8}</string>
+					<ProtectedString name="Source"><![CDATA[local Roact = require(script.Parent.Parent.Roact)
+local getStore = require(script.Parent.getStore)
+local shallowEqual = require(script.Parent.shallowEqual)
+local join = require(script.Parent.join)
+
+local TempConfig = require(script.Parent.TempConfig)
+
+--[[
+	Formats a multi-line message with printf-style placeholders.
+]]
+local function formatMessage(lines, parameters)
+	return table.concat(lines, "\n"):format(unpack(parameters or {}))
+end
+
+local function noop()
+	return nil
+end
+
+--[[
+	The stateUpdater accepts props when they update and computes the
+	complete set of props that should be passed to the wrapped component.
+
+	Each connected component will have a stateUpdater created for it.
+
+	stateUpdater is put into the component's state in order for
+	getDerivedStateFromProps to be able to access it. It is not mutated.
+]]
+local function makeStateUpdater(store)
+	return function(nextProps, prevState, mappedStoreState)
+		-- The caller can optionally provide mappedStoreState if it needed that
+		-- value beforehand. Doing so is purely an optimization.
+		if mappedStoreState == nil then
+			mappedStoreState = prevState.mapStateToProps(store:getState(), nextProps)
+		end
+
+		local propsForChild = join(nextProps, mappedStoreState, prevState.mappedStoreDispatch)
+
+		return {
+			mappedStoreState = mappedStoreState,
+			propsForChild = propsForChild,
+		}
+	end
+end
+
+--[[
+	mapStateToProps:
+		(storeState, props) -> partialProps
+		OR
+		() -> (storeState, props) -> partialProps
+	mapDispatchToProps: (dispatch) -> partialProps
+]]
+local function connect(mapStateToPropsOrThunk, mapDispatchToProps)
+	local connectTrace = debug.traceback()
+
+	if mapStateToPropsOrThunk ~= nil then
+		assert(typeof(mapStateToPropsOrThunk) == "function", "mapStateToProps must be a function or nil!")
+	else
+		mapStateToPropsOrThunk = noop
+	end
+
+	if mapDispatchToProps ~= nil then
+		assert(typeof(mapDispatchToProps) == "function", "mapDispatchToProps must be a function or nil!")
+	else
+		mapDispatchToProps = noop
+	end
+
+	return function(innerComponent)
+		if innerComponent == nil then
+			local message = formatMessage({
+				"connect returns a function that must be passed a component.",
+				"Check the connection at:",
+				"%s",
+			}, {
+				connectTrace,
+			})
+
+			error(message, 2)
+		end
+
+		local componentName = ("RoduxConnection(%s)"):format(tostring(innerComponent))
+
+		local Connection = Roact.Component:extend(componentName)
+
+		function Connection.getDerivedStateFromProps(nextProps, prevState)
+			if prevState.stateUpdater ~= nil then
+				return prevState.stateUpdater(nextProps, prevState)
+			end
+		end
+
+		function Connection:createStoreConnection()
+			self.storeChangedConnection = self.store.changed:connect(function(storeState)
+				self:setState(function(prevState, props)
+					local mappedStoreState = prevState.mapStateToProps(storeState, props)
+
+					-- We run this check here so that we only check shallow
+					-- equality with the result of mapStateToProps, and not the
+					-- other props that could be passed through the connector.
+					if shallowEqual(mappedStoreState, prevState.mappedStoreState) then
+						return nil
+					end
+
+					return prevState.stateUpdater(props, prevState, mappedStoreState)
+				end)
+			end)
+		end
+
+		function Connection:init()
+			self.store = getStore(self)
+
+			if self.store == nil then
+				local message = formatMessage({
+					"Cannot initialize Roact-Rodux connection without being a descendent of StoreProvider!",
+					"Tried to wrap component %q",
+					"Make sure there is a StoreProvider above this component in the tree.",
+				}, {
+					tostring(innerComponent),
+				})
+
+				error(message)
+			end
+
+			local storeState = self.store:getState()
+
+			local mapStateToProps = mapStateToPropsOrThunk
+			local mappedStoreState = mapStateToProps(storeState, self.props)
+
+			-- mapStateToPropsOrThunk can return a function instead of a state
+			-- value. In this variant, we keep that value as mapStateToProps
+			-- instead of the original mapStateToProps. This matches react-redux
+			-- and enables connectors to keep instance-level state.
+			if typeof(mappedStoreState) == "function" then
+				mapStateToProps = mappedStoreState
+				mappedStoreState = mapStateToProps(storeState, self.props)
+			end
+
+			if mappedStoreState ~= nil and typeof(mappedStoreState) ~= "table" then
+				local message = formatMessage({
+					"mapStateToProps must either return a table, or return another function that returns a table.",
+					"Instead, it returned %q, which is of type %s.",
+				}, {
+					tostring(mappedStoreState),
+					typeof(mappedStoreState),
+				})
+
+				error(message)
+			end
+
+			local mappedStoreDispatch = mapDispatchToProps(function(...)
+				return self.store:dispatch(...)
+			end)
+
+			local stateUpdater = makeStateUpdater(self.store)
+
+			self.state = {
+				-- Combines props, mappedStoreDispatch, and the result of
+				-- mapStateToProps into propsForChild. Stored in state so that
+				-- getDerivedStateFromProps can access it.
+				stateUpdater = stateUpdater,
+
+				-- Used by the store changed connection and stateUpdater to
+				-- construct propsForChild.
+				mapStateToProps = mapStateToProps,
+
+				-- Used by stateUpdater to construct propsForChild.
+				mappedStoreDispatch = mappedStoreDispatch,
+
+				-- Passed directly into the component that Connection is
+				-- wrapping.
+				propsForChild = nil,
+			}
+
+			local extraState = stateUpdater(self.props, self.state, mappedStoreState)
+
+			for key, value in pairs(extraState) do
+				self.state[key] = value
+			end
+
+			if TempConfig.newConnectionOrder then
+				self:createStoreConnection()
+			end
+		end
+
+		function Connection:didMount()
+			if not TempConfig.newConnectionOrder then
+				self:createStoreConnection()
+			end
+		end
+
+		function Connection:willUnmount()
+			self.storeChangedConnection:disconnect()
+		end
+
+		function Connection:render()
+			return Roact.createElement(innerComponent, self.state.propsForChild)
+		end
+
+		return Connection
+	end
+end
+
+return connect]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da3c</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXb234794ca5ef4dd696e08f27999d6d64">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">TempConfig</string>
+					<string name="ScriptGuid">{b9390214-7239-4fde-b44e-0aff87d0c92b}</string>
+					<ProtectedString name="Source"><![CDATA[return {
+	newConnectionOrder = true,
+}
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da3d</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX373b88910af544958ef41822a242da75">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Symbol</string>
+					<string name="ScriptGuid">{4efd714b-3c7f-48d1-893d-c33a658edff8}</string>
+					<ProtectedString name="Source"><![CDATA[--[[
+	A 'Symbol' is an opaque marker type that can be used to signify unique
+	statuses. Symbols have the type 'userdata', but when printed to the console,
+	the name of the symbol is shown.
+]]
+
+local Symbol = {}
+
+--[[
+	Creates a Symbol with the given name.
+
+	When printed or coerced to a string, the symbol will turn into the string
+	given as its name.
+]]
+function Symbol.named(name)
+	assert(type(name) == "string", "Symbols must be created using a string name!")
+
+	local self = newproxy(true)
+
+	local wrappedName = ("Symbol(%s)"):format(name)
+
+	getmetatable(self).__tostring = function()
+		return wrappedName
+	end
+
+	return self
+end
+
+--[[
+	Create an unnamed Symbol. Usually, you should create a named Symbol using
+	Symbol.named(name)
+]]
+function Symbol.unnamed()
+	local self = newproxy(true)
+
+	getmetatable(self).__tostring = function()
+		return "Unnamed Symbol"
+	end
+
+	return self
+end
+
+return Symbol]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da3e</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXcf967365a010472bbce9cd25d697a7bd">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">getStore</string>
+					<string name="ScriptGuid">{b6202d22-40ff-4294-bc29-261c818c344a}</string>
+					<ProtectedString name="Source"><![CDATA[local storeKey = require(script.Parent.storeKey)
+
+local function getStore(componentInstance)
+	return componentInstance._context[storeKey]
+end
+
+return getStore]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da3f</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXf5757420c2cf4429a7783ec1d4161a06">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Symbol.spec</string>
+					<string name="ScriptGuid">{41696d31-2976-43ad-9ee9-a3d2f4085527}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local Symbol = require(script.Parent.Symbol)
+
+	describe("named", function()
+		it("should give an opaque object", function()
+			local symbol = Symbol.named("foo")
+
+			expect(symbol).to.be.a("userdata")
+		end)
+
+		it("should coerce to the given name", function()
+			local symbol = Symbol.named("foo")
+
+			expect(tostring(symbol):find("foo")).to.be.ok()
+		end)
+
+		it("should be unique when constructed", function()
+			local symbolA = Symbol.named("abc")
+			local symbolB = Symbol.named("abc")
+
+			expect(symbolA).never.to.equal(symbolB)
+		end)
+	end)
+
+	describe("unnamed", function()
+		it("should give an opaque object", function()
+			local symbol = Symbol.unnamed()
+
+			expect(symbol).to.be.a("userdata")
+		end)
+
+		it("should coerce to some string", function()
+			local symbol = Symbol.unnamed()
+
+			expect(tostring(symbol)).to.be.a("string")
+		end)
+
+		it("should be unique when constructed", function()
+			local symbolA = Symbol.unnamed()
+			local symbolB = Symbol.unnamed()
+
+			expect(symbolA).never.to.equal(symbolB)
+		end)
+	end)
+end]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da40</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXb54b6ccd0c30477f9d0040e4bff97b6e">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">StoreProvider.spec</string>
+					<string name="ScriptGuid">{4ca77ad4-423b-49d8-b85c-682f74cfd22e}</string>
+					<ProtectedString name="Source"><![CDATA[return function()
+	local StoreProvider = require(script.Parent.StoreProvider)
+
+	local Roact = require(script.Parent.Parent.Roact)
+	local Rodux = require(script.Parent.Parent.Rodux)
+
+	it("should be instantiable as a component", function()
+		local store = Rodux.Store.new(function()
+			return 0
+		end)
+		local element = Roact.createElement(StoreProvider, {
+			store = store
+		})
+
+		expect(element).to.be.ok()
+
+		local handle = Roact.mount(element, nil, "StoreProvider-test")
+
+		Roact.unmount(handle)
+		store:destruct()
+	end)
+
+	it("should expect a 'store' prop", function()
+		local element = Roact.createElement(StoreProvider)
+
+		expect(function()
+			Roact.mount(element)
+		end).to.throw()
+	end)
+end]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da41</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXde75f84ab0524f17949074c595bc8912">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">shallowEqual</string>
+					<string name="ScriptGuid">{f1ec9f37-2dd6-4a6c-81ee-94de850b2b66}</string>
+					<ProtectedString name="Source"><![CDATA[local function shallowEqual(a, b)
+	if a == nil then
+		return b == nil
+	elseif b == nil then
+		return a == nil
+	end
+
+	for key, value in pairs(a) do
+		if value ~= b[key] then
+			return false
+		end
+	end
+
+	for key, value in pairs(b) do
+		if value ~= a[key] then
+			return false
+		end
+	end
+
+	return true
+end
+
+return shallowEqual]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da42</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX740a75fa277646a7833e881ffdc624ef">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">StoreProvider</string>
+					<string name="ScriptGuid">{c5ad49b1-070d-4952-9636-6d92ac8040dc}</string>
+					<ProtectedString name="Source"><![CDATA[local Roact = require(script.Parent.Parent.Roact)
+
+local storeKey = require(script.Parent.storeKey)
+
+local StoreProvider = Roact.Component:extend("StoreProvider")
+
+function StoreProvider:init(props)
+	local store = props.store
+
+	if store == nil then
+		error("Error initializing StoreProvider. Expected a `store` prop to be a Rodux store.")
+	end
+
+	self._context[storeKey] = store
+end
+
+function StoreProvider:render()
+	return Roact.oneChild(self.props[Roact.Children])
+end
+
+return StoreProvider]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da43</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Folder" referent="RBXc5de874346d746f1831e62065700e527">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<string name="Name">Components</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da52</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="RBX17e8f79595c24376b320b2c1662bacda">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">InventoryUI</string>
+					<string name="ScriptGuid">{d09a6d48-2587-43b8-86ee-2865289391ce}</string>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+
+local Roact = require(ReplicatedStorage.Roact)
+local RoactRodux = require(ReplicatedStorage.RoactRodux)
+
+local Inventory = Roact.Component:extend("Inventory")
+
+function Inventory:init()
+    self.inventoryChangedEvent = nil
+
+    -- In init, we can use setState to set up our initial component state.
+    self:setState({
+        wood = 0
+    })
+end
+
+-- This render function is almost completely unchanged from the first example.
+function Inventory:render()
+    -- As a convention, we'll pull currentTime out of state right away.
+    local currentWood = self.state.wood
+
+    return Roact.createElement("ScreenGui", {}, {
+        WoodLabel = Roact.createElement("TextButton", {
+            Size = UDim2.new(0, 100, 0, 100),
+            Position = UDim2.new(0, 20, 0.5, 0),
+            Text = "Wood Collected: " .. currentWood,
+            [Roact.Event.MouseButton1Click] = function()
+                print("Wood Button Clicked")
+            end
+        })
+    })
+end
+
+-- Set up our loop in didMount, so that it starts running when our
+-- component is created.
+function Inventory:didMount()
+    -- Set a value that we can change later to stop our loop
+    self.running = true
+
+    -- Connect to a pickup event here: 
+    self.inventoryChangedEvent = ReplicatedStorage.InventoryChanged.OnClientEvent:Connect(function()
+        print("Inventory changed event fired")
+        self:setState({
+            wood = Players.LocalPlayer.leaderstats.Wood.Value
+        })
+    end)
+
+end
+
+-- Stop the loop in willUnmount, so that our loop terminates when the
+-- component is destroyed.
+function Inventory:willUnmount()
+    self.running = false
+
+    -- prevent memory leaks
+    self.inventoryChangedEvent.OnClientEvent:Disconnect()
+end
+
+local function mapStateToProps(state)
+    return {
+        wood = state.wood
+    }
+end
+
+local function mapDispatchToProps(dispatch)
+    return {
+        onWoodChanged = function(wood)
+            dispatch({
+                type = "WOOD_CHANGED",
+                wood = wood
+            })
+        end
+    }
+end
+
+return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(Inventory)
+
+-- local PlayerGui = Players.LocalPlayer.PlayerGui
+
+-- -- Create our UI, which now runs on its own!
+-- local app = Roact.createElement(RoactRodux.StoreProvider, {
+--     store = require(ReplicatedStorage.Redux.store)
+-- }, {
+--     Inventory = Roact.createElement(Inventory)
+-- })
+-- local handle = Roact.mount(app, PlayerGui, "Inventory UI")]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da55</UniqueId>
 				</Properties>
 			</Item>
 		</Item>

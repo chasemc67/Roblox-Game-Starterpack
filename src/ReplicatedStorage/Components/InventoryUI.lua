@@ -2,6 +2,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 
 local Roact = require(ReplicatedStorage.Roact)
+local RoactRodux = require(ReplicatedStorage.RoactRodux)
 
 local Inventory = Roact.Component:extend("Inventory")
 
@@ -56,7 +57,31 @@ function Inventory:willUnmount()
     self.inventoryChangedEvent.OnClientEvent:Disconnect()
 end
 
-local PlayerGui = Players.LocalPlayer.PlayerGui
+local function mapStateToProps(state)
+    return {
+        wood = state.wood
+    }
+end
 
--- Create our UI, which now runs on its own!
-local handle = Roact.mount(Roact.createElement(Inventory), PlayerGui, "Inventory UI")
+local function mapDispatchToProps(dispatch)
+    return {
+        onWoodChanged = function(wood)
+            dispatch({
+                type = "WOOD_CHANGED",
+                wood = wood
+            })
+        end
+    }
+end
+
+return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(Inventory)
+
+-- local PlayerGui = Players.LocalPlayer.PlayerGui
+
+-- -- Create our UI, which now runs on its own!
+-- local app = Roact.createElement(RoactRodux.StoreProvider, {
+--     store = require(ReplicatedStorage.Redux.store)
+-- }, {
+--     Inventory = Roact.createElement(Inventory)
+-- })
+-- local handle = Roact.mount(app, PlayerGui, "Inventory UI")
