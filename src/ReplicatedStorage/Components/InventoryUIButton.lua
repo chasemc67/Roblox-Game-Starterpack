@@ -20,7 +20,7 @@ function Inventory:render()
     -- As a convention, we'll pull currentTime out of state right away.
     local currentWood = self.state.wood
 
-    return Roact.createElement("ScreenGui", {}, {
+    return Roact.createElement("Frame", {}, {
         WoodLabel = Roact.createElement("TextButton", {
             Size = UDim2.new(0, 100, 0, 100),
             Position = UDim2.new(0, 20, 0.5, 0),
@@ -59,7 +59,7 @@ end
 
 local function mapStateToProps(state)
     return {
-        wood = state.wood
+        wood = 1
     }
 end
 
