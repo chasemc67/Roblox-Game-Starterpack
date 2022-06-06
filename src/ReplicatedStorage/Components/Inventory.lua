@@ -10,10 +10,12 @@ function Inventory:init()
 end
 
 function Inventory:render()
-    return Roact.createElement("ScreenGui", {}, {
+    return Roact.createElement("Frame", {
+        Size = UDim2.new(1,0,1,0)
+    }, {
         TextLabel = Roact.createElement("TextLabel", {
             Size = UDim2.new(1, 0, 1, 0),
-            Text = "Hello, World!"
+            Text = "Hello, Inventory!"
         })
     })
 end

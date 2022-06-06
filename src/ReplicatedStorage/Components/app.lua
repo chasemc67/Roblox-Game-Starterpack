@@ -15,6 +15,13 @@ function App:init()
 end
 
 function App:render()
+    if (self.props.openWindow == "inventory") then
+        print("Rendering Inventory UI")
+        return Roact.createElement("ScreenGui", {}, {
+            Roact.createElement(Inventory)
+        })
+    end
+
     return Roact.createElement("ScreenGui", {}, {
         Roact.createElement(InventoryUIButton)
     })
@@ -22,7 +29,7 @@ end
 
 local function mapStateToProps(state)
     return {
-        openWindow = state.openWindow
+        openWindow = state.ui.openWindow
     }
 end
 

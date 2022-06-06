@@ -17,5 +17,5 @@ local PlayerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
 local handle = Roact.mount(app, PlayerGui, "Root App")
 
 -- Later, we can destroy our UI and disconnect everything correctly.
-wait(10)
-Roact.unmount(handle)
+-- wait(10)
+-- Roact.unmount(handle)

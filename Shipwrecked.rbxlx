@@ -6740,152 +6740,53 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">60ac0bb170c84e0c0291a1c80001e20c</UniqueId>
 			</Properties>
-			<Item class="LocalScript" referent="RBXb5cf401a39634dee97090539fc7e6880">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<bool name="Disabled">true</bool>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">Roact_test</string>
-					<string name="ScriptGuid">{bc27ba66-97b9-45e4-8aa3-2657549239e6}</string>
-					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-
-local Roact = require(ReplicatedStorage.Roact)
-
-local Clock = Roact.Component:extend("Clock")
-
-function Clock:init()
-    -- In init, we can use setState to set up our initial component state.
-    self:setState({
-        currentTime = 0
-    })
-end
-
--- This render function is almost completely unchanged from the first example.
-function Clock:render()
-    -- As a convention, we'll pull currentTime out of state right away.
-    local currentTime = self.state.currentTime
-
-    return Roact.createElement("ScreenGui", {}, {
-        TimeLabel = Roact.createElement("TextLabel", {
-            Size = UDim2.new(1, 0, 1, 0),
-            Text = "Time Elapsed: " .. currentTime
-        })
-    })
-end
-
--- Set up our loop in didMount, so that it starts running when our
--- component is created.
-function Clock:didMount()
-    -- Set a value that we can change later to stop our loop
-    self.running = true
-
-    -- We don't want to block the main thread, so we spawn a new one!
-    spawn(function()
-        while self.running do
-            -- Because we depend on the previous state, we use the function
-            -- variant of setState. This will matter more when Roact gets
-            -- asynchronous rendering!
-            self:setState(function(state)
-                return {
-                    currentTime = state.currentTime + 1
-                }
-            end)
-
-            wait(1)
-        end
-    end)
-end
-
--- Stop the loop in willUnmount, so that our loop terminates when the
--- component is destroyed.
-function Clock:willUnmount()
-    self.running = false
-end
-
-local PlayerGui = Players.LocalPlayer.PlayerGui
-
--- Create our UI, which now runs on its own!
-local handle = Roact.mount(Roact.createElement(Clock), PlayerGui, "Clock UI")
-
--- Later, we can destroy our UI and disconnect everything correctly.
-wait(10)
-Roact.unmount(handle)]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d000296a2</UniqueId>
-				</Properties>
-			</Item>
-			<Item class="LocalScript" referent="RBX39fc1bbd9c7a4b4ea9625c5bda95c34f">
+			<Item class="LocalScript" referent="RBX6ef9529f69524024b6e4fd42114c30bd">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Disabled">false</bool>
 					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">Rodux_test</string>
-					<string name="ScriptGuid">{a63d943a-9b11-4ef2-ab2d-e7ec705c47a4}</string>
+					<string name="Name">RoactAppRoot</string>
+					<string name="ScriptGuid">{b9e3cfc7-2f7a-4c8a-9812-939535f6df25}</string>
 					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
 
-local Rodux = require(ReplicatedStorage.Rodux)
+local Roact = require(ReplicatedStorage.Roact)
+local RoactRodux = require(ReplicatedStorage.RoactRodux)
+local clientStore = require(ReplicatedStorage.clientStore)
+local App = require(ReplicatedStorage.Components.App)
 
--- Action creator for the ReceivedNewPhoneNumber action
-local ReceivedNewPhoneNumber = Rodux.makeActionCreator("ReceivedNewPhoneNumber", function(phoneNumber)
-    return {
-        phoneNumber = phoneNumber,
-    }
-end)
-
--- Action creator for the MadeNewFriends action
-local function MadeNewFriends(listOfNewFriends)
-    return {
-        type = "MadeNewFriends",
-        newFriends = listOfNewFriends,
-    }
-end
-
--- Reducer for the current user's phone number
-local phoneNumberReducer = Rodux.createReducer("", {
-    ReceivedNewPhoneNumber = function(state, action)
-        return action.phoneNumber
-    end,
+local app = Roact.createElement(RoactRodux.StoreProvider, {
+    store = clientStore,
+}, {
+    Roact.createElement(App),
 })
 
--- Reducer for the current user's list of friends
-local friendsReducer = Rodux.createReducer({}, {
-    MadeNewFriends = function(state, action)
-        local newState = {}
+local PlayerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
+-- Create our UI, which now runs on its own!
+local handle = Roact.mount(app, PlayerGui, "Root App")
 
-        -- Since state is read-only, we copy it into newState
-        for index, friend in ipairs(state) do
-            newState[index] = friend
-        end
-
-        for _, friend in ipairs(action.newFriends) do
-            table.insert(newState, friend)
-        end
-
-        return newState
-    end,
-})
-
-local reducer = Rodux.combineReducers({
-    myPhoneNumber = phoneNumberReducer,
-    myFriends = friendsReducer,
-})
-
-local store = Rodux.Store.new(reducer, nil, {
-    Rodux.loggerMiddleware,
-})
-
--- store:dispatch(ReceivedNewPhoneNumber("15552345678"))
--- store:dispatch(MadeNewFriends({
---     "Cassandra",
---     "Joe",
--- }))
-
-return store]]></ProtectedString>
+-- Later, we can destroy our UI and disconnect everything correctly.
+-- wait(10)
+-- Roact.unmount(handle)]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da34</UniqueId>
+					<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b820</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX99d7c962d31a4629845114a675298818">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">RoactAppRoot</string>
+					<string name="ScriptGuid">{c64febe6-114b-4e39-8728-e31829d73d5f}</string>
+					<ProtectedString name="Source"><![CDATA[return {
+	properties = {
+		Disabled = false,
+	},
+}]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b82a</UniqueId>
 				</Properties>
 			</Item>
 		</Item>
@@ -21796,17 +21697,19 @@ return StoreProvider]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da52</UniqueId>
 			</Properties>
-			<Item class="ModuleScript" referent="RBX17e8f79595c24376b320b2c1662bacda">
+			<Item class="ModuleScript" referent="RBXbcf046c15bea462e82b3867fee0ee99d">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">InventoryUI</string>
-					<string name="ScriptGuid">{d09a6d48-2587-43b8-86ee-2865289391ce}</string>
+					<string name="Name">InventoryUIButton</string>
+					<string name="ScriptGuid">{48b0804f-e9c0-4ecf-b943-c38158d454e7}</string>
 					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 
-local Roact = require(ReplicatedStorage.Roact)
+local Roact = require(ReplicatedStorage.Roact) 
 local RoactRodux = require(ReplicatedStorage.RoactRodux)
+
+local openInventory = require(ReplicatedStorage.Actions.openInventory)
 
 local Inventory = Roact.Component:extend("Inventory")
 
@@ -21824,16 +21727,22 @@ function Inventory:render()
     -- As a convention, we'll pull currentTime out of state right away.
     local currentWood = self.state.wood
 
-    return Roact.createElement("ScreenGui", {}, {
-        WoodLabel = Roact.createElement("TextButton", {
-            Size = UDim2.new(0, 100, 0, 100),
+    return Roact.createElement("Frame", 
+        {
             Position = UDim2.new(0, 20, 0.5, 0),
-            Text = "Wood Collected: " .. currentWood,
-            [Roact.Event.MouseButton1Click] = function()
-                print("Wood Button Clicked")
-            end
-        })
-    })
+        },
+        {
+            WoodLabel = Roact.createElement("TextButton", {
+                Size = UDim2.new(0, 100, 0, 100),
+                Position = UDim2.new(0, 20, 0.5, 0),
+                Text = "Wood Collected: " .. currentWood,
+                [Roact.Event.MouseButton1Click] = function()
+                    print("Open Inventory Button Clicked")
+                    self.props.onOpenInventory()
+                end
+            })
+        }
+    )
 end
 
 -- Set up our loop in didMount, so that it starts running when our
@@ -21858,42 +21767,273 @@ function Inventory:willUnmount()
     self.running = false
 
     -- prevent memory leaks
-    self.inventoryChangedEvent.OnClientEvent:Disconnect()
+    -- self.inventoryChangedEvent.OnClientEvent:Disconnect()
 end
 
 local function mapStateToProps(state)
     return {
-        wood = state.wood
+        wood = 1
     }
 end
 
 local function mapDispatchToProps(dispatch)
     return {
-        onWoodChanged = function(wood)
-            dispatch({
-                type = "WOOD_CHANGED",
-                wood = wood
-            })
+        onOpenInventory = function()
+            dispatch(openInventory())
         end
     }
 end
 
-return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(Inventory)
-
--- local PlayerGui = Players.LocalPlayer.PlayerGui
-
--- -- Create our UI, which now runs on its own!
--- local app = Roact.createElement(RoactRodux.StoreProvider, {
---     store = require(ReplicatedStorage.Redux.store)
--- }, {
---     Inventory = Roact.createElement(Inventory)
--- })
--- local handle = Roact.mount(app, PlayerGui, "Inventory UI")]]></ProtectedString>
+return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(Inventory)]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da55</UniqueId>
+					<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b822</UniqueId>
 				</Properties>
 			</Item>
+			<Item class="ModuleScript" referent="RBXe10aee3076e94e818833bafdb93f502b">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">App</string>
+					<string name="ScriptGuid">{656bcfbd-9cb7-4c44-8d4e-9a2a223fba5a}</string>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Roact = require(ReplicatedStorage.Roact)
+local RoactRodux = require(ReplicatedStorage.RoactRodux)
+
+local InventoryUIButton = require(ReplicatedStorage.Components.InventoryUIButton)
+local Inventory = require(ReplicatedStorage.Components.Inventory)
+
+local openInventory = require(ReplicatedStorage.Actions.openInventory)
+local increment = require(ReplicatedStorage.Actions.increment)
+
+local App = Roact.Component:extend("App")
+
+function App:init()
+end
+
+function App:render()
+    if (self.props.openWindow == "inventory") then
+        print("Rendering Inventory UI")
+        return Roact.createElement("ScreenGui", {}, {
+            Roact.createElement(Inventory)
+        })
+    end
+
+    return Roact.createElement("ScreenGui", {}, {
+        Roact.createElement(InventoryUIButton)
+    })
+end
+
+local function mapStateToProps(state)
+    return {
+        openWindow = state.ui.openWindow
+    }
+end
+
+local function mapDispatchToProps(dispatch)
+    return {
+        onIncrement = function()
+            dispatch(increment(1))
+        end,
+        onOpenInventory = function()
+            dispatch(openInventory())
+        end
+    }
+end
+
+return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(App)]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b826</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX08e662c7f80b4f0b9b29d032a37e62ed">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Inventory</string>
+					<string name="ScriptGuid">{7ced2c94-71d3-487d-81d2-15971d8e579c}</string>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Roact = require(ReplicatedStorage.Roact)
+local RoactRodux = require(ReplicatedStorage.RoactRodux)
+
+
+local Inventory = Roact.Component:extend("Inventory")
+
+function Inventory:init()
+end
+
+function Inventory:render()
+    return Roact.createElement("Frame", {
+        Size = UDim2.new(1,0,1,0)
+    }, {
+        TextLabel = Roact.createElement("TextLabel", {
+            Size = UDim2.new(1, 0, 1, 0),
+            Text = "Hello, Inventory!"
+        })
+    })
+end
+
+local function mapStateToProps(state)
+    return {
+    }
+end
+
+local function mapDispatchToProps(dispatch)
+    return {
+    }
+end
+
+return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(Inventory)]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b828</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Folder" referent="RBXcf46601fa5de4c01bd7d8b76f21b6a4d">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<string name="Name">Reducers</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b816</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="RBX6f71510eb9fe41e8b8783360ada89b97">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">reducer</string>
+					<string name="ScriptGuid">{27280d62-45d3-4e48-8657-014acab454ff}</string>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Rodux = require(ReplicatedStorage.Rodux)
+
+local ui = require(ReplicatedStorage.Reducers.ui)
+
+local reducer = Rodux.combineReducers({
+    ui = ui
+})
+
+return reducer]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b817</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXf86653c6b66a4adcb8142ca6d2ed2fdd">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">ui</string>
+					<string name="ScriptGuid">{68799f46-46a5-48d6-a5ed-1c6eccee6756}</string>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Rodux = require(ReplicatedStorage.Rodux)
+
+local increment = require(ReplicatedStorage.Actions.increment)
+local openInventory = require(ReplicatedStorage.Actions.openInventory)
+
+local initialState = {
+    openWindow = nil,
+    val = 0
+}
+
+local reducer = Rodux.createReducer(initialState, {
+    [increment.name] = function(state, action)
+        return {
+            val = state.val + action.amount
+        }
+    end,
+
+    [openInventory.name] = function(state, action)
+        return {
+            openWindow = "inventory"
+        }
+    end
+})
+
+return reducer]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b818</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Folder" referent="RBXea12d46429e24564adf5cc6686aa9a22">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<string name="Name">Actions</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b81b</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="RBX794488b8c50f444e8159c17845ca047b">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">increment</string>
+					<string name="ScriptGuid">{45e31b17-e3a8-4fed-aaa2-0e14abf1b524}</string>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Rodux = require(ReplicatedStorage.Rodux)
+
+local function increment(amount)
+    return {
+        amount = amount
+    }
+end
+
+-- using makeActionCreator just handles having it set the type for us
+return Rodux.makeActionCreator(script.Name, increment)
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b81c</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXb489bfc16c6a40d9a18b1da6924f4198">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">openInventory</string>
+					<string name="ScriptGuid">{ab1c2a41-fe7f-47ec-93e1-40f5bf6ac2ae}</string>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Rodux = require(ReplicatedStorage.Rodux)
+
+local function openInventory()
+    return {
+    }
+end
+
+-- using makeActionCreator just handles having it set the type for us
+return Rodux.makeActionCreator(script.Name, openInventory)
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b81d</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="ModuleScript" referent="RBXb1f2da60d3354775ba6ad8050c9b0816">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">clientStore</string>
+				<string name="ScriptGuid">{a5923c9a-54aa-4a0f-831c-a54fe4f79d61}</string>
+				<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Rodux = require(ReplicatedStorage.Rodux)
+local reducer = require(ReplicatedStorage.Reducers.reducer)
+
+-- TODO add Rodux.thunkMiddleware here
+-- TODO add server store 
+local store = Rodux.Store.new(reducer)
+
+return store]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b824</UniqueId>
+			</Properties>
 		</Item>
 	</Item>
 	<Item class="LuaWebService" referent="RBX8a603ce304304667bfc63c9d3ffeedc9">
@@ -21994,80 +22134,40 @@ return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(Inventory)
 			<string name="AsphaltName"></string>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="BasaltName"></string>
-			<Ref name="Brick">null</Ref>
 			<string name="BrickName"></string>
-			<Ref name="Cobblestone">null</Ref>
 			<string name="CobblestoneName"></string>
-			<Ref name="Concrete">null</Ref>
 			<string name="ConcreteName"></string>
-			<Ref name="CorrodedMetal">null</Ref>
 			<string name="CorrodedMetalName"></string>
 			<string name="CrackedLavaName"></string>
-			<Ref name="DiamondPlate">null</Ref>
 			<string name="DiamondPlateName"></string>
-			<Ref name="Fabric">null</Ref>
 			<string name="FabricName"></string>
-			<Ref name="Foil">null</Ref>
 			<string name="FoilName"></string>
 			<string name="GlacierName"></string>
-			<Ref name="Granite">null</Ref>
 			<string name="GraniteName"></string>
-			<Ref name="Grass">null</Ref>
 			<string name="GrassName"></string>
 			<string name="GroundName"></string>
-			<Ref name="Ice">null</Ref>
 			<string name="IceName"></string>
 			<string name="LeafyGrassName"></string>
 			<string name="LimestoneName"></string>
-			<Ref name="Marble">null</Ref>
 			<string name="MarbleName"></string>
-			<Ref name="Metal">null</Ref>
 			<string name="MetalName"></string>
 			<string name="MudName"></string>
 			<string name="Name">MaterialService</string>
 			<string name="PavementName"></string>
-			<Ref name="Pebble">null</Ref>
 			<string name="PebbleName"></string>
-			<Ref name="Plastic">null</Ref>
 			<string name="PlasticName"></string>
 			<string name="RockName"></string>
 			<string name="SaltName"></string>
-			<Ref name="Sand">null</Ref>
 			<string name="SandName"></string>
 			<string name="SandstoneName"></string>
-			<Ref name="Slate">null</Ref>
 			<string name="SlateName"></string>
-			<Ref name="SmoothPlastic">null</Ref>
 			<string name="SmoothPlasticName"></string>
 			<string name="SnowName"></string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
-			<Ref name="TerrainAsphalt">null</Ref>
-			<Ref name="TerrainBasalt">null</Ref>
-			<Ref name="TerrainBrick">null</Ref>
-			<Ref name="TerrainCobblestone">null</Ref>
-			<Ref name="TerrainConcrete">null</Ref>
-			<Ref name="TerrainCrackedLava">null</Ref>
-			<Ref name="TerrainGlacier">null</Ref>
-			<Ref name="TerrainGrass">null</Ref>
-			<Ref name="TerrainGround">null</Ref>
-			<Ref name="TerrainIce">null</Ref>
-			<Ref name="TerrainLeafyGrass">null</Ref>
-			<Ref name="TerrainLimestone">null</Ref>
-			<Ref name="TerrainMud">null</Ref>
-			<Ref name="TerrainPavement">null</Ref>
-			<Ref name="TerrainRock">null</Ref>
-			<Ref name="TerrainSalt">null</Ref>
-			<Ref name="TerrainSand">null</Ref>
-			<Ref name="TerrainSandstone">null</Ref>
-			<Ref name="TerrainSlate">null</Ref>
-			<Ref name="TerrainSnow">null</Ref>
-			<Ref name="TerrainWoodPlanks">null</Ref>
 			<UniqueId name="UniqueId">7fb9ff442d46ed210291adff000014a9</UniqueId>
 			<bool name="Use2022MaterialsXml">false</bool>
-			<Ref name="Wood">null</Ref>
 			<string name="WoodName"></string>
-			<Ref name="WoodPlanks">null</Ref>
 			<string name="WoodPlanksName"></string>
 		</Properties>
 	</Item>
