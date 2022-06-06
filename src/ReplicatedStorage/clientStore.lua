@@ -5,6 +5,6 @@ local reducer = require(ReplicatedStorage.Reducers.reducer)
 
 -- TODO add Rodux.thunkMiddleware here
 -- TODO add server store 
-local store = Rodux.Store.new(reducer, nil)
+local store = Rodux.Store.new(reducer)
 
 return store
