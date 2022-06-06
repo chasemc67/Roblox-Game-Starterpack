@@ -1,7 +1,6 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Roact = require(ReplicatedStorage.Roact)
-local Rodux = require(ReplicatedStorage.Rodux)
 local RoactRodux = require(ReplicatedStorage.RoactRodux)
 
 local App = Roact.Component:extend("App")
@@ -35,18 +34,10 @@ local function mapDispatchToProps(dispatch)
     }
 end
 
-local function reducer (state, action) 
-    state = state or {
-        value = 0,
-    }
-
-    if action.type == "INCREMENT" then
-        return {
-            value = state.value + 1,
-        }
-    end
-
-    return state
-end
-
 return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(App)
+
+-- local app = Roact.createElement(RoactRodux.StoreProvider, {
+--     store = clientStore
+-- }, {
+--     App = Roact.createElement(App)
+-- })
