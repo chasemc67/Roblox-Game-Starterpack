@@ -5,7 +5,6 @@ local Roact = require(ReplicatedStorage.Roact)
 local RoactRodux = require(ReplicatedStorage.RoactRodux)
 local clientStore = require(ReplicatedStorage.clientStore)
 local App = require(ReplicatedStorage.Components.App)
--- local AppRoot = require(ReplicatedStorage.AppRoot)
 
 local app = Roact.createElement(RoactRodux.StoreProvider, {
     store = clientStore,
