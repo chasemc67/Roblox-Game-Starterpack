@@ -1,5 +1,9 @@
 local playerService = game:GetService("Players")
 local dataService = game:GetService("DataStoreService")
+local ServerStorage = game:GetService("ServerStorage")
+local serverStore = require(ServerStorage.serverStore)
+local loadUser = require(ServerStorage.Actions.loadUser)
+local removeUser = require(ServerStorage.Actions.removeUser)
 
 -- Getting store will fail if game isn't published
 local store = nil
@@ -12,13 +16,38 @@ else
 	print("Unable to load data store, is this game published?")
 end
 
-local sessionData = {}
 local dataMod = {}
 local AUTOSAVE_INTERVAL = 120
 
-local defaultData = {
-	Wood = 0;
-}
+local function getRoduxStateForPlayer(player)
+	-- RoduxState will look like
+	-- {
+		-- "13114": {
+			-- inventory = {
+				-- wood = 1,
+			--}
+		-- }
+		-- "13115": {
+			-- inventory = {
+				-- wood = 1,
+			--}
+		-- }
+	--}
+
+	local roduxState = serverStore:getState()
+	return {inventory = roduxState.inventory[player.UserId]}
+end
+
+local function setRoduxStateForPlayer(player, data)
+	-- saved data will look like:
+	-- {
+		-- inventory = {
+			-- wood = 1,
+			-- stone = 2,
+		--}
+	--}
+	serverStore:dispatch(loadUser(player, data))
+end
 
 dataMod.recursiveCopy = function(dataTable)
 	local tableCopy = {}
@@ -39,70 +68,20 @@ dataMod.load = function(player, count)
 		return
 	end
 
-	local key = player.UserId
 	local data 
 	local success, err = pcall(function()
-		data = store:GetAsync(key)
+		data = store:GetAsync(player.UserId)
 	end)
 	
 	if not success then
 		if store ~= nil then
-			data = dataMod.load(player, count + 1)
+			dataMod.load(player, count + 1)
 		else
 			print("Failed to load data, store is nil")
 		end
 	end
-	
-	return data
-end
 
-dataMod.setupData = function(player)
-	local key = player.UserId
-	local data = dataMod.load(player)
-	
-	sessionData[key] = dataMod.recursiveCopy(defaultData)
-	
-	if data then
-		for index, value in pairs(data) do
-			print(index, value)
-			dataMod.set(player, index, value)
-		end
-		
-		print(player.Name.. "'s data has been loaded!")
-	else
-		print(player.Name.. " is a new player!")
-	end
-end
-
-playerService.PlayerAdded:Connect(function(player)
-	local folder = Instance.new("Folder")
-	folder.Name = "leaderstats"
-	folder.Parent = player
-	
-	local Wood = Instance.new("IntValue")
-	Wood.Name = "Wood"
-	Wood.Parent = folder
-	Wood.Value = defaultData.Wood
-	
-	print("setting up data for ".. player.Name)
-	dataMod.setupData(player)
-end)
-
-dataMod.set = function(player, stat, value)
-	local key = player.UserId
-	sessionData[key][stat] = value
-	player.leaderstats[stat].Value = value
-end
-
-dataMod.increment = function(player, stat, value)
-	local key = player.UserId
-	sessionData[key][stat] = dataMod.get(player, stat) + value
-	player.leaderstats[stat].Value = dataMod.get(player, stat)
-end
-
-dataMod.get = function(player, stat)
-	local key = player.UserId
-	return sessionData[key][stat]
+	setRoduxStateForPlayer(player, data)
 end
 
 dataMod.save = function(player, count)
@@ -112,7 +91,7 @@ dataMod.save = function(player, count)
 	end
 
 	local key = player.UserId
-	local data = dataMod.recursiveCopy(sessionData[key])
+	local data = getRoduxStateForPlayer(player)
 	
 	local success, err = pcall(function()
 		store:SetAsync(key, data)
@@ -130,27 +109,25 @@ dataMod.save = function(player, count)
 	end
 end
 
-dataMod.removeSessionData = function(player)
-	local key = player.UserId
-	sessionData[key] = nil
-end
-
-playerService.PlayerRemoving:Connect(function(player)
-	dataMod.save(player)
-	dataMod.removeSessionData(player)
-end)
-
-
 local function autoSave()
 	while wait(AUTOSAVE_INTERVAL) do
 		print("Auto-saving data for all players")
 		
-		for key, dataTable in pairs(sessionData) do
+		for key, dataTable in pairs(serverStore:getState().inventory) do
 			local player = playerService:GetPlayerByUserId(key)
 			dataMod.save(player)
 		end
 	end
 end
+
+playerService.PlayerAdded:Connect(function(player)
+	dataMod.load(player)
+end)
+
+playerService.PlayerRemoving:Connect(function(player)
+	dataMod.save(player)
+	serverStore:dispatch(removeUser(player))
+end)
 
 spawn(autoSave) --Initialize autosave loop
 

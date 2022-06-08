@@ -4,6 +4,8 @@ local Rodux = require(ReplicatedStorage.Rodux)
 local RoduxUtils = require(ReplicatedStorage.RoduxUtils)
 
 local updateInventory = require(ServerStorage.Actions.updateInventory)
+local loadUser = require(ServerStorage.Actions.loadUser)
+local removeUser = require(ServerStorage.Actions.removeUser)
 
 local initialState = {
 }
@@ -28,8 +30,29 @@ local reducer = Rodux.createReducer(initialState, {
         -- using a remoteEvent
         -- inventoryUpdatedRemote:FireClients(action)
         ReplicatedStorage.InventoryChanged:FireClient(action.player, newState[userId])
-
         return newState
+    end,
+
+    [loadUser.name] = function(state, action)
+        local userId = action.player.UserId
+        local data = action.data
+
+        local tableUpdates = {
+            [userId] = data.inventory
+        }
+
+        local newState = RoduxUtils.deepmerge(RoduxUtils.deepcopy(state), tableUpdates)
+
+        ReplicatedStorage.InventoryChanged:FireClient(action.player, newState[userId])
+        return newState
+    end,
+
+    [removeUser.name] = function(state, action)
+        local userId = action.player.UserId
+        
+        local currentState = RoduxUtils.deepcopy(state)
+        currentState[userId] = nil
+        return currentState
     end
 })
 
