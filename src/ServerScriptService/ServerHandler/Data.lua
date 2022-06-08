@@ -8,12 +8,10 @@ local removeUser = require(ServerStorage.Actions.removeUser)
 -- Getting store will fail if game isn't published
 local store = nil
 local success, err = pcall(function()
-    return dataService:GetDataStore("DataStoreV1")
+    store = dataService:GetDataStore("DataStoreV1")
 end)
-if success then
-    store = success
-else
-	print("Unable to load data store, is this game published?")
+if not success then
+    print("Unable to load data store, is this game published?")
 end
 
 local dataMod = {}
@@ -80,6 +78,13 @@ dataMod.load = function(player, count)
 			print("Failed to load data, store is nil")
 			return
 		end
+	end
+
+	print("Loading data for " .. player.UserId)
+	if data == nil then
+		print("No data found for " .. player.UserId)
+	else
+		print("data found for " .. player.UserId)
 	end
 
 	setRoduxStateForPlayer(player, data)
