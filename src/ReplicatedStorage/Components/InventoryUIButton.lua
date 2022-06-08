@@ -47,10 +47,10 @@ function Inventory:didMount()
     self.running = true
 
     -- Connect to a pickup event here: 
-    self.inventoryChangedEvent = ReplicatedStorage.InventoryChanged.OnClientEvent:Connect(function()
+    self.inventoryChangedEvent = ReplicatedStorage.InventoryChanged.OnClientEvent:Connect(function(newState)
         print("Inventory changed event fired")
         self:setState({
-            wood = Players.LocalPlayer.leaderstats.Wood.Value
+            wood = newState.wood
         })
     end)
 

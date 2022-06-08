@@ -5318,18 +5318,18 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>43.460804</X>
-					<Y>-112.420174</Y>
-					<Z>-25.0725441</Z>
-					<R00>-0.939675331</R00>
-					<R01>-0.226209745</R01>
-					<R02>0.256591976</R02>
-					<R10>-0</R10>
-					<R11>0.750120521</R11>
-					<R12>0.661301136</R12>
-					<R20>-0.342067689</R20>
-					<R21>0.621408343</R21>
-					<R22>-0.704869747</R22>
+					<X>42.8251076</X>
+					<Y>-112.381325</Y>
+					<Z>-25.1227512</Z>
+					<R00>-0.996497512</R00>
+					<R01>0.0569236912</R01>
+					<R02>-0.061256431</R02>
+					<R10>3.72528985e-09</R10>
+					<R11>0.7325387</R11>
+					<R12>0.680725336</R12>
+					<R20>0.0836221054</R20>
+					<R21>0.678341091</R21>
+					<R22>-0.729973078</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
@@ -7854,14 +7854,19 @@ return require(value :: ModuleScript)
 						<string name="ScriptGuid">{6560b656-252e-465b-ac09-5eadd4f1ddab}</string>
 						<ProtectedString name="Source"><![CDATA[local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ServerStorage = game:GetService("ServerStorage")
+
 local HARVESTABLE_TAG = "HARVESTABLE"
 local Data = require(script.Parent.ServerHandler.Data)
+local serverStore = require(ServerStorage.serverStore)
+local updateInventory = require(ServerStorage.Actions.updateInventory)
 
 local function OnHarvest(player, inst)
     print("Destroying tree")
     inst:Destroy()
     Data.increment(player, "Wood", 1)
-    ReplicatedStorage.InventoryChanged:FireClient(player)
+    -- ReplicatedStorage.InventoryChanged:FireClient(player)
+    serverStore:dispatch(updateInventory(player))
 end
 
 local function attachPromptLogic(inst)
@@ -8038,13 +8043,13 @@ end)]]></ProtectedString>
 						<UniqueId name="UniqueId">2f127d22d44fdbb0029c228300093b29</UniqueId>
 					</Properties>
 				</Item>
-				<Item class="RemoteEvent" referent="RBX73de9eaca32a420fafb887bbe1ccd66c">
+				<Item class="RemoteEvent" referent="RBXc18ed871af0b4b46ba1a1bff6218032d">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<string name="Name">InventoryChanged</string>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">1ca092d7210e4c43029c329d0034da0b</UniqueId>
+						<UniqueId name="UniqueId">4960d71ec2ec66ae02b172d70005125e</UniqueId>
 					</Properties>
 				</Item>
 			</Item>
@@ -8077,6 +8082,137 @@ ZWUHAAAAVmlzaWJsZQMB]]></BinaryString>
 					<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002a59b</UniqueId>
 				</Properties>
 			</Item>
+		</Item>
+		<Item class="Folder" referent="RBX903f133475c54cc597a6bcf8b4c9cd08">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<string name="Name">Actions</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">4960d71ec2ec66ae02b172d70002b9de</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="RBX81ed48ad51ce45d3b4fa62de4f4cbf58">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">updateInventory</string>
+					<string name="ScriptGuid">{5c2225f7-2b8b-413b-a2c0-8a336b13777b}</string>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Rodux = require(ReplicatedStorage.Rodux)
+
+local function updateInventory(player)
+    return {
+        player = player
+    }
+end
+
+-- using makeActionCreator just handles having it set the type for us
+return Rodux.makeActionCreator(script.Name, updateInventory)
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">4960d71ec2ec66ae02b172d70002b9df</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Folder" referent="RBX527565ab9a3e4ed6afd7d17a05070dd3">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<string name="Name">Reducers</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">4960d71ec2ec66ae02b172d70002b9e1</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="RBX422a1a232a114cfca72ace99bf866f93">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">inventory</string>
+					<string name="ScriptGuid">{a5bded98-6302-4593-836f-2a705574eb6d}</string>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local InventoryChangedEvent = require(ReplicatedStorage.InventoryChanged)
+local ServerStorage = game:GetService("ServerStorage")
+local Rodux = require(ReplicatedStorage.Rodux)
+local RoduxUtils = require(ReplicatedStorage.RoduxUtils)
+
+local updateInventory = require(ServerStorage.Actions.updateInventory)
+
+local initialState = {
+}
+
+local reducer = Rodux.createReducer(initialState, {
+    [updateInventory.name] = function(state, action)
+        
+        local userId = action.player.UserId
+        local newValue = 1
+        if state[userId] and state[userId].wood then
+            newValue = state[userId].wood + 1
+        end
+
+        local tableUpdates = {
+            [userId] = {
+                wood = newValue
+            }
+        }
+        local newState = RoduxUtils.deepmerge(RoduxUtils.deepcopy(state), tableUpdates)
+
+        -- update client that inventory changed
+        -- using a remoteEvent
+        -- inventoryUpdatedRemote:FireClients(action)
+        InventoryChangedEvent:FireClient(action.player, newState[userId])
+
+        return newState
+    end
+})
+
+return reducer]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">4960d71ec2ec66ae02b172d70002b9e2</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX034da3451904487faca9df39d04e8478">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">serverReducer</string>
+					<string name="ScriptGuid">{e603c30f-1406-4a06-ae7b-53aa5d150ed4}</string>
+					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ServerStorage = game:GetService("ServerStorage")
+local Rodux = require(ReplicatedStorage.Rodux)
+
+local inventory = require(ServerStorage.Reducers.inventory)
+
+local reducer = Rodux.combineReducers({
+    inventory = inventory
+})
+
+return reducer]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">4960d71ec2ec66ae02b172d70002b9e3</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="ModuleScript" referent="RBX72799bf4a40e4a4ba14aca8da8f9b9ab">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">serverStore</string>
+				<string name="ScriptGuid">{a098ad7a-59d3-4966-bb21-fd0c8af3ece8}</string>
+				<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ServerStorage = game:GetService("ServerStorage")
+local Rodux = require(ReplicatedStorage.Rodux)
+
+local serverReducer = require(ServerStorage.Reducers.serverReducer)
+
+local store = Rodux.Store.new(serverReducer)
+
+return store]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">4960d71ec2ec66ae02b172d70002b9e6</UniqueId>
+			</Properties>
 		</Item>
 	</Item>
 	<Item class="ReplicatedStorage" referent="RBXad84534939da42d5b84df1ae94e7bfb8">
@@ -21752,10 +21888,10 @@ function Inventory:didMount()
     self.running = true
 
     -- Connect to a pickup event here: 
-    self.inventoryChangedEvent = ReplicatedStorage.InventoryChanged.OnClientEvent:Connect(function()
+    self.inventoryChangedEvent = ReplicatedStorage.InventoryChanged.OnClientEvent:Connect(function(newState)
         print("Inventory changed event fired")
         self:setState({
-            wood = Players.LocalPlayer.leaderstats.Wood.Value
+            wood = newState.wood
         })
     end)
 
@@ -21805,7 +21941,6 @@ local InventoryUIButton = require(ReplicatedStorage.Components.InventoryUIButton
 local Inventory = require(ReplicatedStorage.Components.Inventory)
 
 local openInventory = require(ReplicatedStorage.Actions.openInventory)
-local increment = require(ReplicatedStorage.Actions.increment)
 
 local App = Roact.Component:extend("App")
 
@@ -21833,9 +21968,6 @@ end
 
 local function mapDispatchToProps(dispatch)
     return {
-        onIncrement = function()
-            dispatch(increment(1))
-        end,
         onOpenInventory = function()
             dispatch(openInventory())
         end
@@ -21931,7 +22063,6 @@ return reducer]]></ProtectedString>
 					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Rodux = require(ReplicatedStorage.Rodux)
 
-local increment = require(ReplicatedStorage.Actions.increment)
 local openInventory = require(ReplicatedStorage.Actions.openInventory)
 
 local initialState = {
@@ -21940,12 +22071,6 @@ local initialState = {
 }
 
 local reducer = Rodux.createReducer(initialState, {
-    [increment.name] = function(state, action)
-        return {
-            val = state.val + action.amount
-        }
-    end,
-
     [openInventory.name] = function(state, action)
         return {
             openWindow = "inventory"
@@ -21968,29 +22093,6 @@ return reducer]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b81b</UniqueId>
 			</Properties>
-			<Item class="ModuleScript" referent="RBX794488b8c50f444e8159c17845ca047b">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">increment</string>
-					<string name="ScriptGuid">{45e31b17-e3a8-4fed-aaa2-0e14abf1b524}</string>
-					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local function increment(amount)
-    return {
-        amount = amount
-    }
-end
-
--- using makeActionCreator just handles having it set the type for us
-return Rodux.makeActionCreator(script.Name, increment)
-]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b81c</UniqueId>
-				</Properties>
-			</Item>
 			<Item class="ModuleScript" referent="RBXb489bfc16c6a40d9a18b1da6924f4198">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -22033,6 +22135,53 @@ return store]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">0de291c33bf3adf502b00b450002b824</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="ModuleScript" referent="RBXa3e25f3013504db9b4bd51d526967d46">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">RoduxUtils</string>
+				<string name="ScriptGuid">{cee38036-8115-4f1d-9c5c-ed6da5e3c875}</string>
+				<ProtectedString name="Source"><![CDATA[local function deepcopy(table)
+    local orig_type = type(table)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, table, nil do
+            copy[deepcopy(orig_key)] = deepcopy(orig_value)
+        end
+        setmetatable(copy, deepcopy(getmetatable(table)))
+    else -- number, string, boolean, etc
+        copy = table
+    end
+    return copy
+end
+
+local function deepmerge(t1, t2)
+    for k,v in pairs(t2) do
+        if type(v) == "table" then
+            if type(t1[k] or false) == "table" then
+                deepmerge(t1[k] or {}, t2[k] or {})
+            else
+                t1[k] = v
+            end
+        else
+            t1[k] = v
+        end
+    end
+    return t1
+end
+
+local RoduxUtils = {
+    ["deepmerge"] = deepmerge,
+    ["deepcopy"] = deepcopy
+}
+
+return RoduxUtils]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">4960d71ec2ec66ae02b172d700051168</UniqueId>
 			</Properties>
 		</Item>
 	</Item>

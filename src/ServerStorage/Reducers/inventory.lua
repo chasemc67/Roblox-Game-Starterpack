@@ -10,9 +10,7 @@ local initialState = {
 
 local reducer = Rodux.createReducer(initialState, {
     [updateInventory.name] = function(state, action)
-        -- update client that inventory changed
-        -- using a remoteEvent
-        -- inventoryUpdatedRemote:FireClients(action)
+        
         local userId = action.player.UserId
         local newValue = 1
         if state[userId] and state[userId].wood then
@@ -24,8 +22,14 @@ local reducer = Rodux.createReducer(initialState, {
                 wood = newValue
             }
         }
+        local newState = RoduxUtils.deepmerge(RoduxUtils.deepcopy(state), tableUpdates)
 
-        return RoduxUtils.deepmerge(RoduxUtils.deepcopy(state), tableUpdates)
+        -- update client that inventory changed
+        -- using a remoteEvent
+        -- inventoryUpdatedRemote:FireClients(action)
+        ReplicatedStorage.InventoryChanged:FireClient(action.player, newState[userId])
+
+        return newState
     end
 })
 
