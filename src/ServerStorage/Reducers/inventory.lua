@@ -1,11 +1,11 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ServerStorage = game:GetService("ServerStorage")
 local Rodux = require(ReplicatedStorage.Rodux)
+local RoduxUtils = require(ReplicatedStorage.RoduxUtils)
 
 local updateInventory = require(ServerStorage.Actions.updateInventory)
 
 local initialState = {
-    wood = 0
 }
 
 local reducer = Rodux.createReducer(initialState, {
@@ -13,9 +13,19 @@ local reducer = Rodux.createReducer(initialState, {
         -- update client that inventory changed
         -- using a remoteEvent
         -- inventoryUpdatedRemote:FireClients(action)
-        return {
-            wood = state.wood + 1
+        local userId = action.player.UserId
+        local newValue = 1
+        if state[userId] and state[userId].wood then
+            newValue = state[userId].wood + 1
+        end
+
+        local tableUpdates = {
+            [userId] = {
+                wood = newValue
+            }
         }
+
+        return RoduxUtils.deepmerge(RoduxUtils.deepcopy(state), tableUpdates)
     end
 })
 

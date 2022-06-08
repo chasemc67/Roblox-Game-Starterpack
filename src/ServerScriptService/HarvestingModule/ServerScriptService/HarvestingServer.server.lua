@@ -12,9 +12,7 @@ local function OnHarvest(player, inst)
     inst:Destroy()
     Data.increment(player, "Wood", 1)
     ReplicatedStorage.InventoryChanged:FireClient(player)
-    print("Current wood: " .. serverStore:getState().inventory.wood)
-    serverStore:dispatch(updateInventory())
-    print("After Disaptch wood: " .. serverStore:getState().inventory.wood)
+    serverStore:dispatch(updateInventory(player))
 end
 
 local function attachPromptLogic(inst)

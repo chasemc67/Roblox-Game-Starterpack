@@ -1,8 +1,9 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Rodux = require(ReplicatedStorage.Rodux)
 
-local function updateInventory()
+local function updateInventory(player)
     return {
+        player = player
     }
 end
 
