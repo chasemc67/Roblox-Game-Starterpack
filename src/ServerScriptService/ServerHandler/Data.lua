@@ -78,6 +78,7 @@ dataMod.load = function(player, count)
 			dataMod.load(player, count + 1)
 		else
 			print("Failed to load data, store is nil")
+			return
 		end
 	end
 
