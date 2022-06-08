@@ -37,6 +37,10 @@ local reducer = Rodux.createReducer(initialState, {
         local userId = action.player.UserId
         local data = action.data
 
+        if data == nil then
+            return
+        end
+
         local tableUpdates = {
             [userId] = data.inventory
         }
