@@ -74,6 +74,7 @@ dataMod.load = function(player, count)
 	if not success then
 		if store ~= nil then
 			dataMod.load(player, count + 1)
+			return
 		else
 			print("Failed to load data, store is nil")
 			return
@@ -109,6 +110,7 @@ dataMod.save = function(player, count)
 		if store ~= nil then
 			print("Loading data failed with error: " .. err .. ", trying again.")
 			dataMod.save(player, count + 1)
+			return
 		else
 			print("Failed to save data, store is nil")
 		end
