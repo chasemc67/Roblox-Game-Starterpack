@@ -1,7 +1,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
 local Roact = require(ReplicatedStorage.Roact)
 local RoactRodux = require(ReplicatedStorage.RoactRodux)
+local TableUtils = require(ReplicatedStorage.TableUtils)
 
 local closeInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("closeInventory"))
 
@@ -11,6 +11,19 @@ function Inventory:init()
 end
 
 function Inventory:render()
+
+    local items = TableUtils.map(self.props.inventory, function(key, value)
+        return Roact.createElement("TextButton", {
+            Text = key .. "<br/><br/>" ..  value, -- use rich text to make multiline
+            TextSize = 12,
+            ZIndex = 7,
+            BorderSizePixel = 1,
+            BackgroundColor3 = Color3.new(0.9, 0.9, 0.9),
+            TextWrapped = true,
+            RichText=true
+        })
+    end)
+
     return Roact.createElement("Frame", {
         Size = UDim2.new(0.6, 0, 0.7, 0),
         Position = UDim2.new(0.5, 0, 0.5, 0),
@@ -39,22 +52,14 @@ function Inventory:render()
                 HorizontalAlignment = Enum.HorizontalAlignment.Left,
                 VerticalAlignment = Enum.VerticalAlignment.Top,
             }), 
-            Wood = Roact.createElement("TextButton", {
-                Text = "Wood" .. "<br/><br/>" ..  self.props.wood, -- use rich text to make multiline
-                TextSize = 12,
-                ZIndex = 7,
-                BorderSizePixel = 1,
-                BackgroundColor3 = Color3.new(0.9, 0.9, 0.9),
-                TextWrapped = true,
-                RichText=true
-            })
+            Items = Roact.createFragment(items)
         })
     })
 end
 
 local function mapStateToProps(state)
     return {
-        wood = state.inventory and state.inventory.wood or 0
+        inventory = state.inventory or {}
     }
 end
 

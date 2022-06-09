@@ -6926,7 +6926,7 @@ return module
 									<string name="Name">Drops</string>
 									<string name="ScriptGuid">{0fd162f7-5cc8-48b2-b4bc-7ecfb8a67580}</string>
 									<ProtectedString name="Source"><![CDATA[local module = {
-	wood = 2
+	stone = 1
 }
 
 return module
@@ -6947,7 +6947,7 @@ return module
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
 							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002ee29</UniqueId>
-							<int64 name="VersionIdSerialize">2</int64>
+							<int64 name="VersionIdSerialize">3</int64>
 						</Properties>
 					</Item>
 				</Item>
@@ -9920,9 +9920,9 @@ return Rodux.makeActionCreator(script.Name, inventoryUpdatedAction)
 							<string name="Name">Inventory</string>
 							<string name="ScriptGuid">{c4ac916f-269b-416d-8147-ad3361e3a630}</string>
 							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
 local Roact = require(ReplicatedStorage.Roact)
 local RoactRodux = require(ReplicatedStorage.RoactRodux)
+local TableUtils = require(ReplicatedStorage.TableUtils)
 
 local closeInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("closeInventory"))
 
@@ -9932,6 +9932,19 @@ function Inventory:init()
 end
 
 function Inventory:render()
+
+    local items = TableUtils.map(self.props.inventory, function(key, value)
+        return Roact.createElement("TextButton", {
+            Text = key .. "<br/><br/>" ..  value, -- use rich text to make multiline
+            TextSize = 12,
+            ZIndex = 7,
+            BorderSizePixel = 1,
+            BackgroundColor3 = Color3.new(0.9, 0.9, 0.9),
+            TextWrapped = true,
+            RichText=true
+        })
+    end)
+
     return Roact.createElement("Frame", {
         Size = UDim2.new(0.6, 0, 0.7, 0),
         Position = UDim2.new(0.5, 0, 0.5, 0),
@@ -9960,22 +9973,14 @@ function Inventory:render()
                 HorizontalAlignment = Enum.HorizontalAlignment.Left,
                 VerticalAlignment = Enum.VerticalAlignment.Top,
             }), 
-            Wood = Roact.createElement("TextButton", {
-                Text = "Wood" .. "<br/><br/>" ..  self.props.wood, -- use rich text to make multiline
-                TextSize = 12,
-                ZIndex = 7,
-                BorderSizePixel = 1,
-                BackgroundColor3 = Color3.new(0.9, 0.9, 0.9),
-                TextWrapped = true,
-                RichText=true
-            })
+            Items = Roact.createFragment(items)
         })
     })
 end
 
 local function mapStateToProps(state)
     return {
-        wood = state.inventory and state.inventory.wood or 0
+        inventory = state.inventory or {}
     }
 end
 
@@ -24442,6 +24447,33 @@ return RoduxUtils]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">4960d71ec2ec66ae02b172d700051168</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="ModuleScript" referent="RBX159d2538e01f41beade666b2cfde60ee">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">TableUtils</string>
+				<string name="ScriptGuid">{1620e24e-c9d0-4c5b-89db-2cc89d825228}</string>
+				<ProtectedString name="Source"><![CDATA[local function map(table, mapFunction)
+    local newArr = {}
+    local arrI = 0
+    for key, value in pairs(table) do
+        newArr[arrI] = mapFunction(key, value)
+        arrI = arrI + 1
+    end
+
+    return newArr
+end
+
+local tableUtils = {
+    ["map"] = map
+}
+
+return tableUtils]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">769671bb7590a49c02b3f6f100136f0b</UniqueId>
 			</Properties>
 		</Item>
 	</Item>
