@@ -16,10 +16,6 @@ function Inventory:render()
         Position = UDim2.new(0.5, 0, 0.5, 0),
         AnchorPoint = Vector2.new(0.5, 0.5),
     }, {
-        TextLabel = Roact.createElement("TextLabel", {
-            Size = UDim2.new(1, 0, 1, 0),
-            Text = "Hello, Inventory!"
-        }),
         CloseButton = Roact.createElement("TextButton", {
             Size = UDim2.new(0, 15, 0, 15),
             Position = UDim2.new(1, -10, 0, 10),
@@ -29,12 +25,31 @@ function Inventory:render()
                 print("Close Button Clicked")
                 self.props.onCloseInventory()
             end
+        }),
+        InventoryGridFrame = Roact.createElement("Frame", {
+            Size = UDim2.new(1, 0, 1, -35),
+            Position = UDim2.new(0.5, 0, 0.5, 35),
+            AnchorPoint = Vector2.new(0.5, 0.5),
+        }, {
+            InventoryGrid = Roact.createElement("UIGridLayout", {
+                CellPadding = UDim2.new(0, 5, 0, 5),
+                CellSize = UDim2.new(0, 50, 0, 50),
+                FillDirection = Enum.FillDirection.Horizontal,
+                HorizontalAlignment = Enum.HorizontalAlignment.Center,
+                VerticalAlignment = Enum.VerticalAlignment.Center,
+            }), 
+            Wood = Roact.createElement("TextButton", {
+                Text = "Wood: " .. self.props.wood,
+                ZIndex = 7,
+                BorderSizePixel = 0,
+            })
         })
     })
 end
 
 local function mapStateToProps(state)
     return {
+        wood = state.inventory and state.inventory.wood or 0
     }
 end
 
