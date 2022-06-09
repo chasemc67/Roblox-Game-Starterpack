@@ -3,10 +3,10 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Roact = require(ReplicatedStorage.Roact)
 local RoactRodux = require(ReplicatedStorage.RoactRodux)
 
-local InventoryUIButton = require(ReplicatedStorage.Components.InventoryUIButton)
-local Inventory = require(ReplicatedStorage.Components.Inventory)
+local InventoryUIButton = require(ReplicatedStorage.Components:WaitForChild("InventoryUIButton"))
+local Inventory = require(ReplicatedStorage.Components:WaitForChild("Inventory"))
 
-local openInventory = require(ReplicatedStorage.Actions.openInventory)
+local openInventory = require(ReplicatedStorage.Actions:WaitForChild("openInventory"))
 
 local App = Roact.Component:extend("App")
 
@@ -14,7 +14,7 @@ function App:init()
 end
 
 function App:render()
-    if (self.props.openWindow == "inventory") then
+    if self.props.openWindow == "inventory" then
         print("Rendering Inventory UI")
         return Roact.createElement("ScreenGui", {}, {
             Roact.createElement(Inventory)

@@ -3,9 +3,9 @@ local ServerStorage = game:GetService("ServerStorage")
 local Rodux = require(ReplicatedStorage.Rodux)
 local RoduxUtils = require(ReplicatedStorage.RoduxUtils)
 
-local updateInventory = require(ServerStorage.Actions.updateInventory)
-local loadUser = require(ServerStorage.Actions.loadUser)
-local removeUser = require(ServerStorage.Actions.removeUser)
+local updateInventory = require(ServerStorage.Actions:WaitForChild("updateInventory"))
+local loadUser = require(ServerStorage.Actions:WaitForChild("loadUser"))
+local removeUser = require(ServerStorage.Actions:WaitForChild("removeUser"))
 
 local initialState = {
 }
