@@ -5382,596 +5382,6 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">60ac0bb170c84e0c0291a1c80013e821</UniqueId>
 				</Properties>
-				<Item class="Model" referent="RBX06f56e1368714ad787806698a17c6dc4">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<token name="LevelOfDetail">0</token>
-						<CoordinateFrame name="ModelMeshCFrame">
-							<X>0</X>
-							<Y>0</Y>
-							<Z>0</Z>
-							<R00>1</R00>
-							<R01>0</R01>
-							<R02>0</R02>
-							<R10>0</R10>
-							<R11>1</R11>
-							<R12>0</R12>
-							<R20>0</R20>
-							<R21>0</R21>
-							<R22>1</R22>
-						</CoordinateFrame>
-						<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
-						<Vector3 name="ModelMeshSize">
-							<X>0</X>
-							<Y>0</Y>
-							<Z>0</Z>
-						</Vector3>
-						<string name="Name">Palm</string>
-						<bool name="NeedsPivotMigration">false</bool>
-						<Ref name="PrimaryPart">null</Ref>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags">SEFSVkVTVEFCTEU=</BinaryString>
-						<UniqueId name="UniqueId">451f7efdbed127dd02935b990002946d</UniqueId>
-						<OptionalCoordinateFrame name="WorldPivotData">
-							<CFrame>
-								<X>-81.8076859</X>
-								<Y>-169.894806</Y>
-								<Z>119.627327</Z>
-								<R00>-0.998992383</R00>
-								<R01>0.0448663048</R01>
-								<R02>-0.000962942548</R02>
-								<R10>0.044876609</R10>
-								<R11>0.998762965</R11>
-								<R12>-0.0214359369</R12>
-								<R20>0</R20>
-								<R21>-0.0214580372</R21>
-								<R22>-0.999770045</R22>
-							</CFrame>
-						</OptionalCoordinateFrame>
-					</Properties>
-					<Item class="MeshPart" referent="RBX0ccffa46aaa74249a66f75d07e70feba">
-						<Properties>
-							<bool name="Anchored">true</bool>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<float name="BackParamA">-0.5</float>
-							<float name="BackParamB">0.5</float>
-							<token name="BackSurface">0</token>
-							<token name="BackSurfaceInput">0</token>
-							<float name="BottomParamA">-0.5</float>
-							<float name="BottomParamB">0.5</float>
-							<token name="BottomSurface">0</token>
-							<token name="BottomSurfaceInput">0</token>
-							<CoordinateFrame name="CFrame">
-								<X>-81.8076859</X>
-								<Y>-169.894806</Y>
-								<Z>119.627327</Z>
-								<R00>-0.998992205</R00>
-								<R01>0.0448663309</R01>
-								<R02>-0.000962929509</R02>
-								<R10>0.0448766015</R10>
-								<R11>0.998763561</R11>
-								<R12>-0.0214356463</R12>
-								<R20>0</R20>
-								<R21>-0.0214583483</R21>
-								<R22>-0.999770403</R22>
-							</CoordinateFrame>
-							<bool name="CanCollide">true</bool>
-							<bool name="CanQuery">true</bool>
-							<bool name="CanTouch">true</bool>
-							<bool name="CastShadow">true</bool>
-							<int name="CollisionGroupId">0</int>
-							<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
-							<PhysicalProperties name="CustomPhysicalProperties">
-								<CustomPhysics>false</CustomPhysics>
-							</PhysicalProperties>
-							<bool name="DoubleSided">false</bool>
-							<float name="FrontParamA">-0.5</float>
-							<float name="FrontParamB">0.5</float>
-							<token name="FrontSurface">0</token>
-							<token name="FrontSurfaceInput">0</token>
-							<bool name="HasJointOffset">false</bool>
-							<bool name="HasSkinnedMesh">false</bool>
-							<Vector3 name="InitialSize">
-								<X>39.7008667</X>
-								<Y>49.590271</Y>
-								<Z>32.8112335</Z>
-							</Vector3>
-							<Vector3 name="JointOffset">
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</Vector3>
-							<BinaryString name="LODData"></BinaryString>
-							<float name="LeftParamA">-0.5</float>
-							<float name="LeftParamB">0.5</float>
-							<token name="LeftSurface">0</token>
-							<token name="LeftSurfaceInput">0</token>
-							<bool name="Locked">false</bool>
-							<bool name="Massless">false</bool>
-							<token name="Material">256</token>
-							<string name="MaterialVariantSerialized"></string>
-							<Content name="MeshID"><url>rbxassetid://454473571</url></Content>
-							<Content name="MeshId"><url>rbxassetid://454473571</url></Content>
-							<string name="Name">Palm Tree</string>
-							<SharedString name="PhysicalConfigData">LOo9aNwQ/Yf4oXY5DArdaw==</SharedString>
-							<BinaryString name="PhysicsData"></BinaryString>
-							<CoordinateFrame name="PivotOffset">
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-								<R00>1</R00>
-								<R01>0</R01>
-								<R02>0</R02>
-								<R10>0</R10>
-								<R11>1</R11>
-								<R12>0</R12>
-								<R20>0</R20>
-								<R21>0</R21>
-								<R22>1</R22>
-							</CoordinateFrame>
-							<float name="Reflectance">0</float>
-							<token name="RenderFidelity">1</token>
-							<float name="RightParamA">-0.5</float>
-							<float name="RightParamB">0.5</float>
-							<token name="RightSurface">0</token>
-							<token name="RightSurfaceInput">0</token>
-							<int name="RootPriority">0</int>
-							<Vector3 name="RotVelocity">
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</Vector3>
-							<int64 name="SourceAssetId">454473582</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<Content name="TextureID"><url>rbxassetid://454473577</url></Content>
-							<float name="TopParamA">-0.5</float>
-							<float name="TopParamB">0.5</float>
-							<token name="TopSurface">0</token>
-							<token name="TopSurfaceInput">0</token>
-							<float name="Transparency">0</float>
-							<UniqueId name="UniqueId">451f7efdbed127dd02935b990002946e</UniqueId>
-							<Vector3 name="Velocity">
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</Vector3>
-							<int name="VertexCount">0</int>
-							<Vector3 name="size">
-								<X>26.7008667</X>
-								<Y>33.6275635</Y>
-								<Z>22.0672417</Z>
-							</Vector3>
-						</Properties>
-						<Item class="Part" referent="RBX39e543827eb64ee484ce807075729b59">
-							<Properties>
-								<bool name="Anchored">true</bool>
-								<BinaryString name="AttributesSerialize"></BinaryString>
-								<float name="BackParamA">-0.5</float>
-								<float name="BackParamB">0.5</float>
-								<token name="BackSurface">0</token>
-								<token name="BackSurfaceInput">0</token>
-								<float name="BottomParamA">-0.5</float>
-								<float name="BottomParamB">0.5</float>
-								<token name="BottomSurface">0</token>
-								<token name="BottomSurfaceInput">0</token>
-								<CoordinateFrame name="CFrame">
-									<X>-72.1824036</X>
-									<Y>-184.313141</Y>
-									<Z>119.622307</Z>
-									<R00>0.00140502781</R00>
-									<R01>-0.147478923</R01>
-									<R02>-0.989063919</R02>
-									<R10>0.163232058</R10>
-									<R11>0.97583431</R11>
-									<R12>-0.145274535</R12>
-									<R20>0.986587167</R20>
-									<R21>-0.161243841</R21>
-									<R22>0.0254445411</R22>
-								</CoordinateFrame>
-								<bool name="CanCollide">true</bool>
-								<bool name="CanQuery">true</bool>
-								<bool name="CanTouch">true</bool>
-								<bool name="CastShadow">true</bool>
-								<int name="CollisionGroupId">0</int>
-								<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
-								<PhysicalProperties name="CustomPhysicalProperties">
-									<CustomPhysics>false</CustomPhysics>
-								</PhysicalProperties>
-								<float name="FrontParamA">-0.5</float>
-								<float name="FrontParamB">0.5</float>
-								<token name="FrontSurface">0</token>
-								<token name="FrontSurfaceInput">0</token>
-								<float name="LeftParamA">-0.5</float>
-								<float name="LeftParamB">0.5</float>
-								<token name="LeftSurface">0</token>
-								<token name="LeftSurfaceInput">0</token>
-								<bool name="Locked">false</bool>
-								<bool name="Massless">false</bool>
-								<token name="Material">256</token>
-								<string name="MaterialVariantSerialized"></string>
-								<string name="Name">Base</string>
-								<CoordinateFrame name="PivotOffset">
-									<X>0</X>
-									<Y>0</Y>
-									<Z>0</Z>
-									<R00>1</R00>
-									<R01>0</R01>
-									<R02>0</R02>
-									<R10>0</R10>
-									<R11>1</R11>
-									<R12>0</R12>
-									<R20>0</R20>
-									<R21>0</R21>
-									<R22>1</R22>
-								</CoordinateFrame>
-								<float name="Reflectance">0</float>
-								<float name="RightParamA">-0.5</float>
-								<float name="RightParamB">0.5</float>
-								<token name="RightSurface">0</token>
-								<token name="RightSurfaceInput">0</token>
-								<int name="RootPriority">0</int>
-								<Vector3 name="RotVelocity">
-									<X>0</X>
-									<Y>0</Y>
-									<Z>0</Z>
-								</Vector3>
-								<int64 name="SourceAssetId">-1</int64>
-								<BinaryString name="Tags"></BinaryString>
-								<float name="TopParamA">-0.5</float>
-								<float name="TopParamB">0.5</float>
-								<token name="TopSurface">0</token>
-								<token name="TopSurfaceInput">0</token>
-								<float name="Transparency">0</float>
-								<UniqueId name="UniqueId">451f7efdbed127dd02935b990002946f</UniqueId>
-								<Vector3 name="Velocity">
-									<X>0</X>
-									<Y>0</Y>
-									<Z>0</Z>
-								</Vector3>
-								<token name="formFactorRaw">1</token>
-								<token name="shape">1</token>
-								<Vector3 name="size">
-									<X>0.400000006</X>
-									<Y>0.0999999642</Y>
-									<Z>0.200000003</Z>
-								</Vector3>
-							</Properties>
-							<Item class="ProximityPrompt" referent="RBXca7616bee3324387b594187938866280">
-								<Properties>
-									<string name="ActionText">Hit that tree!</string>
-									<BinaryString name="AttributesSerialize"></BinaryString>
-									<bool name="AutoLocalize">true</bool>
-									<bool name="ClickablePrompt">true</bool>
-									<bool name="Enabled">false</bool>
-									<token name="Exclusivity">0</token>
-									<token name="GamepadKeyCode">1000</token>
-									<float name="HoldDuration">1</float>
-									<token name="KeyboardKeyCode">101</token>
-									<float name="MaxActivationDistance">10</float>
-									<string name="Name">ProximityPrompt</string>
-									<string name="ObjectText"></string>
-									<bool name="RequiresLineOfSight">false</bool>
-									<Ref name="RootLocalizationTable">null</Ref>
-									<int64 name="SourceAssetId">-1</int64>
-									<token name="Style">0</token>
-									<BinaryString name="Tags"></BinaryString>
-									<Vector2 name="UIOffset">
-										<X>0</X>
-										<Y>0</Y>
-									</Vector2>
-									<UniqueId name="UniqueId">451f7efdbed127dd02935b9900029470</UniqueId>
-								</Properties>
-							</Item>
-						</Item>
-					</Item>
-					<Item class="PackageLink" referent="RBX92f28b1e9dad4b7882f93a070c79eae8">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<bool name="AutoUpdate">false</bool>
-							<string name="Name">PackageLink</string>
-							<Content name="PackageIdSerialize"><url>rbxassetid://9641760243</url></Content>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">451f7efdbed127dd02935b9900029471</UniqueId>
-							<int64 name="VersionIdSerialize">6</int64>
-						</Properties>
-					</Item>
-				</Item>
-				<Item class="Model" referent="RBXa75effcf39cc4db790832f41312268ef">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<token name="LevelOfDetail">0</token>
-						<CoordinateFrame name="ModelMeshCFrame">
-							<X>0</X>
-							<Y>0</Y>
-							<Z>0</Z>
-							<R00>1</R00>
-							<R01>0</R01>
-							<R02>0</R02>
-							<R10>0</R10>
-							<R11>1</R11>
-							<R12>0</R12>
-							<R20>0</R20>
-							<R21>0</R21>
-							<R22>1</R22>
-						</CoordinateFrame>
-						<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
-						<Vector3 name="ModelMeshSize">
-							<X>0</X>
-							<Y>0</Y>
-							<Z>0</Z>
-						</Vector3>
-						<string name="Name">Palm</string>
-						<bool name="NeedsPivotMigration">false</bool>
-						<Ref name="PrimaryPart">null</Ref>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags">SEFSVkVTVEFCTEU=</BinaryString>
-						<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b780</UniqueId>
-						<OptionalCoordinateFrame name="WorldPivotData">
-							<CFrame>
-								<X>141.050446</X>
-								<Y>-169.186218</Y>
-								<Z>97.3663788</Z>
-								<R00>0.707106709</R00>
-								<R01>-8.42400212e-08</R01>
-								<R02>-0.707106829</R02>
-								<R10>0</R10>
-								<R11>1.00000024</R11>
-								<R12>1.19133382e-07</R12>
-								<R20>0.707106709</R20>
-								<R21>8.42400212e-08</R21>
-								<R22>0.707106829</R22>
-							</CFrame>
-						</OptionalCoordinateFrame>
-					</Properties>
-					<Item class="MeshPart" referent="RBXdb3e638b5ff74b6889c5404c06e19f9e">
-						<Properties>
-							<bool name="Anchored">true</bool>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<float name="BackParamA">-0.5</float>
-							<float name="BackParamB">0.5</float>
-							<token name="BackSurface">0</token>
-							<token name="BackSurfaceInput">0</token>
-							<float name="BottomParamA">-0.5</float>
-							<float name="BottomParamB">0.5</float>
-							<token name="BottomSurface">0</token>
-							<token name="BottomSurfaceInput">0</token>
-							<CoordinateFrame name="CFrame">
-								<X>141.050446</X>
-								<Y>-169.186218</Y>
-								<Z>97.3663788</Z>
-								<R00>0.707106352</R00>
-								<R01>-6.36100481e-07</R01>
-								<R02>-0.707107484</R02>
-								<R10>1.3868951e-17</R10>
-								<R11>1.00000179</R11>
-								<R12>8.9771936e-07</R12>
-								<R20>0.707106352</R20>
-								<R21>6.30832119e-07</R21>
-								<R22>0.707107484</R22>
-							</CoordinateFrame>
-							<bool name="CanCollide">true</bool>
-							<bool name="CanQuery">true</bool>
-							<bool name="CanTouch">true</bool>
-							<bool name="CastShadow">true</bool>
-							<int name="CollisionGroupId">0</int>
-							<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
-							<PhysicalProperties name="CustomPhysicalProperties">
-								<CustomPhysics>false</CustomPhysics>
-							</PhysicalProperties>
-							<bool name="DoubleSided">false</bool>
-							<float name="FrontParamA">-0.5</float>
-							<float name="FrontParamB">0.5</float>
-							<token name="FrontSurface">0</token>
-							<token name="FrontSurfaceInput">0</token>
-							<bool name="HasJointOffset">false</bool>
-							<bool name="HasSkinnedMesh">false</bool>
-							<Vector3 name="InitialSize">
-								<X>39.7008667</X>
-								<Y>49.590271</Y>
-								<Z>32.8112335</Z>
-							</Vector3>
-							<Vector3 name="JointOffset">
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</Vector3>
-							<BinaryString name="LODData"></BinaryString>
-							<float name="LeftParamA">-0.5</float>
-							<float name="LeftParamB">0.5</float>
-							<token name="LeftSurface">0</token>
-							<token name="LeftSurfaceInput">0</token>
-							<bool name="Locked">false</bool>
-							<bool name="Massless">false</bool>
-							<token name="Material">256</token>
-							<string name="MaterialVariantSerialized"></string>
-							<Content name="MeshID"><url>rbxassetid://454473571</url></Content>
-							<Content name="MeshId"><url>rbxassetid://454473571</url></Content>
-							<string name="Name">Palm Tree</string>
-							<SharedString name="PhysicalConfigData">LOo9aNwQ/Yf4oXY5DArdaw==</SharedString>
-							<BinaryString name="PhysicsData"></BinaryString>
-							<CoordinateFrame name="PivotOffset">
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-								<R00>1</R00>
-								<R01>0</R01>
-								<R02>0</R02>
-								<R10>0</R10>
-								<R11>1</R11>
-								<R12>0</R12>
-								<R20>0</R20>
-								<R21>0</R21>
-								<R22>1</R22>
-							</CoordinateFrame>
-							<float name="Reflectance">0</float>
-							<token name="RenderFidelity">1</token>
-							<float name="RightParamA">-0.5</float>
-							<float name="RightParamB">0.5</float>
-							<token name="RightSurface">0</token>
-							<token name="RightSurfaceInput">0</token>
-							<int name="RootPriority">0</int>
-							<Vector3 name="RotVelocity">
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</Vector3>
-							<int64 name="SourceAssetId">454473582</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<Content name="TextureID"><url>rbxassetid://454473577</url></Content>
-							<float name="TopParamA">-0.5</float>
-							<float name="TopParamB">0.5</float>
-							<token name="TopSurface">0</token>
-							<token name="TopSurfaceInput">0</token>
-							<float name="Transparency">0</float>
-							<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b781</UniqueId>
-							<Vector3 name="Velocity">
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</Vector3>
-							<int name="VertexCount">0</int>
-							<Vector3 name="size">
-								<X>26.7008667</X>
-								<Y>33.6275635</Y>
-								<Z>22.0672417</Z>
-							</Vector3>
-						</Properties>
-						<Item class="Part" referent="RBX9108372154634c67975b247ab36406a2">
-							<Properties>
-								<bool name="Anchored">true</bool>
-								<BinaryString name="AttributesSerialize"></BinaryString>
-								<float name="BackParamA">-0.5</float>
-								<float name="BackParamB">0.5</float>
-								<token name="BackSurface">0</token>
-								<token name="BackSurfaceInput">0</token>
-								<float name="BottomParamA">-0.5</float>
-								<float name="BottomParamB">0.5</float>
-								<token name="BottomSurface">0</token>
-								<token name="BottomSurfaceInput">0</token>
-								<CoordinateFrame name="CFrame">
-									<X>133.57814</X>
-									<Y>-183.154755</Y>
-									<Z>90.3251419</Z>
-									<R00>0.70412451</R00>
-									<R01>0.0358442739</R01>
-									<R02>0.709171474</R02>
-									<R10>0.141922846</R10>
-									<R11>0.971470594</R11>
-									<R12>-0.190016508</R12>
-									<R20>-0.695749998</R20>
-									<R21>0.234443665</R21>
-									<R22>0.678946674</R22>
-								</CoordinateFrame>
-								<bool name="CanCollide">true</bool>
-								<bool name="CanQuery">true</bool>
-								<bool name="CanTouch">true</bool>
-								<bool name="CastShadow">true</bool>
-								<int name="CollisionGroupId">0</int>
-								<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
-								<PhysicalProperties name="CustomPhysicalProperties">
-									<CustomPhysics>false</CustomPhysics>
-								</PhysicalProperties>
-								<float name="FrontParamA">-0.5</float>
-								<float name="FrontParamB">0.5</float>
-								<token name="FrontSurface">0</token>
-								<token name="FrontSurfaceInput">0</token>
-								<float name="LeftParamA">-0.5</float>
-								<float name="LeftParamB">0.5</float>
-								<token name="LeftSurface">0</token>
-								<token name="LeftSurfaceInput">0</token>
-								<bool name="Locked">false</bool>
-								<bool name="Massless">false</bool>
-								<token name="Material">256</token>
-								<string name="MaterialVariantSerialized"></string>
-								<string name="Name">Base</string>
-								<CoordinateFrame name="PivotOffset">
-									<X>0</X>
-									<Y>0</Y>
-									<Z>0</Z>
-									<R00>1</R00>
-									<R01>0</R01>
-									<R02>0</R02>
-									<R10>0</R10>
-									<R11>1</R11>
-									<R12>0</R12>
-									<R20>0</R20>
-									<R21>0</R21>
-									<R22>1</R22>
-								</CoordinateFrame>
-								<float name="Reflectance">0</float>
-								<float name="RightParamA">-0.5</float>
-								<float name="RightParamB">0.5</float>
-								<token name="RightSurface">0</token>
-								<token name="RightSurfaceInput">0</token>
-								<int name="RootPriority">0</int>
-								<Vector3 name="RotVelocity">
-									<X>0</X>
-									<Y>0</Y>
-									<Z>0</Z>
-								</Vector3>
-								<int64 name="SourceAssetId">-1</int64>
-								<BinaryString name="Tags"></BinaryString>
-								<float name="TopParamA">-0.5</float>
-								<float name="TopParamB">0.5</float>
-								<token name="TopSurface">0</token>
-								<token name="TopSurfaceInput">0</token>
-								<float name="Transparency">0</float>
-								<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b782</UniqueId>
-								<Vector3 name="Velocity">
-									<X>0</X>
-									<Y>0</Y>
-									<Z>0</Z>
-								</Vector3>
-								<token name="formFactorRaw">1</token>
-								<token name="shape">1</token>
-								<Vector3 name="size">
-									<X>0.400000006</X>
-									<Y>0.0999999642</Y>
-									<Z>0.200000003</Z>
-								</Vector3>
-							</Properties>
-							<Item class="ProximityPrompt" referent="RBXcde62263414142179b405372f85ed1b7">
-								<Properties>
-									<string name="ActionText">Hit that tree!</string>
-									<BinaryString name="AttributesSerialize"></BinaryString>
-									<bool name="AutoLocalize">true</bool>
-									<bool name="ClickablePrompt">true</bool>
-									<bool name="Enabled">false</bool>
-									<token name="Exclusivity">0</token>
-									<token name="GamepadKeyCode">1000</token>
-									<float name="HoldDuration">1</float>
-									<token name="KeyboardKeyCode">101</token>
-									<float name="MaxActivationDistance">10</float>
-									<string name="Name">ProximityPrompt</string>
-									<string name="ObjectText"></string>
-									<bool name="RequiresLineOfSight">false</bool>
-									<Ref name="RootLocalizationTable">null</Ref>
-									<int64 name="SourceAssetId">-1</int64>
-									<token name="Style">0</token>
-									<BinaryString name="Tags"></BinaryString>
-									<Vector2 name="UIOffset">
-										<X>0</X>
-										<Y>0</Y>
-									</Vector2>
-									<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b783</UniqueId>
-								</Properties>
-							</Item>
-						</Item>
-					</Item>
-					<Item class="PackageLink" referent="RBX60d875768cd040c78b4eac7e07f724cd">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<bool name="AutoUpdate">false</bool>
-							<string name="Name">PackageLink</string>
-							<Content name="PackageIdSerialize"><url>rbxassetid://9641760243</url></Content>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b784</UniqueId>
-							<int64 name="VersionIdSerialize">6</int64>
-						</Properties>
-					</Item>
-				</Item>
 				<Item class="Model" referent="RBXd6844273683843d08be3be75ed47cdc5">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6252,6 +5662,23 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 									<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b9c5</UniqueId>
 								</Properties>
 							</Item>
+							<Item class="ModuleScript" referent="RBX06533077e04843d3b29428c55d7a0027">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<Content name="LinkedSource"><null></null></Content>
+									<string name="Name">Drops</string>
+									<string name="ScriptGuid">{154ac37a-d33b-4e68-9e7f-287dbcc40ec3}</string>
+									<ProtectedString name="Source"><![CDATA[local module = {
+	wood = 1
+}
+
+return module
+]]></ProtectedString>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+									<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10011209d</UniqueId>
+								</Properties>
+							</Item>
 						</Item>
 					</Item>
 					<Item class="PackageLink" referent="RBXf5b598b841be4492be88dc4e80d847db">
@@ -6263,11 +5690,11 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
 							<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b9c6</UniqueId>
-							<int64 name="VersionIdSerialize">6</int64>
+							<int64 name="VersionIdSerialize">7</int64>
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="Model" referent="RBX0932ee96ada54b4f80086d2b9dfbda23">
+				<Item class="Model" referent="RBXb9319dd9e937479582f10b6a0c335244">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<token name="LevelOfDetail">0</token>
@@ -6296,25 +5723,25 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 						<Ref name="PrimaryPart">null</Ref>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags">SEFSVkVTVEFCTEU=</BinaryString>
-						<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b9cb</UniqueId>
+						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f1001120e2</UniqueId>
 						<OptionalCoordinateFrame name="WorldPivotData">
 							<CFrame>
-								<X>116.069504</X>
-								<Y>-169.793579</Y>
-								<Z>-6.92733765</Z>
-								<R00>0.999237955</R00>
-								<R01>-0.0390300639</R01>
-								<R02>0.000457048416</R02>
-								<R10>0.0390327312</R10>
-								<R11>0.999169707</R11>
-								<R12>-0.0116999764</R12>
-								<R20>0</R20>
-								<R21>0.0117091388</R21>
-								<R22>0.999931693</R22>
+								<X>141.050446</X>
+								<Y>-169.186218</Y>
+								<Z>97.3663788</Z>
+								<R00>0.707106709</R00>
+								<R01>-8.42400212e-08</R01>
+								<R02>-0.707106829</R02>
+								<R10>0</R10>
+								<R11>1.00000024</R11>
+								<R12>1.19133382e-07</R12>
+								<R20>0.707106709</R20>
+								<R21>8.42400212e-08</R21>
+								<R22>0.707106829</R22>
 							</CFrame>
 						</OptionalCoordinateFrame>
 					</Properties>
-					<Item class="MeshPart" referent="RBXd048c1971d3b4f34aa91af488b7cd050">
+					<Item class="MeshPart" referent="RBX1654397e33714746843127decec35f5f">
 						<Properties>
 							<bool name="Anchored">true</bool>
 							<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6327,18 +5754,18 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 							<token name="BottomSurface">0</token>
 							<token name="BottomSurfaceInput">0</token>
 							<CoordinateFrame name="CFrame">
-								<X>116.069504</X>
-								<Y>-169.793579</Y>
-								<Z>-6.92733765</Z>
-								<R00>0.999237478</R00>
-								<R01>-0.0390301272</R01>
-								<R02>0.000457018585</R02>
-								<R10>0.0390327126</R10>
-								<R11>0.999171257</R11>
-								<R12>-0.0116992099</R12>
-								<R20>1.1640737e-10</R20>
-								<R21>0.0117099332</R21>
-								<R22>0.999932647</R22>
+								<X>141.050446</X>
+								<Y>-169.186218</Y>
+								<Z>97.3663788</Z>
+								<R00>0.707106352</R00>
+								<R01>-8.04687943e-07</R01>
+								<R02>-0.707107842</R02>
+								<R10>-9.31319244e-10</R10>
+								<R11>1.00000215</R11>
+								<R12>1.13706938e-06</R12>
+								<R20>0.707106352</R20>
+								<R21>7.98760993e-07</R21>
+								<R22>0.707107842</R22>
 							</CoordinateFrame>
 							<bool name="CanCollide">true</bool>
 							<bool name="CanQuery">true</bool>
@@ -6414,7 +5841,7 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 							<token name="TopSurface">0</token>
 							<token name="TopSurfaceInput">0</token>
 							<float name="Transparency">0</float>
-							<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b9cc</UniqueId>
+							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f1001120e3</UniqueId>
 							<Vector3 name="Velocity">
 								<X>0</X>
 								<Y>0</Y>
@@ -6427,7 +5854,7 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 								<Z>22.0672417</Z>
 							</Vector3>
 						</Properties>
-						<Item class="Part" referent="RBX13a8e57a349d44219d1944414f2287be">
+						<Item class="Part" referent="RBX044885ac749947c8a272dc3762cde8f1">
 							<Properties>
 								<bool name="Anchored">true</bool>
 								<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6440,18 +5867,18 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 								<token name="BottomSurface">0</token>
 								<token name="BottomSurfaceInput">0</token>
 								<CoordinateFrame name="CFrame">
-									<X>106.360031</X>
-									<Y>-184.154663</Y>
-									<Z>-6.78610086</Z>
-									<R00>-7.44989375e-05</R00>
-									<R01>0.153124437</R01>
-									<R02>0.988206506</R02>
-									<R10>0.153617591</R10>
-									<R11>0.976480722</R11>
-									<R12>-0.151296139</R12>
-									<R20>-0.988131344</R20>
-									<R21>0.151796341</R21>
-									<R22>-0.0235956535</R22>
+									<X>133.57814</X>
+									<Y>-183.15477</Y>
+									<Z>90.3251419</Z>
+									<R00>0.704124868</R00>
+									<R01>0.0358440429</R01>
+									<R02>0.709171534</R02>
+									<R10>0.141922697</R10>
+									<R11>0.971471012</R11>
+									<R12>-0.190016612</R12>
+									<R20>-0.695750356</R20>
+									<R21>0.234443858</R21>
+									<R22>0.678946733</R22>
 								</CoordinateFrame>
 								<bool name="CanCollide">true</bool>
 								<bool name="CanQuery">true</bool>
@@ -6507,7 +5934,7 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 								<token name="TopSurface">0</token>
 								<token name="TopSurfaceInput">0</token>
 								<float name="Transparency">0</float>
-								<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b9cd</UniqueId>
+								<UniqueId name="UniqueId">769671bb7590a49c02b3f6f1001120e4</UniqueId>
 								<Vector3 name="Velocity">
 									<X>0</X>
 									<Y>0</Y>
@@ -6521,7 +5948,7 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 									<Z>0.200000003</Z>
 								</Vector3>
 							</Properties>
-							<Item class="ProximityPrompt" referent="RBXff20c19b6aa145b5a1df32eb79f5ff2f">
+							<Item class="ProximityPrompt" referent="RBXaafa7cfa941641f79f48946f4624482c">
 								<Properties>
 									<string name="ActionText">Hit that tree!</string>
 									<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6544,12 +5971,29 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 										<X>0</X>
 										<Y>0</Y>
 									</Vector2>
-									<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b9ce</UniqueId>
+									<UniqueId name="UniqueId">769671bb7590a49c02b3f6f1001120e5</UniqueId>
+								</Properties>
+							</Item>
+							<Item class="ModuleScript" referent="RBXb510c586f0664bb7b69e3d1a9f458d6b">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<Content name="LinkedSource"><null></null></Content>
+									<string name="Name">Drops</string>
+									<string name="ScriptGuid">{8ddd3259-8a82-40c3-83be-7a963b26b09f}</string>
+									<ProtectedString name="Source"><![CDATA[local module = {
+	wood = 1
+}
+
+return module
+]]></ProtectedString>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+									<UniqueId name="UniqueId">769671bb7590a49c02b3f6f1001120e6</UniqueId>
 								</Properties>
 							</Item>
 						</Item>
 					</Item>
-					<Item class="PackageLink" referent="RBX8fbb427e560e4da8bf2dbbfde69151cc">
+					<Item class="PackageLink" referent="RBXa1bcb356b80945eeac782cec18ae1fce">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<bool name="AutoUpdate">false</bool>
@@ -6557,8 +6001,632 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 							<Content name="PackageIdSerialize"><url>rbxassetid://9641760243</url></Content>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">49520e3dd1a1adb8029bfd570002b9cf</UniqueId>
-							<int64 name="VersionIdSerialize">6</int64>
+							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f1001120e7</UniqueId>
+							<int64 name="VersionIdSerialize">7</int64>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="Model" referent="RBXa20eb6858ba748ccb6efeb048d748fa8">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<token name="LevelOfDetail">0</token>
+						<CoordinateFrame name="ModelMeshCFrame">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+							<R00>1</R00>
+							<R01>0</R01>
+							<R02>0</R02>
+							<R10>0</R10>
+							<R11>1</R11>
+							<R12>0</R12>
+							<R20>0</R20>
+							<R21>0</R21>
+							<R22>1</R22>
+						</CoordinateFrame>
+						<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						<Vector3 name="ModelMeshSize">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<string name="Name">Palm</string>
+						<bool name="NeedsPivotMigration">false</bool>
+						<Ref name="PrimaryPart">null</Ref>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags">SEFSVkVTVEFCTEU=</BinaryString>
+						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10011210f</UniqueId>
+						<OptionalCoordinateFrame name="WorldPivotData">
+							<CFrame>
+								<X>-81.8076859</X>
+								<Y>-169.894806</Y>
+								<Z>119.627327</Z>
+								<R00>-0.998992383</R00>
+								<R01>0.0448663048</R01>
+								<R02>-0.000962942548</R02>
+								<R10>0.044876609</R10>
+								<R11>0.998762965</R11>
+								<R12>-0.0214359369</R12>
+								<R20>0</R20>
+								<R21>-0.0214580372</R21>
+								<R22>-0.999770045</R22>
+							</CFrame>
+						</OptionalCoordinateFrame>
+					</Properties>
+					<Item class="MeshPart" referent="RBXdc2d710d26a542af9b40f0779e7f78a0">
+						<Properties>
+							<bool name="Anchored">true</bool>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>-81.8076859</X>
+								<Y>-169.894806</Y>
+								<Z>119.627327</Z>
+								<R00>-0.998991907</R00>
+								<R01>0.0448663943</R01>
+								<R02>-0.000962928054</R02>
+								<R10>0.0448765866</R10>
+								<R11>0.998764873</R11>
+								<R12>-0.0214349478</R12>
+								<R20>-2.97754852e-08</R20>
+								<R21>-0.0214590933</R21>
+								<R22>-0.999771476</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CanQuery">true</bool>
+							<bool name="CanTouch">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<bool name="DoubleSided">false</bool>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<bool name="HasJointOffset">false</bool>
+							<bool name="HasSkinnedMesh">false</bool>
+							<Vector3 name="InitialSize">
+								<X>39.7008667</X>
+								<Y>49.590271</Y>
+								<Z>32.8112335</Z>
+							</Vector3>
+							<Vector3 name="JointOffset">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<BinaryString name="LODData"></BinaryString>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MaterialVariantSerialized"></string>
+							<Content name="MeshID"><url>rbxassetid://454473571</url></Content>
+							<Content name="MeshId"><url>rbxassetid://454473571</url></Content>
+							<string name="Name">Palm Tree</string>
+							<SharedString name="PhysicalConfigData">LOo9aNwQ/Yf4oXY5DArdaw==</SharedString>
+							<BinaryString name="PhysicsData"></BinaryString>
+							<CoordinateFrame name="PivotOffset">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+								<R00>1</R00>
+								<R01>0</R01>
+								<R02>0</R02>
+								<R10>0</R10>
+								<R11>1</R11>
+								<R12>0</R12>
+								<R20>0</R20>
+								<R21>0</R21>
+								<R22>1</R22>
+							</CoordinateFrame>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<int64 name="SourceAssetId">454473582</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<Content name="TextureID"><url>rbxassetid://454473577</url></Content>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">0</float>
+							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f100112110</UniqueId>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<int name="VertexCount">0</int>
+							<Vector3 name="size">
+								<X>26.7008667</X>
+								<Y>33.6275635</Y>
+								<Z>22.0672417</Z>
+							</Vector3>
+						</Properties>
+						<Item class="Part" referent="RBXe2a005a14d4d43d380bc1cf8c881fbc8">
+							<Properties>
+								<bool name="Anchored">true</bool>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<float name="BackParamA">-0.5</float>
+								<float name="BackParamB">0.5</float>
+								<token name="BackSurface">0</token>
+								<token name="BackSurfaceInput">0</token>
+								<float name="BottomParamA">-0.5</float>
+								<float name="BottomParamB">0.5</float>
+								<token name="BottomSurface">0</token>
+								<token name="BottomSurfaceInput">0</token>
+								<CoordinateFrame name="CFrame">
+									<X>-72.1824036</X>
+									<Y>-184.313171</Y>
+									<Z>119.622322</Z>
+									<R00>0.00140500604</R00>
+									<R01>-0.147478774</R01>
+									<R02>-0.98906368</R02>
+									<R10>0.163231567</R10>
+									<R11>0.975835681</R11>
+									<R12>-0.145274833</R12>
+									<R20>0.98658824</R20>
+									<R21>-0.161244735</R21>
+									<R22>0.0254446361</R22>
+								</CoordinateFrame>
+								<bool name="CanCollide">true</bool>
+								<bool name="CanQuery">true</bool>
+								<bool name="CanTouch">true</bool>
+								<bool name="CastShadow">true</bool>
+								<int name="CollisionGroupId">0</int>
+								<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+								<PhysicalProperties name="CustomPhysicalProperties">
+									<CustomPhysics>false</CustomPhysics>
+								</PhysicalProperties>
+								<float name="FrontParamA">-0.5</float>
+								<float name="FrontParamB">0.5</float>
+								<token name="FrontSurface">0</token>
+								<token name="FrontSurfaceInput">0</token>
+								<float name="LeftParamA">-0.5</float>
+								<float name="LeftParamB">0.5</float>
+								<token name="LeftSurface">0</token>
+								<token name="LeftSurfaceInput">0</token>
+								<bool name="Locked">false</bool>
+								<bool name="Massless">false</bool>
+								<token name="Material">256</token>
+								<string name="MaterialVariantSerialized"></string>
+								<string name="Name">Base</string>
+								<CoordinateFrame name="PivotOffset">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+									<R00>1</R00>
+									<R01>0</R01>
+									<R02>0</R02>
+									<R10>0</R10>
+									<R11>1</R11>
+									<R12>0</R12>
+									<R20>0</R20>
+									<R21>0</R21>
+									<R22>1</R22>
+								</CoordinateFrame>
+								<float name="Reflectance">0</float>
+								<float name="RightParamA">-0.5</float>
+								<float name="RightParamB">0.5</float>
+								<token name="RightSurface">0</token>
+								<token name="RightSurfaceInput">0</token>
+								<int name="RootPriority">0</int>
+								<Vector3 name="RotVelocity">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+								</Vector3>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+								<float name="TopParamA">-0.5</float>
+								<float name="TopParamB">0.5</float>
+								<token name="TopSurface">0</token>
+								<token name="TopSurfaceInput">0</token>
+								<float name="Transparency">0</float>
+								<UniqueId name="UniqueId">769671bb7590a49c02b3f6f100112111</UniqueId>
+								<Vector3 name="Velocity">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+								</Vector3>
+								<token name="formFactorRaw">1</token>
+								<token name="shape">1</token>
+								<Vector3 name="size">
+									<X>0.400000006</X>
+									<Y>0.0999999642</Y>
+									<Z>0.200000003</Z>
+								</Vector3>
+							</Properties>
+							<Item class="ProximityPrompt" referent="RBX94dafba8ad9a47209606a529986d6fde">
+								<Properties>
+									<string name="ActionText">Hit that tree!</string>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<bool name="AutoLocalize">true</bool>
+									<bool name="ClickablePrompt">true</bool>
+									<bool name="Enabled">false</bool>
+									<token name="Exclusivity">0</token>
+									<token name="GamepadKeyCode">1000</token>
+									<float name="HoldDuration">1</float>
+									<token name="KeyboardKeyCode">101</token>
+									<float name="MaxActivationDistance">10</float>
+									<string name="Name">ProximityPrompt</string>
+									<string name="ObjectText"></string>
+									<bool name="RequiresLineOfSight">false</bool>
+									<Ref name="RootLocalizationTable">null</Ref>
+									<int64 name="SourceAssetId">-1</int64>
+									<token name="Style">0</token>
+									<BinaryString name="Tags"></BinaryString>
+									<Vector2 name="UIOffset">
+										<X>0</X>
+										<Y>0</Y>
+									</Vector2>
+									<UniqueId name="UniqueId">769671bb7590a49c02b3f6f100112112</UniqueId>
+								</Properties>
+							</Item>
+							<Item class="ModuleScript" referent="RBX6014c0234a2c4e7d96374b3c9b970971">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<Content name="LinkedSource"><null></null></Content>
+									<string name="Name">Drops</string>
+									<string name="ScriptGuid">{7030bea7-630c-40f8-bbd5-9afa0c744f90}</string>
+									<ProtectedString name="Source"><![CDATA[local module = {
+	wood = 1
+}
+
+return module
+]]></ProtectedString>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+									<UniqueId name="UniqueId">769671bb7590a49c02b3f6f100112113</UniqueId>
+								</Properties>
+							</Item>
+						</Item>
+					</Item>
+					<Item class="PackageLink" referent="RBXc936f4f01f91490b931cf82b0e3ad9c3">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoUpdate">false</bool>
+							<string name="Name">PackageLink</string>
+							<Content name="PackageIdSerialize"><url>rbxassetid://9641760243</url></Content>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f100112114</UniqueId>
+							<int64 name="VersionIdSerialize">7</int64>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="Model" referent="RBX2a00775928084442882c8b9e214a6761">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<token name="LevelOfDetail">0</token>
+						<CoordinateFrame name="ModelMeshCFrame">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+							<R00>1</R00>
+							<R01>0</R01>
+							<R02>0</R02>
+							<R10>0</R10>
+							<R11>1</R11>
+							<R12>0</R12>
+							<R20>0</R20>
+							<R21>0</R21>
+							<R22>1</R22>
+						</CoordinateFrame>
+						<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						<Vector3 name="ModelMeshSize">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<string name="Name">Palm</string>
+						<bool name="NeedsPivotMigration">false</bool>
+						<Ref name="PrimaryPart">null</Ref>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags">SEFSVkVTVEFCTEU=</BinaryString>
+						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10011213c</UniqueId>
+						<OptionalCoordinateFrame name="WorldPivotData">
+							<CFrame>
+								<X>116.069504</X>
+								<Y>-169.793579</Y>
+								<Z>-6.92733765</Z>
+								<R00>0.999237955</R00>
+								<R01>-0.0390300639</R01>
+								<R02>0.000457048416</R02>
+								<R10>0.0390327312</R10>
+								<R11>0.999169707</R11>
+								<R12>-0.0116999764</R12>
+								<R20>0</R20>
+								<R21>0.0117091388</R21>
+								<R22>0.999931693</R22>
+							</CFrame>
+						</OptionalCoordinateFrame>
+					</Properties>
+					<Item class="MeshPart" referent="RBXbfc36ebe80004954a60a535881f9dd59">
+						<Properties>
+							<bool name="Anchored">true</bool>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>116.069504</X>
+								<Y>-169.793579</Y>
+								<Z>-6.92733765</Z>
+								<R00>0.999237478</R00>
+								<R01>-0.0390301421</R01>
+								<R02>0.000457039103</R02>
+								<R10>0.0390327126</R10>
+								<R11>0.999171615</R11>
+								<R12>-0.0116989752</R12>
+								<R20>2.97893816e-08</R20>
+								<R21>0.0117101753</R21>
+								<R22>0.999933124</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CanQuery">true</bool>
+							<bool name="CanTouch">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<bool name="DoubleSided">false</bool>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<bool name="HasJointOffset">false</bool>
+							<bool name="HasSkinnedMesh">false</bool>
+							<Vector3 name="InitialSize">
+								<X>39.7008667</X>
+								<Y>49.590271</Y>
+								<Z>32.8112335</Z>
+							</Vector3>
+							<Vector3 name="JointOffset">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<BinaryString name="LODData"></BinaryString>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MaterialVariantSerialized"></string>
+							<Content name="MeshID"><url>rbxassetid://454473571</url></Content>
+							<Content name="MeshId"><url>rbxassetid://454473571</url></Content>
+							<string name="Name">Palm Tree</string>
+							<SharedString name="PhysicalConfigData">LOo9aNwQ/Yf4oXY5DArdaw==</SharedString>
+							<BinaryString name="PhysicsData"></BinaryString>
+							<CoordinateFrame name="PivotOffset">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+								<R00>1</R00>
+								<R01>0</R01>
+								<R02>0</R02>
+								<R10>0</R10>
+								<R11>1</R11>
+								<R12>0</R12>
+								<R20>0</R20>
+								<R21>0</R21>
+								<R22>1</R22>
+							</CoordinateFrame>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<int64 name="SourceAssetId">454473582</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<Content name="TextureID"><url>rbxassetid://454473577</url></Content>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">0</float>
+							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10011213d</UniqueId>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<int name="VertexCount">0</int>
+							<Vector3 name="size">
+								<X>26.7008667</X>
+								<Y>33.6275635</Y>
+								<Z>22.0672417</Z>
+							</Vector3>
+						</Properties>
+						<Item class="Part" referent="RBXa606173721164b929987c13fe8d89c53">
+							<Properties>
+								<bool name="Anchored">true</bool>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<float name="BackParamA">-0.5</float>
+								<float name="BackParamB">0.5</float>
+								<token name="BackSurface">0</token>
+								<token name="BackSurfaceInput">0</token>
+								<float name="BottomParamA">-0.5</float>
+								<float name="BottomParamB">0.5</float>
+								<token name="BottomSurface">0</token>
+								<token name="BottomSurfaceInput">0</token>
+								<CoordinateFrame name="CFrame">
+									<X>106.360023</X>
+									<Y>-184.154678</Y>
+									<Z>-6.78610468</Z>
+									<R00>-7.44907884e-05</R00>
+									<R01>0.153124392</R01>
+									<R02>0.988206565</R02>
+									<R10>0.153617442</R10>
+									<R11>0.97648114</R11>
+									<R12>-0.151296243</R12>
+									<R20>-0.988131881</R20>
+									<R21>0.151796654</R21>
+									<R22>-0.0235956386</R22>
+								</CoordinateFrame>
+								<bool name="CanCollide">true</bool>
+								<bool name="CanQuery">true</bool>
+								<bool name="CanTouch">true</bool>
+								<bool name="CastShadow">true</bool>
+								<int name="CollisionGroupId">0</int>
+								<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+								<PhysicalProperties name="CustomPhysicalProperties">
+									<CustomPhysics>false</CustomPhysics>
+								</PhysicalProperties>
+								<float name="FrontParamA">-0.5</float>
+								<float name="FrontParamB">0.5</float>
+								<token name="FrontSurface">0</token>
+								<token name="FrontSurfaceInput">0</token>
+								<float name="LeftParamA">-0.5</float>
+								<float name="LeftParamB">0.5</float>
+								<token name="LeftSurface">0</token>
+								<token name="LeftSurfaceInput">0</token>
+								<bool name="Locked">false</bool>
+								<bool name="Massless">false</bool>
+								<token name="Material">256</token>
+								<string name="MaterialVariantSerialized"></string>
+								<string name="Name">Base</string>
+								<CoordinateFrame name="PivotOffset">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+									<R00>1</R00>
+									<R01>0</R01>
+									<R02>0</R02>
+									<R10>0</R10>
+									<R11>1</R11>
+									<R12>0</R12>
+									<R20>0</R20>
+									<R21>0</R21>
+									<R22>1</R22>
+								</CoordinateFrame>
+								<float name="Reflectance">0</float>
+								<float name="RightParamA">-0.5</float>
+								<float name="RightParamB">0.5</float>
+								<token name="RightSurface">0</token>
+								<token name="RightSurfaceInput">0</token>
+								<int name="RootPriority">0</int>
+								<Vector3 name="RotVelocity">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+								</Vector3>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+								<float name="TopParamA">-0.5</float>
+								<float name="TopParamB">0.5</float>
+								<token name="TopSurface">0</token>
+								<token name="TopSurfaceInput">0</token>
+								<float name="Transparency">0</float>
+								<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10011213e</UniqueId>
+								<Vector3 name="Velocity">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+								</Vector3>
+								<token name="formFactorRaw">1</token>
+								<token name="shape">1</token>
+								<Vector3 name="size">
+									<X>0.400000006</X>
+									<Y>0.0999999642</Y>
+									<Z>0.200000003</Z>
+								</Vector3>
+							</Properties>
+							<Item class="ProximityPrompt" referent="RBXaa086bc2cc5d433eafe317b2f643dd07">
+								<Properties>
+									<string name="ActionText">Hit that tree!</string>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<bool name="AutoLocalize">true</bool>
+									<bool name="ClickablePrompt">true</bool>
+									<bool name="Enabled">false</bool>
+									<token name="Exclusivity">0</token>
+									<token name="GamepadKeyCode">1000</token>
+									<float name="HoldDuration">1</float>
+									<token name="KeyboardKeyCode">101</token>
+									<float name="MaxActivationDistance">10</float>
+									<string name="Name">ProximityPrompt</string>
+									<string name="ObjectText"></string>
+									<bool name="RequiresLineOfSight">false</bool>
+									<Ref name="RootLocalizationTable">null</Ref>
+									<int64 name="SourceAssetId">-1</int64>
+									<token name="Style">0</token>
+									<BinaryString name="Tags"></BinaryString>
+									<Vector2 name="UIOffset">
+										<X>0</X>
+										<Y>0</Y>
+									</Vector2>
+									<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10011213f</UniqueId>
+								</Properties>
+							</Item>
+							<Item class="ModuleScript" referent="RBX9b8b3f8fd074474e805f3ec2c6486581">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<Content name="LinkedSource"><null></null></Content>
+									<string name="Name">Drops</string>
+									<string name="ScriptGuid">{35bfe386-ab94-43c9-8182-ce581c831c67}</string>
+									<ProtectedString name="Source"><![CDATA[local module = {
+	wood = 1
+}
+
+return module
+]]></ProtectedString>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+									<UniqueId name="UniqueId">769671bb7590a49c02b3f6f100112140</UniqueId>
+								</Properties>
+							</Item>
+						</Item>
+					</Item>
+					<Item class="PackageLink" referent="RBXcc52dd1de5c14a129627d15edb5aca43">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoUpdate">false</bool>
+							<string name="Name">PackageLink</string>
+							<Content name="PackageIdSerialize"><url>rbxassetid://9641760243</url></Content>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f100112141</UniqueId>
+							<int64 name="VersionIdSerialize">7</int64>
 						</Properties>
 					</Item>
 				</Item>
@@ -6849,6 +6917,23 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 										<Y>0</Y>
 									</Vector2>
 									<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002da18</UniqueId>
+								</Properties>
+							</Item>
+							<Item class="ModuleScript" referent="RBX536cda4d60144034aac5221bbcb6eacf">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<Content name="LinkedSource"><null></null></Content>
+									<string name="Name">Drops</string>
+									<string name="ScriptGuid">{0fd162f7-5cc8-48b2-b4bc-7ecfb8a67580}</string>
+									<ProtectedString name="Source"><![CDATA[local module = {
+	wood = 2
+}
+
+return module
+]]></ProtectedString>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+									<UniqueId name="UniqueId">769671bb7590a49c02b3f6f1000c60cc</UniqueId>
 								</Properties>
 							</Item>
 						</Item>
@@ -7932,9 +8017,18 @@ local serverStore = require(ServerStorage:WaitForChild("serverStore"))
 local updateInventory = require(ServerStorage:WaitForChild("Actions"):WaitForChild("updateInventory"))
 
 local function OnHarvest(player, inst)
-    print("Destroying tree")
+    local loot = nil
+    if inst:IsA("Model") then
+        for _,part in pairs(inst:GetDescendants()) do
+            if part:IsA("ModuleScript") and part.Name == "Drops" then
+                loot = require(part)
+                break
+            end
+        end
+    end
+
     inst:Destroy()
-    serverStore:dispatch(updateInventory(player))
+    serverStore:dispatch(updateInventory(player, loot))
 end
 
 local function attachPromptLogic(inst)
@@ -10082,9 +10176,10 @@ return reducer]]></ProtectedString>
 							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Rodux = require(ReplicatedStorage.Rodux)
 
-local function updateInventory(player)
+local function updateInventory(player, loot)
     return {
-        player = player
+        player = player,
+        loot = loot
     }
 end
 
@@ -10126,18 +10221,23 @@ local initialState = {
 
 local reducer = Rodux.createReducer(initialState, {
     [updateInventory.name] = function(state, action)
-        
-        local userId = action.player.UserId
-        local newValue = 1
-        if state[userId] and state[userId].wood then
-            newValue = state[userId].wood + 1
+        if action.loot == nil then
+            return
         end
 
+        local userId = action.player.UserId
         local tableUpdates = {
-            [userId] = {
-                wood = newValue
-            }
+            [userId] = {}
         }
+
+        for itemName, itemAmount in pairs(action.loot) do
+            if state[userId] and state[userId][itemName] then
+                tableUpdates[userId][itemName] = state[userId][itemName] + itemAmount
+            else
+                tableUpdates[userId][itemName] = itemAmount
+            end
+        end
+
         local newState = RoduxUtils.deepmerge(RoduxUtils.deepcopy(state), tableUpdates)
 
         -- update client that inventory changed

@@ -13,18 +13,23 @@ local initialState = {
 
 local reducer = Rodux.createReducer(initialState, {
     [updateInventory.name] = function(state, action)
-        
-        local userId = action.player.UserId
-        local newValue = 1
-        if state[userId] and state[userId].wood then
-            newValue = state[userId].wood + 1
+        if action.loot == nil then
+            return
         end
 
+        local userId = action.player.UserId
         local tableUpdates = {
-            [userId] = {
-                wood = newValue
-            }
+            [userId] = {}
         }
+
+        for itemName, itemAmount in pairs(action.loot) do
+            if state[userId] and state[userId][itemName] then
+                tableUpdates[userId][itemName] = state[userId][itemName] + itemAmount
+            else
+                tableUpdates[userId][itemName] = itemAmount
+            end
+        end
+
         local newState = RoduxUtils.deepmerge(RoduxUtils.deepcopy(state), tableUpdates)
 
         -- update client that inventory changed

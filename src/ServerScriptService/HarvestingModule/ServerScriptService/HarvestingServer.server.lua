@@ -7,9 +7,18 @@ local serverStore = require(ServerStorage:WaitForChild("serverStore"))
 local updateInventory = require(ServerStorage:WaitForChild("Actions"):WaitForChild("updateInventory"))
 
 local function OnHarvest(player, inst)
-    print("Destroying tree")
+    local loot = nil
+    if inst:IsA("Model") then
+        for _,part in pairs(inst:GetDescendants()) do
+            if part:IsA("ModuleScript") and part.Name == "Drops" then
+                loot = require(part)
+                break
+            end
+        end
+    end
+
     inst:Destroy()
-    serverStore:dispatch(updateInventory(player))
+    serverStore:dispatch(updateInventory(player, loot))
 end
 
 local function attachPromptLogic(inst)
