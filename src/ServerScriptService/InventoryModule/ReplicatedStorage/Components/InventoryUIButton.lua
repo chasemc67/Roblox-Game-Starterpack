@@ -43,26 +43,11 @@ end
 -- Set up our loop in didMount, so that it starts running when our
 -- component is created.
 function Inventory:didMount()
-    -- Set a value that we can change later to stop our loop
-    self.running = true
-
-    -- Connect to a pickup event here: 
-    self.inventoryChangedEvent = ReplicatedStorage.InventoryChanged.OnClientEvent:Connect(function(newState)
-        print("Inventory changed event fired")
-        self:setState({
-            wood = newState.wood
-        })
-    end)
-
 end
 
 -- Stop the loop in willUnmount, so that our loop terminates when the
 -- component is destroyed.
 function Inventory:willUnmount()
-    self.running = false
-
-    -- prevent memory leaks
-    -- self.inventoryChangedEvent.OnClientEvent:Disconnect()
 end
 
 local function mapStateToProps(state)
