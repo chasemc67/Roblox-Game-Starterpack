@@ -27,21 +27,26 @@ function Inventory:render()
             end
         }),
         InventoryGridFrame = Roact.createElement("Frame", {
-            Size = UDim2.new(1, 0, 1, -35),
+            Size = UDim2.new(0.9, 0, 0.9, -35),
             Position = UDim2.new(0.5, 0, 0.5, 35),
             AnchorPoint = Vector2.new(0.5, 0.5),
+            BorderSizePixel = 0
         }, {
             InventoryGrid = Roact.createElement("UIGridLayout", {
                 CellPadding = UDim2.new(0, 5, 0, 5),
                 CellSize = UDim2.new(0, 50, 0, 50),
                 FillDirection = Enum.FillDirection.Horizontal,
-                HorizontalAlignment = Enum.HorizontalAlignment.Center,
-                VerticalAlignment = Enum.VerticalAlignment.Center,
+                HorizontalAlignment = Enum.HorizontalAlignment.Left,
+                VerticalAlignment = Enum.VerticalAlignment.Top,
             }), 
             Wood = Roact.createElement("TextButton", {
-                Text = "Wood: " .. self.props.wood,
+                Text = "Wood" .. "<br/><br/>" ..  self.props.wood, -- use rich text to make multiline
+                TextSize = 12,
                 ZIndex = 7,
-                BorderSizePixel = 0,
+                BorderSizePixel = 1,
+                BackgroundColor3 = Color3.new(0.9, 0.9, 0.9),
+                TextWrapped = true,
+                RichText=true
             })
         })
     })
