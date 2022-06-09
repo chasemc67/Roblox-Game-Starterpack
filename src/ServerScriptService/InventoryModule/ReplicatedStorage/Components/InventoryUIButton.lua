@@ -4,7 +4,7 @@ local Players = game:GetService("Players")
 local Roact = require(ReplicatedStorage.Roact) 
 local RoactRodux = require(ReplicatedStorage.RoactRodux)
 
-local openInventory = require(ReplicatedStorage.Actions:WaitForChild("openInventory"))
+local openInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("openInventory"))
 
 local Inventory = Roact.Component:extend("Inventory")
 

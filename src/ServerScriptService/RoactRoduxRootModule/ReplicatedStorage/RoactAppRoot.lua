@@ -3,8 +3,8 @@ local Players = game:GetService("Players")
 
 local Roact = require(ReplicatedStorage.Roact)
 local RoactRodux = require(ReplicatedStorage.RoactRodux)
-local clientStore = require(ReplicatedStorage.clientStore)
-local App = require(ReplicatedStorage.Components.App)
+local clientStore = require(ReplicatedStorage:WaitForChild("clientStore"))
+local App = require(ReplicatedStorage:WaitForChild("Components"):WaitForChild("App"))
 
 local app = Roact.createElement(RoactRodux.StoreProvider, {
     store = clientStore,

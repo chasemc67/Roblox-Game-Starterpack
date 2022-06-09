@@ -3,10 +3,10 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Roact = require(ReplicatedStorage.Roact)
 local RoactRodux = require(ReplicatedStorage.RoactRodux)
 
-local InventoryUIButton = require(ReplicatedStorage.Components:WaitForChild("InventoryUIButton"))
-local Inventory = require(ReplicatedStorage.Components:WaitForChild("Inventory"))
+local InventoryUIButton = require(ReplicatedStorage:WaitForChild("Components"):WaitForChild("InventoryUIButton"))
+local Inventory = require(ReplicatedStorage:WaitForChild("Components"):WaitForChild("Inventory"))
 
-local openInventory = require(ReplicatedStorage.Actions:WaitForChild("openInventory"))
+local openInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("openInventory"))
 
 local App = Roact.Component:extend("App")
 

@@ -2,8 +2,8 @@ local playerService = game:GetService("Players")
 local dataService = game:GetService("DataStoreService")
 local ServerStorage = game:GetService("ServerStorage")
 local serverStore = require(ServerStorage.serverStore)
-local loadUser = require(ServerStorage.Actions:WaitForChild("loadUser"))
-local removeUser = require(ServerStorage.Actions:WaitForChild("removeUser"))
+local loadUser = require(ServerStorage:WaitForChild("Actions"):WaitForChild("loadUser"))
+local removeUser = require(ServerStorage:WaitForChild("Actions"):WaitForChild("removeUser"))
 
 -- Getting store will fail if game isn't published
 local store = nil

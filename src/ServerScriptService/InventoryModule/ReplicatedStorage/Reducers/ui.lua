@@ -1,7 +1,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Rodux = require(ReplicatedStorage.Rodux)
 
-local openInventory = require(ReplicatedStorage.Actions:WaitForChild("openInventory"))
+local openInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("openInventory"))
 
 local initialState = {
     openWindow = nil,
