@@ -9,19 +9,13 @@ local openInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForC
 local Inventory = Roact.Component:extend("Inventory")
 
 function Inventory:init()
-    self.inventoryChangedEvent = nil
-
     -- In init, we can use setState to set up our initial component state.
     self:setState({
-        wood = 0
     })
 end
 
 -- This render function is almost completely unchanged from the first example.
 function Inventory:render()
-    -- As a convention, we'll pull currentTime out of state right away.
-    local currentWood = self.state.wood
-
     return Roact.createElement("Frame", 
         {
             Position = UDim2.new(0, 20, 0.5, 0),
@@ -30,7 +24,7 @@ function Inventory:render()
             WoodLabel = Roact.createElement("TextButton", {
                 Size = UDim2.new(0, 100, 0, 100),
                 Position = UDim2.new(0, 20, 0.5, 0),
-                Text = "Wood Collected: " .. currentWood,
+                Text = "Wood Collected: " .. self.props.wood,
                 [Roact.Event.MouseButton1Click] = function()
                     print("Open Inventory Button Clicked")
                     self.props.onOpenInventory()
@@ -52,7 +46,7 @@ end
 
 local function mapStateToProps(state)
     return {
-        wood = 1
+        wood = state.inventory and state.inventory.wood or 0
     }
 end
 

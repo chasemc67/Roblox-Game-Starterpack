@@ -3,8 +3,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ServerStorage = game:GetService("ServerStorage")
 
 local HARVESTABLE_TAG = "HARVESTABLE"
-local serverStore = require(ServerStorage.serverStore)
-local updateInventory = require(ServerStorage.Actions.updateInventory)
+local serverStore = require(ServerStorage:WaitForChild("serverStore"))
+local updateInventory = require(ServerStorage:WaitForChild("Actions"):WaitForChild("updateInventory"))
 
 local function OnHarvest(player, inst)
     print("Destroying tree")

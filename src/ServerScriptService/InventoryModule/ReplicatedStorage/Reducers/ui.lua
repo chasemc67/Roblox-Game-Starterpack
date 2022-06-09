@@ -5,8 +5,7 @@ local openInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForC
 local closeInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("closeInventory"))
 
 local initialState = {
-    openWindow = nil,
-    val = 0
+    openWindow = nil
 }
 
 local reducer = Rodux.createReducer(initialState, {

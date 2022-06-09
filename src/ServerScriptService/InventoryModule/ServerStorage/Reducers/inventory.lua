@@ -6,6 +6,7 @@ local RoduxUtils = require(ReplicatedStorage.RoduxUtils)
 local updateInventory = require(ServerStorage:WaitForChild("Actions"):WaitForChild("updateInventory"))
 local loadUser = require(ServerStorage:WaitForChild("Actions"):WaitForChild("loadUser"))
 local removeUser = require(ServerStorage:WaitForChild("Actions"):WaitForChild("removeUser"))
+local InventoryChanged = ReplicatedStorage:WaitForChild("InventoryChanged")
 
 local initialState = {
 }
@@ -29,7 +30,7 @@ local reducer = Rodux.createReducer(initialState, {
         -- update client that inventory changed
         -- using a remoteEvent
         -- inventoryUpdatedRemote:FireClients(action)
-        ReplicatedStorage.InventoryChanged:FireClient(action.player, newState[userId])
+        InventoryChanged:FireClient(action.player, newState[userId])
         return newState
     end,
 
