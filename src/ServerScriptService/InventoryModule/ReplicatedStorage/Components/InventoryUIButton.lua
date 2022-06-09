@@ -24,7 +24,8 @@ function Inventory:render()
             WoodLabel = Roact.createElement("TextButton", {
                 Size = UDim2.new(0, 100, 0, 100),
                 Position = UDim2.new(0, 20, 0.5, 0),
-                Text = "Wood Collected: " .. self.props.wood,
+                Text = "Inventory",
+                TextSize = 14,
                 [Roact.Event.MouseButton1Click] = function()
                     print("Open Inventory Button Clicked")
                     self.props.onOpenInventory()
@@ -46,7 +47,6 @@ end
 
 local function mapStateToProps(state)
     return {
-        wood = state.inventory and state.inventory.wood or 0
     }
 end
 
