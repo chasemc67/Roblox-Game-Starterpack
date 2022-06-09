@@ -5318,27 +5318,27 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>42.8251076</X>
-					<Y>-112.381325</Y>
-					<Z>-25.1227512</Z>
-					<R00>-0.996497512</R00>
-					<R01>0.0569236912</R01>
-					<R02>-0.061256431</R02>
-					<R10>3.72528985e-09</R10>
-					<R11>0.7325387</R11>
-					<R12>0.680725336</R12>
-					<R20>0.0836221054</R20>
-					<R21>0.678341091</R21>
-					<R22>-0.729973078</R22>
+					<X>54.1545334</X>
+					<Y>-169.998123</Y>
+					<Z>-19.4418392</Z>
+					<R00>0.00688763708</R00>
+					<R01>0.844296336</R01>
+					<R02>-0.535832405</R02>
+					<R10>2.32830644e-10</R10>
+					<R11>0.535845101</R11>
+					<R12>0.844316304</R12>
+					<R20>0.999976337</R20>
+					<R21>-0.0058153444</R21>
+					<R22>0.00369070633</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>42.9476204</X>
-					<Y>-113.742775</Y>
-					<Z>-23.6628056</Z>
+					<X>62.7278824</X>
+					<Y>-183.507233</Y>
+					<Z>-19.5008907</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -6563,6 +6563,310 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 					</Item>
 				</Item>
 			</Item>
+			<Item class="Folder" referent="RBX46a964e655c44338bdde161e65febe16">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<string name="Name">Rocks</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002c9a1</UniqueId>
+				</Properties>
+				<Item class="Model" referent="RBXe6f27268fe95419da7ec64a7cc06c18e">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<token name="LevelOfDetail">0</token>
+						<CoordinateFrame name="ModelMeshCFrame">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+							<R00>1</R00>
+							<R01>0</R01>
+							<R02>0</R02>
+							<R10>0</R10>
+							<R11>1</R11>
+							<R12>0</R12>
+							<R20>0</R20>
+							<R21>0</R21>
+							<R22>1</R22>
+						</CoordinateFrame>
+						<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						<Vector3 name="ModelMeshSize">
+							<X>0</X>
+							<Y>0</Y>
+							<Z>0</Z>
+						</Vector3>
+						<string name="Name">Rock</string>
+						<bool name="NeedsPivotMigration">false</bool>
+						<Ref name="PrimaryPart">null</Ref>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002ed9d</UniqueId>
+						<OptionalCoordinateFrame name="WorldPivotData">
+							<CFrame>
+								<X>62.6555786</X>
+								<Y>-183.860016</Y>
+								<Z>-20.0147591</Z>
+								<R00>1</R00>
+								<R01>0</R01>
+								<R02>0</R02>
+								<R10>0</R10>
+								<R11>1</R11>
+								<R12>0</R12>
+								<R20>0</R20>
+								<R21>0</R21>
+								<R22>1</R22>
+							</CFrame>
+						</OptionalCoordinateFrame>
+					</Properties>
+					<Item class="MeshPart" referent="RBXa35a6c6e20994e1193912227ec8f2b5d">
+						<Properties>
+							<bool name="Anchored">false</bool>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<float name="BackParamA">-0.5</float>
+							<float name="BackParamB">0.5</float>
+							<token name="BackSurface">0</token>
+							<token name="BackSurfaceInput">0</token>
+							<float name="BottomParamA">-0.5</float>
+							<float name="BottomParamB">0.5</float>
+							<token name="BottomSurface">0</token>
+							<token name="BottomSurfaceInput">0</token>
+							<CoordinateFrame name="CFrame">
+								<X>62.6555786</X>
+								<Y>-183.860016</Y>
+								<Z>-20.0147591</Z>
+								<R00>1</R00>
+								<R01>0</R01>
+								<R02>0</R02>
+								<R10>0</R10>
+								<R11>1</R11>
+								<R12>0</R12>
+								<R20>0</R20>
+								<R21>0</R21>
+								<R22>1</R22>
+							</CoordinateFrame>
+							<bool name="CanCollide">true</bool>
+							<bool name="CanQuery">true</bool>
+							<bool name="CanTouch">true</bool>
+							<bool name="CastShadow">true</bool>
+							<int name="CollisionGroupId">0</int>
+							<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+							<PhysicalProperties name="CustomPhysicalProperties">
+								<CustomPhysics>false</CustomPhysics>
+							</PhysicalProperties>
+							<bool name="DoubleSided">false</bool>
+							<float name="FrontParamA">-0.5</float>
+							<float name="FrontParamB">0.5</float>
+							<token name="FrontSurface">0</token>
+							<token name="FrontSurfaceInput">0</token>
+							<bool name="HasJointOffset">false</bool>
+							<bool name="HasSkinnedMesh">false</bool>
+							<Vector3 name="InitialSize">
+								<X>3.81856203</X>
+								<Y>5.67525291</Y>
+								<Z>4.11996174</Z>
+							</Vector3>
+							<Vector3 name="JointOffset">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<BinaryString name="LODData"></BinaryString>
+							<float name="LeftParamA">-0.5</float>
+							<float name="LeftParamB">0.5</float>
+							<token name="LeftSurface">0</token>
+							<token name="LeftSurfaceInput">0</token>
+							<bool name="Locked">false</bool>
+							<bool name="Massless">false</bool>
+							<token name="Material">256</token>
+							<string name="MaterialVariantSerialized"></string>
+							<Content name="MeshID"><url>rbxassetid://6233861744</url></Content>
+							<Content name="MeshId"><url>rbxassetid://6233861744</url></Content>
+							<string name="Name">Rock</string>
+							<SharedString name="PhysicalConfigData">bS4kUJykoTl9oekPxHRc8Q==</SharedString>
+							<BinaryString name="PhysicsData"></BinaryString>
+							<CoordinateFrame name="PivotOffset">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+								<R00>1</R00>
+								<R01>0</R01>
+								<R02>0</R02>
+								<R10>0</R10>
+								<R11>1</R11>
+								<R12>0</R12>
+								<R20>0</R20>
+								<R21>0</R21>
+								<R22>1</R22>
+							</CoordinateFrame>
+							<float name="Reflectance">0</float>
+							<token name="RenderFidelity">1</token>
+							<float name="RightParamA">-0.5</float>
+							<float name="RightParamB">0.5</float>
+							<token name="RightSurface">0</token>
+							<token name="RightSurfaceInput">0</token>
+							<int name="RootPriority">0</int>
+							<Vector3 name="RotVelocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<int64 name="SourceAssetId">6233861790</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<Content name="TextureID"><null></null></Content>
+							<float name="TopParamA">-0.5</float>
+							<float name="TopParamB">0.5</float>
+							<token name="TopSurface">0</token>
+							<token name="TopSurfaceInput">0</token>
+							<float name="Transparency">0</float>
+							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002cfec</UniqueId>
+							<Vector3 name="Velocity">
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</Vector3>
+							<int name="VertexCount">0</int>
+							<Vector3 name="size">
+								<X>3.81856203</X>
+								<Y>5.67525291</Y>
+								<Z>4.11996174</Z>
+							</Vector3>
+						</Properties>
+						<Item class="Part" referent="RBXd9207a963ab848d4b10a72248249e079">
+							<Properties>
+								<bool name="Anchored">true</bool>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<float name="BackParamA">-0.5</float>
+								<float name="BackParamB">0.5</float>
+								<token name="BackSurface">0</token>
+								<token name="BackSurfaceInput">0</token>
+								<float name="BottomParamA">-0.5</float>
+								<float name="BottomParamB">0.5</float>
+								<token name="BottomSurface">0</token>
+								<token name="BottomSurfaceInput">0</token>
+								<CoordinateFrame name="CFrame">
+									<X>62.7278824</X>
+									<Y>-183.507233</Y>
+									<Z>-19.5008907</Z>
+									<R00>0.697635233</R00>
+									<R01>-0.221006691</R01>
+									<R02>-0.681514442</R02>
+									<R10>0.127436489</R10>
+									<R11>0.974344671</R11>
+									<R12>-0.18551527</R12>
+									<R20>0.705029786</R20>
+									<R21>0.0425704867</R21>
+									<R22>0.707899332</R22>
+								</CoordinateFrame>
+								<bool name="CanCollide">true</bool>
+								<bool name="CanQuery">true</bool>
+								<bool name="CanTouch">true</bool>
+								<bool name="CastShadow">true</bool>
+								<int name="CollisionGroupId">0</int>
+								<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+								<PhysicalProperties name="CustomPhysicalProperties">
+									<CustomPhysics>false</CustomPhysics>
+								</PhysicalProperties>
+								<float name="FrontParamA">-0.5</float>
+								<float name="FrontParamB">0.5</float>
+								<token name="FrontSurface">0</token>
+								<token name="FrontSurfaceInput">0</token>
+								<float name="LeftParamA">-0.5</float>
+								<float name="LeftParamB">0.5</float>
+								<token name="LeftSurface">0</token>
+								<token name="LeftSurfaceInput">0</token>
+								<bool name="Locked">false</bool>
+								<bool name="Massless">false</bool>
+								<token name="Material">256</token>
+								<string name="MaterialVariantSerialized"></string>
+								<string name="Name">Base</string>
+								<CoordinateFrame name="PivotOffset">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+									<R00>1</R00>
+									<R01>0</R01>
+									<R02>0</R02>
+									<R10>0</R10>
+									<R11>1</R11>
+									<R12>0</R12>
+									<R20>0</R20>
+									<R21>0</R21>
+									<R22>1</R22>
+								</CoordinateFrame>
+								<float name="Reflectance">0</float>
+								<float name="RightParamA">-0.5</float>
+								<float name="RightParamB">0.5</float>
+								<token name="RightSurface">0</token>
+								<token name="RightSurfaceInput">0</token>
+								<int name="RootPriority">0</int>
+								<Vector3 name="RotVelocity">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+								</Vector3>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+								<float name="TopParamA">-0.5</float>
+								<float name="TopParamB">0.5</float>
+								<token name="TopSurface">0</token>
+								<token name="TopSurfaceInput">0</token>
+								<float name="Transparency">0</float>
+								<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002da17</UniqueId>
+								<Vector3 name="Velocity">
+									<X>0</X>
+									<Y>0</Y>
+									<Z>0</Z>
+								</Vector3>
+								<token name="formFactorRaw">1</token>
+								<token name="shape">1</token>
+								<Vector3 name="size">
+									<X>0.400000006</X>
+									<Y>0.0999999642</Y>
+									<Z>0.200000003</Z>
+								</Vector3>
+							</Properties>
+							<Item class="ProximityPrompt" referent="RBX0c4f826df7d74169832b0969f5baa127">
+								<Properties>
+									<string name="ActionText">Hit that rock!</string>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<bool name="AutoLocalize">true</bool>
+									<bool name="ClickablePrompt">true</bool>
+									<bool name="Enabled">false</bool>
+									<token name="Exclusivity">0</token>
+									<token name="GamepadKeyCode">1000</token>
+									<float name="HoldDuration">1</float>
+									<token name="KeyboardKeyCode">101</token>
+									<float name="MaxActivationDistance">10</float>
+									<string name="Name">ProximityPrompt</string>
+									<string name="ObjectText"></string>
+									<bool name="RequiresLineOfSight">false</bool>
+									<Ref name="RootLocalizationTable">null</Ref>
+									<int64 name="SourceAssetId">-1</int64>
+									<token name="Style">0</token>
+									<BinaryString name="Tags"></BinaryString>
+									<Vector2 name="UIOffset">
+										<X>0</X>
+										<Y>0</Y>
+									</Vector2>
+									<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002da18</UniqueId>
+								</Properties>
+							</Item>
+						</Item>
+					</Item>
+					<Item class="PackageLink" referent="RBX4030cac4417544b1bc0a671ff0b9dc3e">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoUpdate">false</bool>
+							<string name="Name">PackageLink</string>
+							<Content name="PackageIdSerialize"><url>rbxassetid://9864712526</url></Content>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002ee29</UniqueId>
+							<int64 name="VersionIdSerialize">1</int64>
+						</Properties>
+					</Item>
+				</Item>
+			</Item>
 		</Item>
 	</Item>
 	<Item class="SoundService" referent="RBX9d5dfde169fc47c88eeae29f358060c2">
@@ -6740,20 +7044,6 @@ TkNLQ0hDRUNBQz5DOkM2QzFDLUMoQyFDHEMXQxFDC0MFQwCB/4H/gf+B/4H/gf+B/4H/gQeA
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">60ac0bb170c84e0c0291a1c80001e20c</UniqueId>
 			</Properties>
-			<Item class="LocalScript" referent="RBX0771574dbd524deb9b7b1d534ae96003">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<bool name="Disabled">false</bool>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">initClient</string>
-					<string name="ScriptGuid">{c4668c6f-a16a-4c29-82aa-766b5ebb4591}</string>
-					<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local roactAppRoot = require(ReplicatedStorage:WaitForChild("RoactAppRoot"))]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002be08</UniqueId>
-				</Properties>
-			</Item>
 		</Item>
 		<Item class="StarterCharacterScripts" referent="RBX173edf673f0d4946836a8197abfa3955">
 			<Properties>
@@ -8006,2550 +8296,6 @@ end)]]></ProtectedString>
 					</Properties>
 				</Item>
 			</Item>
-		</Item>
-		<Item class="Folder" referent="RBXdbe4875aae6d4faca6d36ba1e2439da6">
-			<Properties>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<string name="Name">DataModule</string>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bd97</UniqueId>
-			</Properties>
-			<Item class="Script" referent="RBXcbca1f2221b84ae4906da5f03c3ff35a">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<bool name="Disabled">false</bool>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">Install</string>
-					<string name="ScriptGuid">{56362b6b-9376-4ccb-a741-e26d1d58e760}</string>
-					<ProtectedString name="Source"><![CDATA[local ModuleInstaller = require(script.ModuleInstaller)
-
-ModuleInstaller.install(script.Parent)
-]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bd98</UniqueId>
-				</Properties>
-				<Item class="ModuleScript" referent="RBX319e1b599177448ca052b8ff81c19f01">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">ModuleInstaller</string>
-						<string name="ScriptGuid">{06dd9db2-2fb9-4d55-87b7-108af86ed035}</string>
-						<ProtectedString name="Source"><![CDATA[--!strict
-local events = require(script.events)
-local install = require(script.install)
-
-local DevModuleInstaller: { [string]: any } = {
-	verboseLogging = false,
-	pruneDevelopmentFiles = true,
-
-	started = events.started.Event,
-	finished = events.finished.Event,
-}
-
-function DevModuleInstaller.install(devModule: Folder)
-	return install(devModule, {
-		verboseLogging = DevModuleInstaller.verboseLogging,
-		pruneDevelopmentFiles = DevModuleInstaller.pruneDevelopmentFiles,
-	})
-end
-
-return DevModuleInstaller
-]]></ProtectedString>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bd99</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBXd4dbac0eb2a54c2c8d738b17db85fe79">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">constants</string>
-							<string name="ScriptGuid">{449e9031-358c-4626-a0ed-5748d6aff1fd}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local constants = {
-	-- The location where all DevModules are moved at runtime. Note that a DevModule
-	-- is moved after its scripts and other instances have been moved to their
-	-- proper locations. What remains of the DevModule is the Packages folder, and
-	-- any ModuleScripts that are used by the DevModule.
-	DEV_MODULE_STORAGE = ReplicatedStorage,
-
-	-- DevModules rely on dependencies. By convention, these are stored in a folder
-	-- named "Packages" inside the root of the DevModule. At runtime, the Packages
-	-- folders from every DevModule are deduplicated, resulting in only one version
-	-- of each package in use across all the DevModules in the game
-	PACKAGE_NAME = "Packages",
-	PACKAGE_STORAGE_LOCATION = ReplicatedStorage,
-	PACKAGE_STORAGE_NAME = "DevModulePackages",
-	PACKAGE_REF = script.Parent.packageRef,
-
-	-- The version of a package is controlled by a StringValue included as a child
-	-- of the package. This constant controls the name of that StringValue.
-	--
-	-- Initially we wanted to use Attributes for the version, however Rojo does not
-	-- support syncing Attributes yet. As such, we've opted to go the old fashioned
-	-- way of including a StringValue.
-	PACKAGE_VERSION_NAME = "_Version",
-
-	PACKAGE_VERSION_OBJECT_MISSING = "%s is missing a %s StringValue at %s",
-	PACKAGE_VERSION_EMPTY = "%s cannot have an empty value for its version at %s",
-	ENABLED_SCRIPTS_ERROR = "All scripts included with a DevModule must be Disabled. Please disable the "
-		.. "following script(s): %s",
-}
-
-return constants
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bd9a</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBXf289077abd854d38bb987c83cb7f4aa3">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">events</string>
-							<string name="ScriptGuid">{3b1298cd-d47e-4125-98ea-1106c763b361}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local events = {
-	started = Instance.new("BindableEvent"),
-	finished = Instance.new("BindableEvent"),
-}
-
-return events]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bd9b</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX313980da80e044d19f26c85f402617bd">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">install</string>
-							<string name="ScriptGuid">{02bd1157-4151-40d5-9c51-333e4cc8f564}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local events = require(script.Parent.events)
-local constants = require(script.Parent.constants)
-
-local useVerboseLogging = false
-
-local function log(messageType: string, message: string)
-	if useVerboseLogging then
-		print(("[%s] %s"):format(messageType, message))
-	end
-end
-
--- Reparents an instance and outputs helpful logging information so we can see
--- where instances are going at runtime.
-local function move(instance: Instance, newParent: Instance)
-	instance.Parent = newParent
-	log("move", ("%s -> %s"):format(instance.Name, instance:GetFullName()))
-end
-
--- Gets the storage location for packages used by each Dev Modules. The packages
--- that get put in this folder are deduplicated so every distinct version of a
--- package has only one copy.
-local function getPackageStorage(): Folder
-	local packageStorage = constants.PACKAGE_STORAGE_LOCATION:FindFirstChild(constants.PACKAGE_STORAGE_NAME) :: Folder
-
-	if not packageStorage then
-		packageStorage = Instance.new("Folder")
-		packageStorage.Name = constants.PACKAGE_STORAGE_NAME
-		packageStorage.Parent = constants.PACKAGE_STORAGE_LOCATION
-	end
-
-	return packageStorage
-end
-
--- Prunes any stories and test files that are included with the DevModule. These
--- are not needed at runtime.
-local function prune(instance: Instance)
-	for _, descendant in ipairs(instance:GetDescendants()) do
-		local name = descendant.Name
-		if name:match("%.story$") or name:match("%.spec$") then
-			descendant:Destroy()
-		end
-	end
-end
-
-local function getPackageVersion(package: ModuleScript): string
-	local version = package:FindFirstChild(constants.PACKAGE_VERSION_NAME)
-
-	assert(
-		version and version:IsA("StringValue"),
-		constants.PACKAGE_VERSION_OBJECT_MISSING:format(
-			package.Name,
-			constants.PACKAGE_VERSION_NAME,
-			package:GetFullName()
-		)
-	)
-	assert(version.Value ~= "", constants.PACKAGE_VERSION_EMPTY:format(package.Name, version:GetFullName()))
-
-	return version.Value
-end
-
--- This function merges the Packages folder from a DevModule into a shared
--- location. Until we have an improved package implementation, we need to
--- manually dedupe our libraries to cut down on bloat
-local function dedupePackages(packages: Instance)
-	local packageStorage = getPackageStorage()
-
-	for _, package in ipairs(packages:GetChildren()) do
-		if package ~= script and package:IsA("ModuleScript") then
-			local version = getPackageVersion(package)
-
-			local existingVersion: ModuleScript
-			for _, otherPackage in ipairs(packageStorage:GetChildren()) do
-				if otherPackage.Name:match(("^%s_"):format(package.Name)) and otherPackage:IsA("ModuleScript") then
-					if version == getPackageVersion(otherPackage) then
-						existingVersion = otherPackage
-						break
-					end
-				end
-			end
-
-			if not existingVersion then
-				local clone = package:Clone() :: ModuleScript
-				clone.Parent = packageStorage
-				clone.Name = ("%s_%s"):format(clone.Name, version)
-				existingVersion = clone
-			end
-
-			-- Link the package with the existing version (which was either
-			-- there previously, or is the one we just generated)
-			local packageRef = constants.PACKAGE_REF:Clone()
-			packageRef.Name = package.Name
-
-			local packageObject = packageRef:FindFirstChild("package")
-			if packageObject and packageObject:IsA("ObjectValue") then
-				packageObject.Value = existingVersion
-			end
-			packageRef.Parent = package.Parent
-
-			package:Destroy()
-
-			log("link", ("%s <-> %s"):format(package.Name, existingVersion:GetFullName()))
-		end
-	end
-end
-
--- Takes an instance and overlays it on top of a parent. This is used for
--- overlaying a DevModule's DataModel-based layout on top of existing services.
-local function overlay(instance: Instance, parent: Instance)
-	for _, child in ipairs(instance:GetChildren()) do
-		local existingChild = parent:FindFirstChild(child.Name)
-
-		if existingChild and child.ClassName == "Folder" then
-			overlay(child, existingChild)
-		else
-			move(child, parent)
-		end
-	end
-end
-
--- Gathers up all the scripts in the DevModule. We use the resulting array to
--- enable all scripts in one step.
-local function getDevModuleScripts(devModule: Instance): { BaseScript }
-	local scripts = {}
-	for _, descendant in ipairs(devModule:GetDescendants()) do
-		if descendant.Parent == devModule then
-			continue
-		end
-
-		if descendant:IsA("Script") or descendant:IsA("LocalScript") then
-			table.insert(scripts, descendant)
-		end
-	end
-	return scripts
-end
-
--- Ensures that all scripts included with a DevModule are marked as Disabled.
--- This makes sure there are no race conditions resulting in the Install script
--- running after the scripts included with the module.
-local function assertScriptsAreDisabled(devModuleScripts: { BaseScript })
-	local enabledScripts = {}
-
-	for _, devModuleScript in ipairs(devModuleScripts) do
-		if not devModuleScript.Disabled then
-			table.insert(enabledScripts, devModuleScript.Name)
-		end
-	end
-
-	if #enabledScripts > 0 then
-		error(constants.ENABLED_SCRIPTS_ERROR:format(table.concat(enabledScripts, ", ")))
-	end
-end
-
-type Options = { verboseLogging: boolean?, pruneDevelopmentFiles: boolean? }
-
-local defaultOptions: Options = {
-	verboseLogging = false,
-	pruneDevelopmentFiles = true,
-}
-
-local function install(devModule: Instance, options: Options?)
-	local devModuleType = typeof(devModule)
-	assert(devModuleType == "Instance", ("expected a DevModule to install, got %s"):format(devModuleType))
-
-	assert(devModule.Parent, ("%s must be parented to be installed"):format(devModule.Name))
-
-	local mergedOptions = defaultOptions
-	for key, value in pairs(options or {}) do
-		mergedOptions[key] = value
-	end
-
-	if mergedOptions.verboseLogging then
-		useVerboseLogging = mergedOptions.verboseLogging
-	end
-
-	events.started:Fire()
-
-	log("info", ("Installing %s from %s..."):format(devModule.Name, devModule.Parent.Name))
-
-	local devModuleScripts = getDevModuleScripts(devModule)
-	assertScriptsAreDisabled(devModuleScripts)
-
-	if constants.DEV_MODULE_STORAGE:FindFirstChild(devModule.Name) then
-		log("info", "A version of this DevModule already exists. Skipping...")
-		devModule:Destroy()
-		return
-	end
-
-	if mergedOptions.pruneDevelopmentFiles then
-		log("info", "Pruning development files...")
-		prune(devModule)
-	end
-
-	-- The `true` flag searches all descendants of an instance, which is needed
-	-- here since the Packages folder is nested.
-	local packages = devModule:FindFirstChild(constants.PACKAGE_NAME, true)
-	if packages then
-		log("info", "Linking packages...")
-		dedupePackages(packages)
-	end
-
-	log("info", "Overlaying services...")
-	for _, child in ipairs(devModule:GetChildren()) do
-		-- GetService errors if the given name is not a service so we wrap it in
-		-- a pcall to use the result in a conditional.
-		local success, service = pcall(function()
-			return game:GetService(child.Name)
-		end)
-
-		if success then
-			overlay(child, service)
-		end
-	end
-
-	log("info", "Enabling scripts...")
-	for _, devModuleScript in ipairs(devModuleScripts) do
-		devModuleScript.Disabled = false
-		log("info", ("Enabled %s"):format(devModuleScript.Name))
-	end
-
-	events.finished:Fire()
-
-	log("info", ("Safe to remove %s"):format(devModule:GetFullName()))
-	log("info", ("Removing %s..."):format(devModule:GetFullName()))
-	devModule:Destroy()
-
-	log("info", ("Successfully installed %s!"):format(devModule.Name))
-end
-
-return install
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bd9c</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBXddce7d066e2945f0a5601ef5ee10c414">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">packageRef</string>
-							<string name="ScriptGuid">{24af8154-d586-4ef1-a3b8-b334b80d8c66}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local package = script.package
-assert(
-	package and package:IsA("ObjectValue"),
-	("could not require package. %q does not have a 'package' ObjectValue"):format(script:GetFullName())
-)
-local value = package.Value
-assert(
-	value and value:IsA("ModuleScript"),
-	("could not require package. %q does not have a package set as its Value"):format(package:GetFullName())
-)
-return require(value :: ModuleScript)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bd9d</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-			</Item>
-			<Item class="Folder" referent="RBX654e2e02ddff4535a96645834744ce0e">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<string name="Name">ServerStorage</string>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bd9e</UniqueId>
-				</Properties>
-				<Item class="Folder" referent="RBXc800782570d94e63b5b202d257216f0e">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">Actions</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bd9f</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBXef108b244370435f9fb45b0650535ae4">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">loadUser</string>
-							<string name="ScriptGuid">{13d6aac0-2ca4-4e6b-a285-c5f2ad129ff2}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local function loadUser(player, data)
-    return {
-        player = player,
-        data = data
-    }
-end
-
--- using makeActionCreator just handles having it set the type for us
-return Rodux.makeActionCreator(script.Name, loadUser)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bda0</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX094386a2f10b4873927026e8ce7c7f0b">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">removeUser</string>
-							<string name="ScriptGuid">{d83135c8-a96a-4434-b397-73e8f6a5e6d1}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local function removeUser(player)
-    return {
-        player = player
-    }
-end
-
--- using makeActionCreator just handles having it set the type for us
-return Rodux.makeActionCreator(script.Name, removeUser)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bda1</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-			</Item>
-			<Item class="Folder" referent="RBX77b715e1629d491eb185448135a0acee">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<string name="Name">ServerScriptService</string>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bda2</UniqueId>
-				</Properties>
-				<Item class="ModuleScript" referent="RBX72c91073a6204d6ab46e39d0c155097f">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">Data</string>
-						<string name="ScriptGuid">{403998d1-0cec-4f57-8ead-9fc406c8c722}</string>
-						<ProtectedString name="Source"><![CDATA[local playerService = game:GetService("Players")
-local dataService = game:GetService("DataStoreService")
-local ServerStorage = game:GetService("ServerStorage")
-local serverStore = require(ServerStorage:WaitForChild("serverStore"))
-local loadUser = require(ServerStorage:WaitForChild("Actions"):WaitForChild("loadUser"))
-local removeUser = require(ServerStorage:WaitForChild("Actions"):WaitForChild("removeUser"))
-
--- Getting store will fail if game isn't published
-local store = nil
-local success, err = pcall(function()
-    store = dataService:GetDataStore("DataStoreV1")
-end)
-if not success then
-    print("Unable to load data store, is this game published?")
-end
-
-local dataMod = {}
-local AUTOSAVE_INTERVAL = 120
-
-local function getRoduxStateForPlayer(player)
-	-- RoduxState will look like
-	-- {
-		-- "13114": {
-			-- inventory = {
-				-- wood = 1,
-			--}
-		-- }
-		-- "13115": {
-			-- inventory = {
-				-- wood = 1,
-			--}
-		-- }
-	--}
-
-	local roduxState = serverStore:getState()
-	return {inventory = roduxState.inventory[player.UserId]}
-end
-
-local function setRoduxStateForPlayer(player, data)
-	-- saved data will look like:
-	-- {
-		-- inventory = {
-			-- wood = 1,
-			-- stone = 2,
-		--}
-	--}
-	serverStore:dispatch(loadUser(player, data))
-end
-
-dataMod.recursiveCopy = function(dataTable)
-	local tableCopy = {}
-	
-	for index, value in pairs(dataTable) do
-		if type(value) == "table" then
-			value = dataMod.recursiveCopy(value)
-		end
-		tableCopy[index] = value
-	end
-	
-	return tableCopy
-end
-
-dataMod.load = function(player, count)
-	count = count or 1
-	if count > 3 then
-		return
-	end
-
-	local data 
-	local success, err = pcall(function()
-		data = store:GetAsync(player.UserId)
-	end)
-	
-	if not success then
-		if store ~= nil then
-			dataMod.load(player, count + 1)
-			return
-		else
-			print("Failed to load data, store is nil")
-			return
-		end
-	end
-
-	print("Loading data for " .. player.UserId)
-	if data == nil then
-		print("No data found for " .. player.UserId)
-	else
-		print("data found for " .. player.UserId)
-	end
-
-	setRoduxStateForPlayer(player, data)
-end
-
-dataMod.save = function(player, count)
-	count = count or 1
-	if count > 3 then
-		return
-	end
-
-	local key = player.UserId
-	local data = getRoduxStateForPlayer(player)
-	
-	local success, err = pcall(function()
-		store:SetAsync(key, data)
-	end)
-	
-	if success then
-		print(player.Name.. "'s data has been saved!")
-	else
-		if store ~= nil then
-			print("Loading data failed with error: " .. err .. ", trying again.")
-			dataMod.save(player, count + 1)
-			return
-		else
-			print("Failed to save data, store is nil")
-		end
-	end
-end
-
-local function autoSave()
-	while wait(AUTOSAVE_INTERVAL) do
-		print("Auto-saving data for all players")
-		
-		for key, dataTable in pairs(serverStore:getState().inventory) do
-			local player = playerService:GetPlayerByUserId(key)
-			dataMod.save(player)
-		end
-	end
-end
-
-playerService.PlayerAdded:Connect(function(player)
-	dataMod.load(player)
-end)
-
-playerService.PlayerRemoving:Connect(function(player)
-	dataMod.save(player)
-	serverStore:dispatch(removeUser(player))
-end)
-
-spawn(autoSave) --Initialize autosave loop
-
-game:BindToClose(function()
-	for _, player in pairs(playerService:GetPlayers()) do
-		dataMod.save(player)
-		player:Kick("Shutting down game. All data saved.")
-	end
-end)
-
-return dataMod
-]]></ProtectedString>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bda3</UniqueId>
-					</Properties>
-				</Item>
-			</Item>
-		</Item>
-		<Item class="Folder" referent="RBX880cd650f65a4811b6182a4cc0707287">
-			<Properties>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<string name="Name">RoactRoduxRootModule</string>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdad</UniqueId>
-			</Properties>
-			<Item class="Script" referent="RBX4b9feb4bf63549e786cd41bd21f57761">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<bool name="Disabled">false</bool>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">Install</string>
-					<string name="ScriptGuid">{a41af9b0-f169-46ad-9650-29881685a268}</string>
-					<ProtectedString name="Source"><![CDATA[local ModuleInstaller = require(script.ModuleInstaller)
-
-ModuleInstaller.install(script.Parent)
-]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdae</UniqueId>
-				</Properties>
-				<Item class="ModuleScript" referent="RBXf5c9220a52ca4a16aa0a89f9524d97b2">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">ModuleInstaller</string>
-						<string name="ScriptGuid">{469c49b5-04a4-43c6-8a70-764f201c0a90}</string>
-						<ProtectedString name="Source"><![CDATA[--!strict
-local events = require(script.events)
-local install = require(script.install)
-
-local DevModuleInstaller: { [string]: any } = {
-	verboseLogging = false,
-	pruneDevelopmentFiles = true,
-
-	started = events.started.Event,
-	finished = events.finished.Event,
-}
-
-function DevModuleInstaller.install(devModule: Folder)
-	return install(devModule, {
-		verboseLogging = DevModuleInstaller.verboseLogging,
-		pruneDevelopmentFiles = DevModuleInstaller.pruneDevelopmentFiles,
-	})
-end
-
-return DevModuleInstaller
-]]></ProtectedString>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdaf</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBX089d28ef6df145589392ed454987fa88">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">constants</string>
-							<string name="ScriptGuid">{4837faf2-6419-48b5-922f-f84e19586506}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local constants = {
-	-- The location where all DevModules are moved at runtime. Note that a DevModule
-	-- is moved after its scripts and other instances have been moved to their
-	-- proper locations. What remains of the DevModule is the Packages folder, and
-	-- any ModuleScripts that are used by the DevModule.
-	DEV_MODULE_STORAGE = ReplicatedStorage,
-
-	-- DevModules rely on dependencies. By convention, these are stored in a folder
-	-- named "Packages" inside the root of the DevModule. At runtime, the Packages
-	-- folders from every DevModule are deduplicated, resulting in only one version
-	-- of each package in use across all the DevModules in the game
-	PACKAGE_NAME = "Packages",
-	PACKAGE_STORAGE_LOCATION = ReplicatedStorage,
-	PACKAGE_STORAGE_NAME = "DevModulePackages",
-	PACKAGE_REF = script.Parent.packageRef,
-
-	-- The version of a package is controlled by a StringValue included as a child
-	-- of the package. This constant controls the name of that StringValue.
-	--
-	-- Initially we wanted to use Attributes for the version, however Rojo does not
-	-- support syncing Attributes yet. As such, we've opted to go the old fashioned
-	-- way of including a StringValue.
-	PACKAGE_VERSION_NAME = "_Version",
-
-	PACKAGE_VERSION_OBJECT_MISSING = "%s is missing a %s StringValue at %s",
-	PACKAGE_VERSION_EMPTY = "%s cannot have an empty value for its version at %s",
-	ENABLED_SCRIPTS_ERROR = "All scripts included with a DevModule must be Disabled. Please disable the "
-		.. "following script(s): %s",
-}
-
-return constants
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdb0</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX4180dbc4ca8f44028fdb676f2fdf700b">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">events</string>
-							<string name="ScriptGuid">{2193975b-e80c-49bc-9104-4889ccd39c4d}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local events = {
-	started = Instance.new("BindableEvent"),
-	finished = Instance.new("BindableEvent"),
-}
-
-return events]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdb1</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBXd668d3fdcb7e445bb3381070980c1c6a">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">install</string>
-							<string name="ScriptGuid">{ace6c3ea-1caf-49ed-b6bf-45e0d746eb0d}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local events = require(script.Parent.events)
-local constants = require(script.Parent.constants)
-
-local useVerboseLogging = false
-
-local function log(messageType: string, message: string)
-	if useVerboseLogging then
-		print(("[%s] %s"):format(messageType, message))
-	end
-end
-
--- Reparents an instance and outputs helpful logging information so we can see
--- where instances are going at runtime.
-local function move(instance: Instance, newParent: Instance)
-	instance.Parent = newParent
-	log("move", ("%s -> %s"):format(instance.Name, instance:GetFullName()))
-end
-
--- Gets the storage location for packages used by each Dev Modules. The packages
--- that get put in this folder are deduplicated so every distinct version of a
--- package has only one copy.
-local function getPackageStorage(): Folder
-	local packageStorage = constants.PACKAGE_STORAGE_LOCATION:FindFirstChild(constants.PACKAGE_STORAGE_NAME) :: Folder
-
-	if not packageStorage then
-		packageStorage = Instance.new("Folder")
-		packageStorage.Name = constants.PACKAGE_STORAGE_NAME
-		packageStorage.Parent = constants.PACKAGE_STORAGE_LOCATION
-	end
-
-	return packageStorage
-end
-
--- Prunes any stories and test files that are included with the DevModule. These
--- are not needed at runtime.
-local function prune(instance: Instance)
-	for _, descendant in ipairs(instance:GetDescendants()) do
-		local name = descendant.Name
-		if name:match("%.story$") or name:match("%.spec$") then
-			descendant:Destroy()
-		end
-	end
-end
-
-local function getPackageVersion(package: ModuleScript): string
-	local version = package:FindFirstChild(constants.PACKAGE_VERSION_NAME)
-
-	assert(
-		version and version:IsA("StringValue"),
-		constants.PACKAGE_VERSION_OBJECT_MISSING:format(
-			package.Name,
-			constants.PACKAGE_VERSION_NAME,
-			package:GetFullName()
-		)
-	)
-	assert(version.Value ~= "", constants.PACKAGE_VERSION_EMPTY:format(package.Name, version:GetFullName()))
-
-	return version.Value
-end
-
--- This function merges the Packages folder from a DevModule into a shared
--- location. Until we have an improved package implementation, we need to
--- manually dedupe our libraries to cut down on bloat
-local function dedupePackages(packages: Instance)
-	local packageStorage = getPackageStorage()
-
-	for _, package in ipairs(packages:GetChildren()) do
-		if package ~= script and package:IsA("ModuleScript") then
-			local version = getPackageVersion(package)
-
-			local existingVersion: ModuleScript
-			for _, otherPackage in ipairs(packageStorage:GetChildren()) do
-				if otherPackage.Name:match(("^%s_"):format(package.Name)) and otherPackage:IsA("ModuleScript") then
-					if version == getPackageVersion(otherPackage) then
-						existingVersion = otherPackage
-						break
-					end
-				end
-			end
-
-			if not existingVersion then
-				local clone = package:Clone() :: ModuleScript
-				clone.Parent = packageStorage
-				clone.Name = ("%s_%s"):format(clone.Name, version)
-				existingVersion = clone
-			end
-
-			-- Link the package with the existing version (which was either
-			-- there previously, or is the one we just generated)
-			local packageRef = constants.PACKAGE_REF:Clone()
-			packageRef.Name = package.Name
-
-			local packageObject = packageRef:FindFirstChild("package")
-			if packageObject and packageObject:IsA("ObjectValue") then
-				packageObject.Value = existingVersion
-			end
-			packageRef.Parent = package.Parent
-
-			package:Destroy()
-
-			log("link", ("%s <-> %s"):format(package.Name, existingVersion:GetFullName()))
-		end
-	end
-end
-
--- Takes an instance and overlays it on top of a parent. This is used for
--- overlaying a DevModule's DataModel-based layout on top of existing services.
-local function overlay(instance: Instance, parent: Instance)
-	for _, child in ipairs(instance:GetChildren()) do
-		local existingChild = parent:FindFirstChild(child.Name)
-
-		if existingChild and child.ClassName == "Folder" then
-			overlay(child, existingChild)
-		else
-			move(child, parent)
-		end
-	end
-end
-
--- Gathers up all the scripts in the DevModule. We use the resulting array to
--- enable all scripts in one step.
-local function getDevModuleScripts(devModule: Instance): { BaseScript }
-	local scripts = {}
-	for _, descendant in ipairs(devModule:GetDescendants()) do
-		if descendant.Parent == devModule then
-			continue
-		end
-
-		if descendant:IsA("Script") or descendant:IsA("LocalScript") then
-			table.insert(scripts, descendant)
-		end
-	end
-	return scripts
-end
-
--- Ensures that all scripts included with a DevModule are marked as Disabled.
--- This makes sure there are no race conditions resulting in the Install script
--- running after the scripts included with the module.
-local function assertScriptsAreDisabled(devModuleScripts: { BaseScript })
-	local enabledScripts = {}
-
-	for _, devModuleScript in ipairs(devModuleScripts) do
-		if not devModuleScript.Disabled then
-			table.insert(enabledScripts, devModuleScript.Name)
-		end
-	end
-
-	if #enabledScripts > 0 then
-		error(constants.ENABLED_SCRIPTS_ERROR:format(table.concat(enabledScripts, ", ")))
-	end
-end
-
-type Options = { verboseLogging: boolean?, pruneDevelopmentFiles: boolean? }
-
-local defaultOptions: Options = {
-	verboseLogging = false,
-	pruneDevelopmentFiles = true,
-}
-
-local function install(devModule: Instance, options: Options?)
-	local devModuleType = typeof(devModule)
-	assert(devModuleType == "Instance", ("expected a DevModule to install, got %s"):format(devModuleType))
-
-	assert(devModule.Parent, ("%s must be parented to be installed"):format(devModule.Name))
-
-	local mergedOptions = defaultOptions
-	for key, value in pairs(options or {}) do
-		mergedOptions[key] = value
-	end
-
-	if mergedOptions.verboseLogging then
-		useVerboseLogging = mergedOptions.verboseLogging
-	end
-
-	events.started:Fire()
-
-	log("info", ("Installing %s from %s..."):format(devModule.Name, devModule.Parent.Name))
-
-	local devModuleScripts = getDevModuleScripts(devModule)
-	assertScriptsAreDisabled(devModuleScripts)
-
-	if constants.DEV_MODULE_STORAGE:FindFirstChild(devModule.Name) then
-		log("info", "A version of this DevModule already exists. Skipping...")
-		devModule:Destroy()
-		return
-	end
-
-	if mergedOptions.pruneDevelopmentFiles then
-		log("info", "Pruning development files...")
-		prune(devModule)
-	end
-
-	-- The `true` flag searches all descendants of an instance, which is needed
-	-- here since the Packages folder is nested.
-	local packages = devModule:FindFirstChild(constants.PACKAGE_NAME, true)
-	if packages then
-		log("info", "Linking packages...")
-		dedupePackages(packages)
-	end
-
-	log("info", "Overlaying services...")
-	for _, child in ipairs(devModule:GetChildren()) do
-		-- GetService errors if the given name is not a service so we wrap it in
-		-- a pcall to use the result in a conditional.
-		local success, service = pcall(function()
-			return game:GetService(child.Name)
-		end)
-
-		if success then
-			overlay(child, service)
-		end
-	end
-
-	log("info", "Enabling scripts...")
-	for _, devModuleScript in ipairs(devModuleScripts) do
-		devModuleScript.Disabled = false
-		log("info", ("Enabled %s"):format(devModuleScript.Name))
-	end
-
-	events.finished:Fire()
-
-	log("info", ("Safe to remove %s"):format(devModule:GetFullName()))
-	log("info", ("Removing %s..."):format(devModule:GetFullName()))
-	devModule:Destroy()
-
-	log("info", ("Successfully installed %s!"):format(devModule.Name))
-end
-
-return install
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdb2</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBXc2d03ae1523a4504937e733498b1a027">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">packageRef</string>
-							<string name="ScriptGuid">{ddb3764b-a4dd-4452-95aa-8dcfbba60e5d}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local package = script.package
-assert(
-	package and package:IsA("ObjectValue"),
-	("could not require package. %q does not have a 'package' ObjectValue"):format(script:GetFullName())
-)
-local value = package.Value
-assert(
-	value and value:IsA("ModuleScript"),
-	("could not require package. %q does not have a package set as its Value"):format(package:GetFullName())
-)
-return require(value :: ModuleScript)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdb3</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-			</Item>
-			<Item class="Folder" referent="RBXf1b391060a684047ab670cdad0dcab19">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<string name="Name">ReplicatedStorage</string>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdb4</UniqueId>
-				</Properties>
-				<Item class="Folder" referent="RBX068ba26da2fa44dba40085e08151fb11">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">Components</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdb5</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBX85817e857e0b464b9630c3cc3078b9ab">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">App</string>
-							<string name="ScriptGuid">{a6e1567d-e3ed-46e4-a3cc-37ed0710421b}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local Roact = require(ReplicatedStorage.Roact)
-local RoactRodux = require(ReplicatedStorage.RoactRodux)
-
-local InventoryUIButton = require(ReplicatedStorage:WaitForChild("Components"):WaitForChild("InventoryUIButton"))
-local Inventory = require(ReplicatedStorage:WaitForChild("Components"):WaitForChild("Inventory"))
-
-local openInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("openInventory"))
-
-local App = Roact.Component:extend("App")
-
-function App:init()
-end
-
-function App:render()
-    if self.props.openWindow == "inventory" then
-        print("Rendering Inventory UI")
-        return Roact.createElement("ScreenGui", {}, {
-            Roact.createElement(Inventory)
-        })
-    end
-
-    return Roact.createElement("ScreenGui", {}, {
-        Roact.createElement(InventoryUIButton)
-    })
-end
-
-local function mapStateToProps(state)
-    return {
-        openWindow = state.ui.openWindow
-    }
-end
-
-local function mapDispatchToProps(dispatch)
-    return {
-        onOpenInventory = function()
-            dispatch(openInventory())
-        end
-    }
-end
-
-return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(App)]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdb6</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-				<Item class="Folder" referent="RBXdd5443ea00584b1e9401380a6bb58cc7">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">Reducers</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdb7</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBX88044c6fb8b34a47b68c8b8ab1ae5e1d">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">reducer</string>
-							<string name="ScriptGuid">{7cb9414f-4f2d-4d00-8b0c-cdb1a62d3832}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local ui = require(ReplicatedStorage:WaitForChild("Reducers"):WaitForChild("ui"))
-local inventory = require(ReplicatedStorage:WaitForChild("Reducers"):WaitForChild("inventoryReducer"))
-
-local reducer = Rodux.combineReducers({
-    ui = ui,
-    inventory = inventory
-})
-
-return reducer]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdb8</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-				<Item class="ModuleScript" referent="RBX6f2c90a9058b4220bbb88b496dfd1452">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">clientStore</string>
-						<string name="ScriptGuid">{370d19e9-13cf-49a8-8b16-33601ec0facc}</string>
-						<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local Rodux = require(ReplicatedStorage.Rodux)
-local reducer = require(ReplicatedStorage.Reducers.reducer)
-
--- TODO add Rodux.thunkMiddleware here
--- TODO add server store 
-local store = Rodux.Store.new(reducer)
-
-return store]]></ProtectedString>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdb9</UniqueId>
-					</Properties>
-				</Item>
-				<Item class="ModuleScript" referent="RBXb8fd82cc76ed4f85ad4f62e27d6f4391">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">RoactAppRoot</string>
-						<string name="ScriptGuid">{2e0966db-066b-4a68-86ae-52b91adc7651}</string>
-						<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-
-local Roact = require(ReplicatedStorage.Roact)
-local RoactRodux = require(ReplicatedStorage.RoactRodux)
-local clientStore = require(ReplicatedStorage:WaitForChild("clientStore"))
-local App = require(ReplicatedStorage:WaitForChild("Components"):WaitForChild("App"))
-
-local app = Roact.createElement(RoactRodux.StoreProvider, {
-    store = clientStore,
-}, {
-    Roact.createElement(App),
-})
-
-local PlayerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
--- Create our UI, which now runs on its own!
-local handle = Roact.mount(app, PlayerGui, "Root App")
-
-return handle
-
--- Later, we can destroy our UI and disconnect everything correctly.
--- wait(10)
--- Roact.unmount(handle)]]></ProtectedString>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdba</UniqueId>
-					</Properties>
-				</Item>
-			</Item>
-			<Item class="Folder" referent="RBXef76cb9db24f4acaadc8ae5f0199aff2">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<string name="Name">ServerStorage</string>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdbb</UniqueId>
-				</Properties>
-				<Item class="Folder" referent="RBX28745408dd3b4624b9dce15994e037df">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">Reducers</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdbc</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBXbea4d32bdd934127a1f0bc8d4a98c23e">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">serverReducer</string>
-							<string name="ScriptGuid">{b61fc56e-04e8-4ffa-80fa-09472e030b67}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ServerStorage = game:GetService("ServerStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local inventory = require(ServerStorage:WaitForChild("Reducers"):WaitForChild("inventory"))
-
-local reducer = Rodux.combineReducers({
-    inventory = inventory
-})
-
-return reducer]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdbd</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-				<Item class="ModuleScript" referent="RBX8a7febcbcb5a43ebbe2434c5d7a70c36">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">serverStore</string>
-						<string name="ScriptGuid">{22938f97-8272-4bff-be31-03d7435d7806}</string>
-						<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ServerStorage = game:GetService("ServerStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local serverReducer = require(ServerStorage:WaitForChild("Reducers"):WaitForChild("serverReducer"))
-
-local store = Rodux.Store.new(serverReducer)
-
-return store]]></ProtectedString>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdbe</UniqueId>
-					</Properties>
-				</Item>
-			</Item>
-		</Item>
-		<Item class="Folder" referent="RBXcf3b5fbf86914b8f8bb866f58789664c">
-			<Properties>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<string name="Name">InventoryModule</string>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdcb</UniqueId>
-			</Properties>
-			<Item class="Script" referent="RBX434eda865b4d4704b0862ec702cd61e6">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<bool name="Disabled">false</bool>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">Install</string>
-					<string name="ScriptGuid">{200ddbfd-b3b7-416b-a5e1-27a5bda51adf}</string>
-					<ProtectedString name="Source"><![CDATA[local ModuleInstaller = require(script.ModuleInstaller)
-
-ModuleInstaller.install(script.Parent)
-]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdcc</UniqueId>
-				</Properties>
-				<Item class="ModuleScript" referent="RBX99b0272a32c14d8e817c032d74fdf6f6">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">ModuleInstaller</string>
-						<string name="ScriptGuid">{148467a8-95b4-4e3f-9bb7-b98d781d89b9}</string>
-						<ProtectedString name="Source"><![CDATA[--!strict
-local events = require(script.events)
-local install = require(script.install)
-
-local DevModuleInstaller: { [string]: any } = {
-	verboseLogging = false,
-	pruneDevelopmentFiles = true,
-
-	started = events.started.Event,
-	finished = events.finished.Event,
-}
-
-function DevModuleInstaller.install(devModule: Folder)
-	return install(devModule, {
-		verboseLogging = DevModuleInstaller.verboseLogging,
-		pruneDevelopmentFiles = DevModuleInstaller.pruneDevelopmentFiles,
-	})
-end
-
-return DevModuleInstaller
-]]></ProtectedString>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdcd</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBX8c3ac5d55ff7499ba08951368c9e38db">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">constants</string>
-							<string name="ScriptGuid">{e6f591ee-ef6a-4ede-bd35-d3fdeafe691b}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local constants = {
-	-- The location where all DevModules are moved at runtime. Note that a DevModule
-	-- is moved after its scripts and other instances have been moved to their
-	-- proper locations. What remains of the DevModule is the Packages folder, and
-	-- any ModuleScripts that are used by the DevModule.
-	DEV_MODULE_STORAGE = ReplicatedStorage,
-
-	-- DevModules rely on dependencies. By convention, these are stored in a folder
-	-- named "Packages" inside the root of the DevModule. At runtime, the Packages
-	-- folders from every DevModule are deduplicated, resulting in only one version
-	-- of each package in use across all the DevModules in the game
-	PACKAGE_NAME = "Packages",
-	PACKAGE_STORAGE_LOCATION = ReplicatedStorage,
-	PACKAGE_STORAGE_NAME = "DevModulePackages",
-	PACKAGE_REF = script.Parent.packageRef,
-
-	-- The version of a package is controlled by a StringValue included as a child
-	-- of the package. This constant controls the name of that StringValue.
-	--
-	-- Initially we wanted to use Attributes for the version, however Rojo does not
-	-- support syncing Attributes yet. As such, we've opted to go the old fashioned
-	-- way of including a StringValue.
-	PACKAGE_VERSION_NAME = "_Version",
-
-	PACKAGE_VERSION_OBJECT_MISSING = "%s is missing a %s StringValue at %s",
-	PACKAGE_VERSION_EMPTY = "%s cannot have an empty value for its version at %s",
-	ENABLED_SCRIPTS_ERROR = "All scripts included with a DevModule must be Disabled. Please disable the "
-		.. "following script(s): %s",
-}
-
-return constants
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdce</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX33ad90ed7bbf4035ab79f91f6cba99bb">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">events</string>
-							<string name="ScriptGuid">{b9971a49-f9a9-4733-8753-aca6385758c5}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local events = {
-	started = Instance.new("BindableEvent"),
-	finished = Instance.new("BindableEvent"),
-}
-
-return events]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdcf</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBXc2f9baf9feb94ef4a7cdf6145554f302">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">install</string>
-							<string name="ScriptGuid">{29faa451-48cb-4784-acaa-fc4e4314851d}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local events = require(script.Parent.events)
-local constants = require(script.Parent.constants)
-
-local useVerboseLogging = false
-
-local function log(messageType: string, message: string)
-	if useVerboseLogging then
-		print(("[%s] %s"):format(messageType, message))
-	end
-end
-
--- Reparents an instance and outputs helpful logging information so we can see
--- where instances are going at runtime.
-local function move(instance: Instance, newParent: Instance)
-	instance.Parent = newParent
-	log("move", ("%s -> %s"):format(instance.Name, instance:GetFullName()))
-end
-
--- Gets the storage location for packages used by each Dev Modules. The packages
--- that get put in this folder are deduplicated so every distinct version of a
--- package has only one copy.
-local function getPackageStorage(): Folder
-	local packageStorage = constants.PACKAGE_STORAGE_LOCATION:FindFirstChild(constants.PACKAGE_STORAGE_NAME) :: Folder
-
-	if not packageStorage then
-		packageStorage = Instance.new("Folder")
-		packageStorage.Name = constants.PACKAGE_STORAGE_NAME
-		packageStorage.Parent = constants.PACKAGE_STORAGE_LOCATION
-	end
-
-	return packageStorage
-end
-
--- Prunes any stories and test files that are included with the DevModule. These
--- are not needed at runtime.
-local function prune(instance: Instance)
-	for _, descendant in ipairs(instance:GetDescendants()) do
-		local name = descendant.Name
-		if name:match("%.story$") or name:match("%.spec$") then
-			descendant:Destroy()
-		end
-	end
-end
-
-local function getPackageVersion(package: ModuleScript): string
-	local version = package:FindFirstChild(constants.PACKAGE_VERSION_NAME)
-
-	assert(
-		version and version:IsA("StringValue"),
-		constants.PACKAGE_VERSION_OBJECT_MISSING:format(
-			package.Name,
-			constants.PACKAGE_VERSION_NAME,
-			package:GetFullName()
-		)
-	)
-	assert(version.Value ~= "", constants.PACKAGE_VERSION_EMPTY:format(package.Name, version:GetFullName()))
-
-	return version.Value
-end
-
--- This function merges the Packages folder from a DevModule into a shared
--- location. Until we have an improved package implementation, we need to
--- manually dedupe our libraries to cut down on bloat
-local function dedupePackages(packages: Instance)
-	local packageStorage = getPackageStorage()
-
-	for _, package in ipairs(packages:GetChildren()) do
-		if package ~= script and package:IsA("ModuleScript") then
-			local version = getPackageVersion(package)
-
-			local existingVersion: ModuleScript
-			for _, otherPackage in ipairs(packageStorage:GetChildren()) do
-				if otherPackage.Name:match(("^%s_"):format(package.Name)) and otherPackage:IsA("ModuleScript") then
-					if version == getPackageVersion(otherPackage) then
-						existingVersion = otherPackage
-						break
-					end
-				end
-			end
-
-			if not existingVersion then
-				local clone = package:Clone() :: ModuleScript
-				clone.Parent = packageStorage
-				clone.Name = ("%s_%s"):format(clone.Name, version)
-				existingVersion = clone
-			end
-
-			-- Link the package with the existing version (which was either
-			-- there previously, or is the one we just generated)
-			local packageRef = constants.PACKAGE_REF:Clone()
-			packageRef.Name = package.Name
-
-			local packageObject = packageRef:FindFirstChild("package")
-			if packageObject and packageObject:IsA("ObjectValue") then
-				packageObject.Value = existingVersion
-			end
-			packageRef.Parent = package.Parent
-
-			package:Destroy()
-
-			log("link", ("%s <-> %s"):format(package.Name, existingVersion:GetFullName()))
-		end
-	end
-end
-
--- Takes an instance and overlays it on top of a parent. This is used for
--- overlaying a DevModule's DataModel-based layout on top of existing services.
-local function overlay(instance: Instance, parent: Instance)
-	for _, child in ipairs(instance:GetChildren()) do
-		local existingChild = parent:FindFirstChild(child.Name)
-
-		if existingChild and child.ClassName == "Folder" then
-			overlay(child, existingChild)
-		else
-			move(child, parent)
-		end
-	end
-end
-
--- Gathers up all the scripts in the DevModule. We use the resulting array to
--- enable all scripts in one step.
-local function getDevModuleScripts(devModule: Instance): { BaseScript }
-	local scripts = {}
-	for _, descendant in ipairs(devModule:GetDescendants()) do
-		if descendant.Parent == devModule then
-			continue
-		end
-
-		if descendant:IsA("Script") or descendant:IsA("LocalScript") then
-			table.insert(scripts, descendant)
-		end
-	end
-	return scripts
-end
-
--- Ensures that all scripts included with a DevModule are marked as Disabled.
--- This makes sure there are no race conditions resulting in the Install script
--- running after the scripts included with the module.
-local function assertScriptsAreDisabled(devModuleScripts: { BaseScript })
-	local enabledScripts = {}
-
-	for _, devModuleScript in ipairs(devModuleScripts) do
-		if not devModuleScript.Disabled then
-			table.insert(enabledScripts, devModuleScript.Name)
-		end
-	end
-
-	if #enabledScripts > 0 then
-		error(constants.ENABLED_SCRIPTS_ERROR:format(table.concat(enabledScripts, ", ")))
-	end
-end
-
-type Options = { verboseLogging: boolean?, pruneDevelopmentFiles: boolean? }
-
-local defaultOptions: Options = {
-	verboseLogging = false,
-	pruneDevelopmentFiles = true,
-}
-
-local function install(devModule: Instance, options: Options?)
-	local devModuleType = typeof(devModule)
-	assert(devModuleType == "Instance", ("expected a DevModule to install, got %s"):format(devModuleType))
-
-	assert(devModule.Parent, ("%s must be parented to be installed"):format(devModule.Name))
-
-	local mergedOptions = defaultOptions
-	for key, value in pairs(options or {}) do
-		mergedOptions[key] = value
-	end
-
-	if mergedOptions.verboseLogging then
-		useVerboseLogging = mergedOptions.verboseLogging
-	end
-
-	events.started:Fire()
-
-	log("info", ("Installing %s from %s..."):format(devModule.Name, devModule.Parent.Name))
-
-	local devModuleScripts = getDevModuleScripts(devModule)
-	assertScriptsAreDisabled(devModuleScripts)
-
-	if constants.DEV_MODULE_STORAGE:FindFirstChild(devModule.Name) then
-		log("info", "A version of this DevModule already exists. Skipping...")
-		devModule:Destroy()
-		return
-	end
-
-	if mergedOptions.pruneDevelopmentFiles then
-		log("info", "Pruning development files...")
-		prune(devModule)
-	end
-
-	-- The `true` flag searches all descendants of an instance, which is needed
-	-- here since the Packages folder is nested.
-	local packages = devModule:FindFirstChild(constants.PACKAGE_NAME, true)
-	if packages then
-		log("info", "Linking packages...")
-		dedupePackages(packages)
-	end
-
-	log("info", "Overlaying services...")
-	for _, child in ipairs(devModule:GetChildren()) do
-		-- GetService errors if the given name is not a service so we wrap it in
-		-- a pcall to use the result in a conditional.
-		local success, service = pcall(function()
-			return game:GetService(child.Name)
-		end)
-
-		if success then
-			overlay(child, service)
-		end
-	end
-
-	log("info", "Enabling scripts...")
-	for _, devModuleScript in ipairs(devModuleScripts) do
-		devModuleScript.Disabled = false
-		log("info", ("Enabled %s"):format(devModuleScript.Name))
-	end
-
-	events.finished:Fire()
-
-	log("info", ("Safe to remove %s"):format(devModule:GetFullName()))
-	log("info", ("Removing %s..."):format(devModule:GetFullName()))
-	devModule:Destroy()
-
-	log("info", ("Successfully installed %s!"):format(devModule.Name))
-end
-
-return install
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdd0</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX5d99a5d5afe9431d9c8f580ff7e1dfba">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">packageRef</string>
-							<string name="ScriptGuid">{e038a3ad-8873-4f09-9790-6be570b3b42e}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local package = script.package
-assert(
-	package and package:IsA("ObjectValue"),
-	("could not require package. %q does not have a 'package' ObjectValue"):format(script:GetFullName())
-)
-local value = package.Value
-assert(
-	value and value:IsA("ModuleScript"),
-	("could not require package. %q does not have a package set as its Value"):format(package:GetFullName())
-)
-return require(value :: ModuleScript)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdd1</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-			</Item>
-			<Item class="Folder" referent="RBXb55bca03a1b74d13ae6e9b1ce308d45d">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<string name="Name">ReplicatedStorage</string>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdd2</UniqueId>
-				</Properties>
-				<Item class="Folder" referent="RBX0904bcce6b3240ee8c974754f9b5d40a">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">Actions</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdd3</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBXa3f3d4ac9cfa40829c3445d5338356eb">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">openInventory</string>
-							<string name="ScriptGuid">{edf3a55a-e498-4bbd-90f7-b3d406bdf3e9}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local function openInventory()
-    return {
-    }
-end
-
--- using makeActionCreator just handles having it set the type for us
-return Rodux.makeActionCreator(script.Name, openInventory)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdd4</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBXcf9c3f7ea6ac415ab81185f52603bdb9">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">closeInventory</string>
-							<string name="ScriptGuid">{fa623210-1a65-488f-8524-dcc0b2f88f7f}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local function closeInventory()
-    return {
-    }
-end
-
--- using makeActionCreator just handles having it set the type for us
-return Rodux.makeActionCreator(script.Name, closeInventory)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdd5</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX155e0c7253c14946baef92f088c2e4f9">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">inventoryUpdatedAction</string>
-							<string name="ScriptGuid">{f361a841-2ef6-459b-974c-94f07f160d74}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local function inventoryUpdatedAction(inventory)
-    return {
-        inventory = inventory
-    }
-end
-
--- using makeActionCreator just handles having it set the type for us
-return Rodux.makeActionCreator(script.Name, inventoryUpdatedAction)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdd6</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-				<Item class="Folder" referent="RBXc44d06afc58f486d8dd71c395eee7e51">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">Components</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdd7</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBX3e625943c8e34e5dba2373cedbe271f4">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">Inventory</string>
-							<string name="ScriptGuid">{26a600f1-8013-492a-99e5-7c0997c38cd7}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local Roact = require(ReplicatedStorage.Roact)
-local RoactRodux = require(ReplicatedStorage.RoactRodux)
-
-local closeInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("closeInventory"))
-
-local Inventory = Roact.Component:extend("Inventory")
-
-function Inventory:init()
-end
-
-function Inventory:render()
-    return Roact.createElement("Frame", {
-        Size = UDim2.new(0.6, 0, 0.7, 0),
-        Position = UDim2.new(0.5, 0, 0.5, 0),
-        AnchorPoint = Vector2.new(0.5, 0.5),
-    }, {
-        CloseButton = Roact.createElement("TextButton", {
-            Size = UDim2.new(0, 15, 0, 15),
-            Position = UDim2.new(1, -10, 0, 10),
-            AnchorPoint = Vector2.new(1, 0),
-            Text = "X",
-            [Roact.Event.MouseButton1Click] = function()
-                print("Close Button Clicked")
-                self.props.onCloseInventory()
-            end
-        }),
-        InventoryGridFrame = Roact.createElement("Frame", {
-            Size = UDim2.new(0.9, 0, 0.9, -35),
-            Position = UDim2.new(0.5, 0, 0.5, 35),
-            AnchorPoint = Vector2.new(0.5, 0.5),
-            BorderSizePixel = 0
-        }, {
-            InventoryGrid = Roact.createElement("UIGridLayout", {
-                CellPadding = UDim2.new(0, 5, 0, 5),
-                CellSize = UDim2.new(0, 50, 0, 50),
-                FillDirection = Enum.FillDirection.Horizontal,
-                HorizontalAlignment = Enum.HorizontalAlignment.Left,
-                VerticalAlignment = Enum.VerticalAlignment.Top,
-            }), 
-            Wood = Roact.createElement("TextButton", {
-                Text = "Wood" .. "<br/><br/>" ..  self.props.wood, -- use rich text to make multiline
-                TextSize = 12,
-                ZIndex = 7,
-                BorderSizePixel = 1,
-                BackgroundColor3 = Color3.new(0.9, 0.9, 0.9),
-                TextWrapped = true,
-                RichText=true
-            })
-        })
-    })
-end
-
-local function mapStateToProps(state)
-    return {
-        wood = state.inventory and state.inventory.wood or 0
-    }
-end
-
-local function mapDispatchToProps(dispatch)
-    return {
-        onCloseInventory = function()
-            dispatch(closeInventory())
-        end
-    }
-end
-
-return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(Inventory)]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdd8</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX6ebb270daa9b4dc4b48f4c0ad515c731">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">InventoryUIButton</string>
-							<string name="ScriptGuid">{168812c7-022b-4db3-a21e-5de4050af0fa}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-
-local Roact = require(ReplicatedStorage.Roact) 
-local RoactRodux = require(ReplicatedStorage.RoactRodux)
-
-local openInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("openInventory"))
-
-local Inventory = Roact.Component:extend("Inventory")
-
-function Inventory:init()
-    -- In init, we can use setState to set up our initial component state.
-    self:setState({
-    })
-end
-
--- This render function is almost completely unchanged from the first example.
-function Inventory:render()
-    return Roact.createElement("Frame", 
-        {
-            Position = UDim2.new(0, 20, 0.5, 0),
-        },
-        {
-            WoodLabel = Roact.createElement("TextButton", {
-                Size = UDim2.new(0, 100, 0, 100),
-                Position = UDim2.new(0, 20, 0.5, 0),
-                Text = "Wood Collected: " .. self.props.wood,
-                [Roact.Event.MouseButton1Click] = function()
-                    print("Open Inventory Button Clicked")
-                    self.props.onOpenInventory()
-                end
-            })
-        }
-    )
-end
-
--- Set up our loop in didMount, so that it starts running when our
--- component is created.
-function Inventory:didMount()
-end
-
--- Stop the loop in willUnmount, so that our loop terminates when the
--- component is destroyed.
-function Inventory:willUnmount()
-end
-
-local function mapStateToProps(state)
-    return {
-        wood = state.inventory and state.inventory.wood or 0
-    }
-end
-
-local function mapDispatchToProps(dispatch)
-    return {
-        onOpenInventory = function()
-            dispatch(openInventory())
-        end
-    }
-end
-
-return RoactRodux.connect(mapStateToProps, mapDispatchToProps)(Inventory)]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdd9</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-				<Item class="Folder" referent="RBXa3e05dbddbc24606a753713940b543d5">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">Reducers</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdda</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBXa709cf676b384bad9f1deab6f99be59a">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">ui</string>
-							<string name="ScriptGuid">{e34ac862-e808-46aa-98a5-1b0dc195e993}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local openInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("openInventory"))
-local closeInventory = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("closeInventory"))
-
-local initialState = {
-    openWindow = nil
-}
-
-local reducer = Rodux.createReducer(initialState, {
-    [openInventory.name] = function(state, action)
-        return {
-            openWindow = "inventory"
-        }
-    end,
-
-    [closeInventory.name] = function(state, action)
-        return {
-            openWindow = nil
-        }
-    end
-})
-
-return reducer]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bddb</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX8d0000c0eac747c99d4b83abe93965c9">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">inventoryReducer</string>
-							<string name="ScriptGuid">{0d693d01-a533-4eca-95bc-4f5c054b3bcd}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-local inventoryUpdatedAction = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("inventoryUpdatedAction"))
-
-local initialState = {
-}
-
--- need to also listen for InventoryChanged event from the server
-
-local reducer = Rodux.createReducer(initialState, {
-    [inventoryUpdatedAction.name] = function(state, action)
-        if action.inventory == nil then
-            return state
-        end
-        return action.inventory
-    end
-})
-
-return reducer]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bddc</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-				<Item class="RemoteEvent" referent="RBXa933d131341e499d9269ddb8f91e5f67">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">InventoryChanged</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bddd</UniqueId>
-					</Properties>
-				</Item>
-			</Item>
-			<Item class="Folder" referent="RBXf02abc7bd55b4761ba45105f22b80ebd">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<string name="Name">ServerStorage</string>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdde</UniqueId>
-				</Properties>
-				<Item class="Folder" referent="RBXdc216ccc5044411687f61f181ac05a29">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">Actions</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bddf</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBX93b4b7190cc142cd8148e146ae44650f">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">updateInventory</string>
-							<string name="ScriptGuid">{d67aab41-c569-4d93-b505-31b68f684699}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-
-local function updateInventory(player)
-    return {
-        player = player
-    }
-end
-
--- using makeActionCreator just handles having it set the type for us
-return Rodux.makeActionCreator(script.Name, updateInventory)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bde0</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-				<Item class="Folder" referent="RBX08afae0fd1e34e9692f28678cb006669">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">Reducers</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bde1</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBXd6a7282a0ae441479faea2c03032ffbf">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">inventory</string>
-							<string name="ScriptGuid">{ae660fd3-0007-48db-b4b1-dce1d36443f0}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ServerStorage = game:GetService("ServerStorage")
-local Rodux = require(ReplicatedStorage.Rodux)
-local RoduxUtils = require(ReplicatedStorage.RoduxUtils)
-
-local updateInventory = require(ServerStorage:WaitForChild("Actions"):WaitForChild("updateInventory"))
-local loadUser = require(ServerStorage:WaitForChild("Actions"):WaitForChild("loadUser"))
-local removeUser = require(ServerStorage:WaitForChild("Actions"):WaitForChild("removeUser"))
-local InventoryChanged = ReplicatedStorage:WaitForChild("InventoryChanged")
-
-local initialState = {
-}
-
-local reducer = Rodux.createReducer(initialState, {
-    [updateInventory.name] = function(state, action)
-        
-        local userId = action.player.UserId
-        local newValue = 1
-        if state[userId] and state[userId].wood then
-            newValue = state[userId].wood + 1
-        end
-
-        local tableUpdates = {
-            [userId] = {
-                wood = newValue
-            }
-        }
-        local newState = RoduxUtils.deepmerge(RoduxUtils.deepcopy(state), tableUpdates)
-
-        -- update client that inventory changed
-        -- using a remoteEvent
-        -- inventoryUpdatedRemote:FireClients(action)
-        print("Updating client that inventory changed")
-        InventoryChanged:FireClient(action.player, newState[userId])
-        return newState
-    end,
-
-    [loadUser.name] = function(state, action)
-        local userId = action.player.UserId
-        local data = action.data
-
-        if data == nil then
-            return
-        end
-
-        local tableUpdates = {
-            [userId] = data.inventory
-        }
-
-        local newState = RoduxUtils.deepmerge(RoduxUtils.deepcopy(state), tableUpdates)
-
-        print("Updating client that inventory loaded")
-        InventoryChanged:FireClient(action.player, newState[userId])
-        return newState
-    end,
-
-    [removeUser.name] = function(state, action)
-        local userId = action.player.UserId
-        
-        local currentState = RoduxUtils.deepcopy(state)
-        currentState[userId] = nil
-        return currentState
-    end
-})
-
-return reducer]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bde2</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-			</Item>
-			<Item class="Folder" referent="RBX5615dbf432ef4d0882c01831d1e99a6f">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<string name="Name">StarterPlayer</string>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bde3</UniqueId>
-				</Properties>
-				<Item class="Folder" referent="RBXf43b46aeb14b472f891b30a87656d31e">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">StarterPlayerScripts</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bde4</UniqueId>
-					</Properties>
-					<Item class="LocalScript" referent="RBX464ec492d30a4153b4c806a72ce4d9d6">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<bool name="Disabled">true</bool>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">InventoryEventsRoduxListener</string>
-							<string name="ScriptGuid">{8061ca7b-0821-4d51-a13c-1c96baafcd78}</string>
-							<ProtectedString name="Source"><![CDATA[local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local clientStore = require(ReplicatedStorage:WaitForChild("clientStore"))
-local InventoryChanged = ReplicatedStorage:WaitForChild("InventoryChanged")
-local inventoryUpdatedAction = require(ReplicatedStorage:WaitForChild("Actions"):WaitForChild("inventoryUpdatedAction"))
-
-InventoryChanged.OnClientEvent:Connect(function(inventory)
-    print("Recieved inventory updated event from server")
-    clientStore:dispatch(inventoryUpdatedAction(inventory))
-end)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bde5</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-			</Item>
-		</Item>
-		<Item class="Folder" referent="RBX2bee3f50e0d3407ea5bcfec3397cb9e2">
-			<Properties>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<string name="Name">ItemCatalog</string>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdf6</UniqueId>
-			</Properties>
-			<Item class="Script" referent="RBX0d590a541fff4c12862df1a5e959974d">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<bool name="Disabled">false</bool>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">Install</string>
-					<string name="ScriptGuid">{c946db41-fd9c-4b18-aebd-fb1cea24027e}</string>
-					<ProtectedString name="Source"><![CDATA[local ModuleInstaller = require(script.ModuleInstaller)
-
-ModuleInstaller.install(script.Parent)
-]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdf7</UniqueId>
-				</Properties>
-				<Item class="ModuleScript" referent="RBX80875287cf26457f9365eb1e1421530c">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">ModuleInstaller</string>
-						<string name="ScriptGuid">{6f041699-f6e7-487b-b53e-6ffa744a82a3}</string>
-						<ProtectedString name="Source"><![CDATA[--!strict
-local events = require(script.events)
-local install = require(script.install)
-
-local DevModuleInstaller: { [string]: any } = {
-	verboseLogging = false,
-	pruneDevelopmentFiles = true,
-
-	started = events.started.Event,
-	finished = events.finished.Event,
-}
-
-function DevModuleInstaller.install(devModule: Folder)
-	return install(devModule, {
-		verboseLogging = DevModuleInstaller.verboseLogging,
-		pruneDevelopmentFiles = DevModuleInstaller.pruneDevelopmentFiles,
-	})
-end
-
-return DevModuleInstaller
-]]></ProtectedString>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdf8</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBX4c5a20dc8b2d4979bbaf68b4874d531f">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">constants</string>
-							<string name="ScriptGuid">{e8689a2d-80c1-4ba4-908e-a38111325a01}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local constants = {
-	-- The location where all DevModules are moved at runtime. Note that a DevModule
-	-- is moved after its scripts and other instances have been moved to their
-	-- proper locations. What remains of the DevModule is the Packages folder, and
-	-- any ModuleScripts that are used by the DevModule.
-	DEV_MODULE_STORAGE = ReplicatedStorage,
-
-	-- DevModules rely on dependencies. By convention, these are stored in a folder
-	-- named "Packages" inside the root of the DevModule. At runtime, the Packages
-	-- folders from every DevModule are deduplicated, resulting in only one version
-	-- of each package in use across all the DevModules in the game
-	PACKAGE_NAME = "Packages",
-	PACKAGE_STORAGE_LOCATION = ReplicatedStorage,
-	PACKAGE_STORAGE_NAME = "DevModulePackages",
-	PACKAGE_REF = script.Parent.packageRef,
-
-	-- The version of a package is controlled by a StringValue included as a child
-	-- of the package. This constant controls the name of that StringValue.
-	--
-	-- Initially we wanted to use Attributes for the version, however Rojo does not
-	-- support syncing Attributes yet. As such, we've opted to go the old fashioned
-	-- way of including a StringValue.
-	PACKAGE_VERSION_NAME = "_Version",
-
-	PACKAGE_VERSION_OBJECT_MISSING = "%s is missing a %s StringValue at %s",
-	PACKAGE_VERSION_EMPTY = "%s cannot have an empty value for its version at %s",
-	ENABLED_SCRIPTS_ERROR = "All scripts included with a DevModule must be Disabled. Please disable the "
-		.. "following script(s): %s",
-}
-
-return constants
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdf9</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX0b59742cadf54a2d958ab909b037259d">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">events</string>
-							<string name="ScriptGuid">{f894f730-1f3c-4489-95a5-5b44d3dcf88c}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local events = {
-	started = Instance.new("BindableEvent"),
-	finished = Instance.new("BindableEvent"),
-}
-
-return events]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdfa</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX8079ff14107d4985aa8ec0e8ce8ba41b">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">install</string>
-							<string name="ScriptGuid">{6d6a9317-bca6-4c11-a887-e2e6dd085997}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local events = require(script.Parent.events)
-local constants = require(script.Parent.constants)
-
-local useVerboseLogging = false
-
-local function log(messageType: string, message: string)
-	if useVerboseLogging then
-		print(("[%s] %s"):format(messageType, message))
-	end
-end
-
--- Reparents an instance and outputs helpful logging information so we can see
--- where instances are going at runtime.
-local function move(instance: Instance, newParent: Instance)
-	instance.Parent = newParent
-	log("move", ("%s -> %s"):format(instance.Name, instance:GetFullName()))
-end
-
--- Gets the storage location for packages used by each Dev Modules. The packages
--- that get put in this folder are deduplicated so every distinct version of a
--- package has only one copy.
-local function getPackageStorage(): Folder
-	local packageStorage = constants.PACKAGE_STORAGE_LOCATION:FindFirstChild(constants.PACKAGE_STORAGE_NAME) :: Folder
-
-	if not packageStorage then
-		packageStorage = Instance.new("Folder")
-		packageStorage.Name = constants.PACKAGE_STORAGE_NAME
-		packageStorage.Parent = constants.PACKAGE_STORAGE_LOCATION
-	end
-
-	return packageStorage
-end
-
--- Prunes any stories and test files that are included with the DevModule. These
--- are not needed at runtime.
-local function prune(instance: Instance)
-	for _, descendant in ipairs(instance:GetDescendants()) do
-		local name = descendant.Name
-		if name:match("%.story$") or name:match("%.spec$") then
-			descendant:Destroy()
-		end
-	end
-end
-
-local function getPackageVersion(package: ModuleScript): string
-	local version = package:FindFirstChild(constants.PACKAGE_VERSION_NAME)
-
-	assert(
-		version and version:IsA("StringValue"),
-		constants.PACKAGE_VERSION_OBJECT_MISSING:format(
-			package.Name,
-			constants.PACKAGE_VERSION_NAME,
-			package:GetFullName()
-		)
-	)
-	assert(version.Value ~= "", constants.PACKAGE_VERSION_EMPTY:format(package.Name, version:GetFullName()))
-
-	return version.Value
-end
-
--- This function merges the Packages folder from a DevModule into a shared
--- location. Until we have an improved package implementation, we need to
--- manually dedupe our libraries to cut down on bloat
-local function dedupePackages(packages: Instance)
-	local packageStorage = getPackageStorage()
-
-	for _, package in ipairs(packages:GetChildren()) do
-		if package ~= script and package:IsA("ModuleScript") then
-			local version = getPackageVersion(package)
-
-			local existingVersion: ModuleScript
-			for _, otherPackage in ipairs(packageStorage:GetChildren()) do
-				if otherPackage.Name:match(("^%s_"):format(package.Name)) and otherPackage:IsA("ModuleScript") then
-					if version == getPackageVersion(otherPackage) then
-						existingVersion = otherPackage
-						break
-					end
-				end
-			end
-
-			if not existingVersion then
-				local clone = package:Clone() :: ModuleScript
-				clone.Parent = packageStorage
-				clone.Name = ("%s_%s"):format(clone.Name, version)
-				existingVersion = clone
-			end
-
-			-- Link the package with the existing version (which was either
-			-- there previously, or is the one we just generated)
-			local packageRef = constants.PACKAGE_REF:Clone()
-			packageRef.Name = package.Name
-
-			local packageObject = packageRef:FindFirstChild("package")
-			if packageObject and packageObject:IsA("ObjectValue") then
-				packageObject.Value = existingVersion
-			end
-			packageRef.Parent = package.Parent
-
-			package:Destroy()
-
-			log("link", ("%s <-> %s"):format(package.Name, existingVersion:GetFullName()))
-		end
-	end
-end
-
--- Takes an instance and overlays it on top of a parent. This is used for
--- overlaying a DevModule's DataModel-based layout on top of existing services.
-local function overlay(instance: Instance, parent: Instance)
-	for _, child in ipairs(instance:GetChildren()) do
-		local existingChild = parent:FindFirstChild(child.Name)
-
-		if existingChild and child.ClassName == "Folder" then
-			overlay(child, existingChild)
-		else
-			move(child, parent)
-		end
-	end
-end
-
--- Gathers up all the scripts in the DevModule. We use the resulting array to
--- enable all scripts in one step.
-local function getDevModuleScripts(devModule: Instance): { BaseScript }
-	local scripts = {}
-	for _, descendant in ipairs(devModule:GetDescendants()) do
-		if descendant.Parent == devModule then
-			continue
-		end
-
-		if descendant:IsA("Script") or descendant:IsA("LocalScript") then
-			table.insert(scripts, descendant)
-		end
-	end
-	return scripts
-end
-
--- Ensures that all scripts included with a DevModule are marked as Disabled.
--- This makes sure there are no race conditions resulting in the Install script
--- running after the scripts included with the module.
-local function assertScriptsAreDisabled(devModuleScripts: { BaseScript })
-	local enabledScripts = {}
-
-	for _, devModuleScript in ipairs(devModuleScripts) do
-		if not devModuleScript.Disabled then
-			table.insert(enabledScripts, devModuleScript.Name)
-		end
-	end
-
-	if #enabledScripts > 0 then
-		error(constants.ENABLED_SCRIPTS_ERROR:format(table.concat(enabledScripts, ", ")))
-	end
-end
-
-type Options = { verboseLogging: boolean?, pruneDevelopmentFiles: boolean? }
-
-local defaultOptions: Options = {
-	verboseLogging = false,
-	pruneDevelopmentFiles = true,
-}
-
-local function install(devModule: Instance, options: Options?)
-	local devModuleType = typeof(devModule)
-	assert(devModuleType == "Instance", ("expected a DevModule to install, got %s"):format(devModuleType))
-
-	assert(devModule.Parent, ("%s must be parented to be installed"):format(devModule.Name))
-
-	local mergedOptions = defaultOptions
-	for key, value in pairs(options or {}) do
-		mergedOptions[key] = value
-	end
-
-	if mergedOptions.verboseLogging then
-		useVerboseLogging = mergedOptions.verboseLogging
-	end
-
-	events.started:Fire()
-
-	log("info", ("Installing %s from %s..."):format(devModule.Name, devModule.Parent.Name))
-
-	local devModuleScripts = getDevModuleScripts(devModule)
-	assertScriptsAreDisabled(devModuleScripts)
-
-	if constants.DEV_MODULE_STORAGE:FindFirstChild(devModule.Name) then
-		log("info", "A version of this DevModule already exists. Skipping...")
-		devModule:Destroy()
-		return
-	end
-
-	if mergedOptions.pruneDevelopmentFiles then
-		log("info", "Pruning development files...")
-		prune(devModule)
-	end
-
-	-- The `true` flag searches all descendants of an instance, which is needed
-	-- here since the Packages folder is nested.
-	local packages = devModule:FindFirstChild(constants.PACKAGE_NAME, true)
-	if packages then
-		log("info", "Linking packages...")
-		dedupePackages(packages)
-	end
-
-	log("info", "Overlaying services...")
-	for _, child in ipairs(devModule:GetChildren()) do
-		-- GetService errors if the given name is not a service so we wrap it in
-		-- a pcall to use the result in a conditional.
-		local success, service = pcall(function()
-			return game:GetService(child.Name)
-		end)
-
-		if success then
-			overlay(child, service)
-		end
-	end
-
-	log("info", "Enabling scripts...")
-	for _, devModuleScript in ipairs(devModuleScripts) do
-		devModuleScript.Disabled = false
-		log("info", ("Enabled %s"):format(devModuleScript.Name))
-	end
-
-	events.finished:Fire()
-
-	log("info", ("Safe to remove %s"):format(devModule:GetFullName()))
-	log("info", ("Removing %s..."):format(devModule:GetFullName()))
-	devModule:Destroy()
-
-	log("info", ("Successfully installed %s!"):format(devModule.Name))
-end
-
-return install
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdfb</UniqueId>
-						</Properties>
-					</Item>
-					<Item class="ModuleScript" referent="RBX7649c6090a6b4d8cbeeca369b93495df">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">packageRef</string>
-							<string name="ScriptGuid">{e1fcacc5-1a06-457a-af19-caac54370f0a}</string>
-							<ProtectedString name="Source"><![CDATA[--!strict
-local package = script.package
-assert(
-	package and package:IsA("ObjectValue"),
-	("could not require package. %q does not have a 'package' ObjectValue"):format(script:GetFullName())
-)
-local value = package.Value
-assert(
-	value and value:IsA("ModuleScript"),
-	("could not require package. %q does not have a package set as its Value"):format(package:GetFullName())
-)
-return require(value :: ModuleScript)
-]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdfc</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-				<Item class="Folder" referent="RBX4906442e41d14e269686b4e1905712cc">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">ReplicatedStorage</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdfd</UniqueId>
-					</Properties>
-					<Item class="ModuleScript" referent="RBX63d03deda20a4af0b152daaf23c386ed">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">ItemCatalog</string>
-							<string name="ScriptGuid">{5adb719f-9abc-4f5d-83d5-f634d5f3a9cb}</string>
-							<ProtectedString name="Source"><![CDATA[local itemCatalog = {
-    wood = {
-        UIName = "Wood"
-    },
-
-    stone = {
-        UIName = "Stone"
-    }
-}
-
-return itemCatalog]]></ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002bdfe</UniqueId>
-						</Properties>
-					</Item>
-				</Item>
-			</Item>
-		</Item>
-		<Item class="Script" referent="RBX6bd3bca2d924476398520b5b35c95976">
-			<Properties>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<bool name="Disabled">false</bool>
-				<Content name="LinkedSource"><null></null></Content>
-				<string name="Name">initServer</string>
-				<string name="ScriptGuid">{25d39c3d-df87-4e14-ae48-f59328b5addf}</string>
-				<ProtectedString name="Source"><![CDATA[local ServerScriptService = game:GetService("ServerScriptService")
-local Data = require(ServerScriptService:WaitForChild("Data"))]]></ProtectedString>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">769671bb7590a49c02b3f6f10002be06</UniqueId>
-			</Properties>
 		</Item>
 	</Item>
 	<Item class="ServerStorage" referent="RBX4737e11298b64ead816e65ea2c406bab">
@@ -26076,6 +23822,414 @@ AAAAxAAAAMcAAADRAAAAxQAAANAAAADVAAAAxQAAANUAAADIAAAAxgAAANYAAADHAAAAxwAA
 ANYAAADXAAAAxwAAANcAAADUAAAAxwAAANQAAADRAAAAzAAAAM0AAADYAAAAzQAAANkAAADY
 AAAAzgAAANoAAADPAAAAzwAAANoAAADbAAAA0gAAANQAAADXAAAA2AAAANkAAADbAAAA2AAA
 ANsAAADaAAAA</SharedString>
+		<SharedString md5="bS4kUJykoTl9oekPxHRc8Q==">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
+v4D0ub8AAAAArJ/cv8AEyr8AAAAAkeCuv5etB8AtIfw+MD+nvz82BMAAOkY/tmzQv6Rapb8A
+OkY/sO7Mv/LIrb8AOkY/DfHtv6Rapb8AAAAAUmN0vyJNCMAAAAAAsI+Bv8reGcC4hyc/r1+H
+v93sE8AAOkY/UmN0v7s8AsBG7Rs+OhPSv6Rapb8Q6jo/UmN0v1+HFcAAOkY/uJSNvz1m+78A
+AAAAUmN0vwd1GcCglic/UmN0v6E2GsDhVjA/bAAAAAAAAAABAAAAAgAAAAAAAAACAAAAAwAA
+AAAAAAADAAAABAAAAAAAAAAEAAAABQAAAAAAAAAFAAAABgAAAAAAAAAGAAAABwAAAAAAAAAH
+AAAAAQAAAAEAAAAIAAAADwAAAAEAAAAPAAAACgAAAAEAAAAKAAAAAgAAAAEAAAAHAAAACQAA
+AAEAAAAJAAAACAAAAAIAAAAKAAAAAwAAAAMAAAAKAAAAEQAAAAMAAAARAAAACwAAAAMAAAAL
+AAAABQAAAAMAAAAFAAAABAAAAAUAAAALAAAABgAAAAYAAAALAAAADAAAAAYAAAAMAAAABwAA
+AAcAAAAMAAAADQAAAAcAAAANAAAAEAAAAAcAAAAQAAAACAAAAAcAAAAIAAAACQAAAAgAAAAO
+AAAADwAAAAgAAAAQAAAADgAAAAoAAAAPAAAADgAAAAoAAAAOAAAAEQAAAAsAAAASAAAADAAA
+AAsAAAARAAAADgAAAAsAAAAOAAAAEAAAAAsAAAAQAAAAEwAAAAsAAAATAAAAEgAAAAwAAAAT
+AAAADQAAAAwAAAASAAAAEwAAAA0AAAATAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA
+AAAAAAAAAAAAAAAAAAAAgD8kAAAABAAAAADzRDxJ2hXA919gv8YbJz9+UxLA+a+ovyaIpj7z
+3RfA919gv6NQZT+XwhDA919gv6NQZT8Z1ru/vEWyv6NQZT+sm7W/XqG3vwDzRDysm7W/iVfg
+vwDzRDwC0QjAZVe7vwgCDT2sm7W/btPfvyLmST+sm7W/prjAv6NQZT8mBAHAt0WZv6NQZT+U
+qBDAfrJovzwAAAAAAAAAAQAAAAIAAAAAAAAAAgAAAAMAAAAAAAAAAwAAAAQAAAAAAAAABAAA
+AAUAAAAAAAAABQAAAAYAAAAAAAAABgAAAAcAAAAAAAAABwAAAAEAAAABAAAABwAAAAYAAAAB
+AAAABgAAAAgAAAABAAAACAAAAAkAAAABAAAACQAAAAUAAAABAAAABQAAAAoAAAABAAAACgAA
+AAsAAAABAAAACwAAAAIAAAACAAAACwAAAAMAAAADAAAACwAAAAoAAAADAAAACgAAAAUAAAAD
+AAAABQAAAAQAAAAFAAAACQAAAAgAAAAFAAAACAAAAAYAAAAQAAAAAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAAAAAAAAAAAAAAAAAAIA/PAAAAAQAAABTFto/HTi1vwAAAACKrNg/HTi1vxCUnjyM
+SV4/HTi1v5kkNj+sbF0/Glmrv8eMOT/Y4eo/7D41vwAAAAAUEvE/DgSdvwAAAABSY/Q/zPCW
+vxjuCT0yhcw/HTi1vxCfPD4RhlE/HTi1v81yRT9CNUA/+IGrv7rWgz/xIEY/tLGjv7rWgz9Q
+AOs/7D41v4AvpTsYi/I/waiPvwAAAACRMM0/7D41v7rWgz8KFfI/t+eWvwAAAAAqTvI/7D41
+v3LtpD5oJtA/7D41v2gYfT+jprI/ft5/v7rWgz8siLI/HTi1v45l8D772zg/HTi1v7rWgz9s
+AAAAAAAAAAEAAAAHAAAAAAAAAAcAAAASAAAAAAAAABIAAAATAAAAAAAAABMAAAAIAAAAAAAA
+AAgAAAACAAAAAAAAAAIAAAADAAAAAAAAAAMAAAAEAAAAAAAAAAQAAAAMAAAAAAAAAAwAAAAO
+AAAAAAAAAA4AAAAFAAAAAAAAAAUAAAAGAAAAAAAAAAYAAAABAAAAAQAAAAYAAAAHAAAAAgAA
+AAgAAAADAAAAAwAAAAgAAAAJAAAAAwAAAAkAAAAKAAAAAwAAAAoAAAAEAAAABAAAAAsAAAAM
+AAAABAAAAAoAAAANAAAABAAAAA0AAAAQAAAABAAAABAAAAAPAAAABAAAAA8AAAALAAAABQAA
+AA4AAAAGAAAABgAAAAwAAAALAAAABgAAAAsAAAAPAAAABgAAAA8AAAAQAAAABgAAABAAAAAN
+AAAABgAAAA0AAAARAAAABgAAABEAAAAHAAAABgAAAA4AAAAMAAAABwAAABEAAAASAAAACAAA
+ABMAAAAJAAAACQAAABMAAAARAAAACQAAABEAAAANAAAACQAAAA0AAAAKAAAAEQAAABMAAAAS
+AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAACAPyQAAAAEAAAA7DOW
+P+8msD+QMAm+8OIvP+8msD8nQlu//IREP4UisD8CiC+/OziUP7jq/D6QMAm+NAemPwAAAACQ
+MAm+fGq3PwAAAACaMhO/DQ2VP+8msD8+nDa+gDkiP+8msD8uDYC/As5gP/xsFD4uDYC/iuif
+PxjPxT2QMAm+cMCCPwAAAAAuDYC/oN5jP8wCCD4uDYC/PAAAAAAAAAABAAAAAgAAAAAAAAAC
+AAAAAwAAAAAAAAADAAAACQAAAAAAAAAJAAAABAAAAAAAAAAEAAAABQAAAAAAAAAFAAAABgAA
+AAAAAAAGAAAABwAAAAAAAAAHAAAAAQAAAAEAAAAHAAAACAAAAAEAAAAIAAAAAwAAAAEAAAAD
+AAAAAgAAAAMAAAAIAAAACQAAAAQAAAAKAAAABQAAAAQAAAAJAAAACAAAAAQAAAAIAAAACwAA
+AAQAAAALAAAACgAAAAUAAAAKAAAABwAAAAUAAAAHAAAABgAAAAcAAAAKAAAACwAAAAcAAAAL
+AAAACAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAgD8nAAAABAAA
+AGfpdz+smzU/FII7P+v94T6smzU/666mP2nkLD8AAAAAJqjMP+BXsz8AAAAAFII7Pygvhj9H
+8Oo+FII7PwAogzoAAAAAAIqxPwAogzqsmzU/qq27P8iL1j2smzU/lDG4PwDyND0Mzyg/9R6+
+PwAogzqqUC8/kJm9PwAogzo2pRU/xY68P+AzqD9Sz+c9FII7PwB0ED2smzU/3Im6P0IAAAAA
+AAAAAQAAAAIAAAAAAAAAAgAAAAMAAAAAAAAAAwAAAAsAAAAAAAAACwAAAAQAAAAAAAAABAAA
+AAUAAAAAAAAABQAAAAYAAAAAAAAABgAAAAwAAAAAAAAADAAAAAcAAAAAAAAABwAAAAEAAAAB
+AAAABwAAAAIAAAACAAAABwAAAAgAAAACAAAACAAAAAkAAAACAAAACQAAAAoAAAACAAAACgAA
+AAUAAAACAAAABQAAAAMAAAADAAAABQAAAAsAAAAEAAAACwAAAAUAAAAFAAAACgAAAAkAAAAF
+AAAACQAAAAYAAAAGAAAACQAAAAwAAAAHAAAADAAAAAgAAAAIAAAADAAAAAkAAAAQAAAAAAAA
+AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAIA/MAAAAAQAAABSY3S/VVEIwAAAAACy
+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
+AAAAAAAOAAAACAAAAAAAAAAIAAAAAgAAAAAAAAACAAAAAwAAAAAAAAADAAAACgAAAAAAAAAK
+AAAACQAAAAAAAAAJAAAADwAAAAAAAAAPAAAACwAAAAAAAAALAAAABAAAAAAAAAAEAAAAAQAA
+AAEAAAAEAAAABgAAAAEAAAAGAAAABwAAAAEAAAAHAAAABQAAAAIAAAAIAAAACQAAAAIAAAAJ
+AAAACgAAAAIAAAAKAAAAAwAAAAQAAAALAAAADAAAAAQAAAAMAAAAEAAAAAQAAAAQAAAADQAA
+AAQAAAANAAAABQAAAAQAAAAFAAAABwAAAAQAAAAHAAAABgAAAAUAAAANAAAADgAAAAgAAAAO
+AAAADwAAAAgAAAAPAAAACQAAAAsAAAAPAAAADQAAAAsAAAANAAAAEAAAAAsAAAAQAAAADAAA
+AA0AAAAPAAAADgAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAgD8t
+AAAABAAAAPohPj+sm7U/FII7P3RGgT+sm7U/mj4KPxpKlj+sm7U/kDAJvuE4lD/2//w+kDAJ
+vm/qnz949sU9kDAJvnlcSD89jqU/FII7P2pbsz8AAAAAFII7P3I6nT+sm7U/NnofPp/juj8A
+AAAAFsQsP6WLmD+sm7U/SAlBvRYHpj8AAAAAkDAJvq41hj97Aus+FII7P1zqoz8AAAAAHEKk
+vYY4qD9Qz+c9FII7PyVemz+sm7U/CBGAPU4AAAAAAAAAAQAAAAcAAAAAAAAABwAAAA4AAAAA
+AAAADgAAAAkAAAAAAAAACQAAAAIAAAAAAAAAAgAAAAMAAAAAAAAAAwAAAAQAAAAAAAAABAAA
+AAUAAAAAAAAABQAAAAsAAAAAAAAACwAAAA0AAAAAAAAADQAAAAYAAAAAAAAABgAAAAEAAAAB
+AAAABgAAAAgAAAABAAAACAAAAAcAAAACAAAACQAAAAoAAAACAAAACgAAAAQAAAACAAAABAAA
+AAMAAAAEAAAACwAAAAUAAAAEAAAACgAAAAwAAAAEAAAADAAAAAsAAAAGAAAADQAAAAwAAAAG
+AAAADAAAAAoAAAAGAAAACgAAAAgAAAAHAAAACAAAAA4AAAAIAAAACgAAAAkAAAAIAAAACQAA
+AA4AAAALAAAADAAAAA0AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA
+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
+AAAAAAAWAAAAFwAAAAAAAAAXAAAADwAAAAAAAAAPAAAABwAAAAAAAAAHAAAAAgAAAAAAAAAC
+AAAAAwAAAAAAAAADAAAACQAAAAAAAAAJAAAAEwAAAAAAAAATAAAACgAAAAAAAAAKAAAABAAA
+AAAAAAAEAAAAAQAAAAEAAAAFAAAABgAAAAEAAAAEAAAACwAAAAEAAAALAAAAFAAAAAEAAAAU
+AAAADAAAAAEAAAAMAAAABQAAAAIAAAAHAAAACAAAAAIAAAAIAAAAAwAAAAMAAAAIAAAACQAA
+AAQAAAAKAAAACwAAAAUAAAAMAAAADQAAAAUAAAANAAAABgAAAAYAAAANAAAADgAAAAcAAAAP
+AAAAEAAAAAcAAAAQAAAAEQAAAAcAAAARAAAACAAAAAgAAAARAAAAEgAAAAgAAAASAAAAEwAA
+AAgAAAATAAAACQAAAAoAAAASAAAACwAAAAoAAAATAAAAEgAAAAsAAAASAAAAFAAAAAwAAAAU
+AAAAEgAAAAwAAAASAAAADQAAAA0AAAASAAAAFQAAAA0AAAAVAAAAFgAAAA0AAAAWAAAADgAA
+AA8AAAAXAAAAFQAAAA8AAAAVAAAAEAAAABAAAAASAAAAEQAAABAAAAAVAAAAEgAAABUAAAAX
+AAAAFgAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAgD88AAAABAAA
+AADzRDwvRCXAAGA/uQACa73GWiLAAGA/uXlJOb+6OxfAAGA/uYI/Gb+q7BvAKE8jvwDzRDwQ
+0xrAKjcovwDzRDxCRqW/5bPpvyvybb/SEArAAGA/uSh5Tr/rqxLAAGA/uSvybb9uvQvAAF1I
+vSvybb+igArA8g3RvgDzRDzhzwjAnlO7v8QsZ7/yg+G/TiPevwAEgLxaaAjA9CS8v9iJU75C
+RqW/1LPuvyvybb9CRqW/yam4vyvybb+svuK/UF/Pvyvybb8sXd+/Rc3Wvyvybb8UQtG/xIDS
+v+S5Ab9CRqW/qofnv68yAr/oEb2/XOfnv2wAAAAAAAAAAQAAAAYAAAAAAAAABgAAAAcAAAAA
+AAAABwAAAAIAAAAAAAAAAgAAAAMAAAAAAAAAAwAAAAQAAAAAAAAABAAAAAoAAAAAAAAACgAA
+AAUAAAAAAAAABQAAAAEAAAABAAAABQAAAAYAAAACAAAABwAAAAgAAAACAAAACAAAAAkAAAAC
+AAAACQAAAAMAAAADAAAACgAAAAQAAAADAAAACQAAAAsAAAADAAAACwAAAAwAAAADAAAADAAA
+AAoAAAAFAAAADQAAABIAAAAFAAAAEgAAAA4AAAAFAAAADgAAAAYAAAAFAAAACgAAAA0AAAAG
+AAAACAAAAAcAAAAGAAAADgAAABEAAAAGAAAAEQAAABAAAAAGAAAAEAAAAA8AAAAGAAAADwAA
+AAkAAAAGAAAACQAAAAgAAAAJAAAADwAAAAsAAAAKAAAADAAAAA0AAAALAAAAEAAAABEAAAAL
+AAAAEQAAABIAAAALAAAAEgAAABMAAAALAAAAEwAAAA0AAAALAAAADQAAAAwAAAALAAAADwAA
+ABAAAAANAAAAEwAAABIAAAAOAAAAEgAAABEAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA
+AAAAAAAAAAAAAAAAAIA/SAAAAAQAAADgFyw9xQ2sP5pQpL/gFyw99vqkPkSs0L/gFyw9gFOR
+Px2YtL8uD06+LYCYP1iMrb9avTK+xQ2sP8jqob8ey5W/xQ2sP5AwCb74J5m/wFAYP5AwCb4G
+952/IKV+PpAwCb4mWZ6/2uNiPpAwCb7gFyw9AAAAAO4E6L+q6AC/AAAAAOqjxr83o5+/1+uo
+PxjrHL+qwaK+xQ2sP02jnL+e2Jq/xQ2sPzBhQL4G4KW/gEyQP5AwCb4tnqy/AAAAAJAwCb7A
+Xg+/AAAAAJZswb8ofH2/AAAAADPrib90oaC/AAAAABjP577SuKe/AAAAAG76mL5wq6e/qNuq
+P7SRor5Y7J6/xQ2sPwocG78WKqe/xQ2sP55+o74CM6e/xQ2sPxKBpL6EAAAAAAAAAAEAAAAJ
+AAAAAAAAAAkAAAACAAAAAAAAAAIAAAADAAAAAAAAAAMAAAAEAAAAAAAAAAQAAAAMAAAAAAAA
+AAwAAAAVAAAAAAAAABUAAAAXAAAAAAAAABcAAAAWAAAAAAAAABYAAAANAAAAAAAAAA0AAAAF
+AAAAAAAAAAUAAAAGAAAAAAAAAAYAAAAHAAAAAAAAAAcAAAAIAAAAAAAAAAgAAAABAAAAAQAA
+AAgAAAAJAAAAAgAAAAkAAAADAAAAAwAAAAkAAAAKAAAAAwAAAAoAAAALAAAAAwAAAAsAAAAM
+AAAAAwAAAAwAAAAEAAAABQAAAA0AAAAOAAAABQAAAA4AAAAPAAAABQAAAA8AAAAIAAAABQAA
+AAgAAAAHAAAABQAAAAcAAAAGAAAACAAAAA8AAAAJAAAACQAAAA8AAAATAAAACQAAABMAAAAS
+AAAACQAAABIAAAARAAAACQAAABEAAAAQAAAACQAAABAAAAAKAAAACgAAABAAAAALAAAACwAA
+ABEAAAASAAAACwAAABIAAAATAAAACwAAABMAAAAPAAAACwAAAA8AAAAUAAAACwAAABQAAAAV
+AAAACwAAABUAAAAMAAAACwAAABAAAAARAAAADQAAABYAAAAOAAAADgAAABYAAAAUAAAADgAA
+ABQAAAAPAAAAFAAAABYAAAAXAAAAFAAAABcAAAAVAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAQ
+AAAAAAAAAAAAAAAAAAAAAACAPzYAAAAEAAAA3y9+PwAAAAC61oO/ArWoP6ybtb+61oO/tJze
+P76zKL+61oO/A5eXP/3GL7/vqvC/SCcwPwAAAADrnK+/APNEPAAAAACtCOa/APNEPKybtb+9
+V+C/qKKgP6ybtb/LUZq/98emP/R5ar/Ju82/v/JJP6ybtb/yvMC/QFYNPaybtb+X09+/VK0y
+PqlMh78iQ/e/vAAuPqfTpL661gPARAQYPgAAAAA88O6/APNEPABxWrzCA+e/APNEPLwUlL98
+n/O/APNEPLYr175n2/+/APNEPMnRhr6QG/m/YAAAAAAAAAABAAAAAgAAAAAAAAACAAAAAwAA
+AAAAAAADAAAABAAAAAAAAAAEAAAADQAAAAAAAAANAAAABQAAAAAAAAAFAAAABgAAAAAAAAAG
+AAAAAQAAAAEAAAAHAAAAAgAAAAEAAAAGAAAACgAAAAEAAAAKAAAACQAAAAEAAAAJAAAABwAA
+AAIAAAAHAAAACAAAAAIAAAAIAAAAAwAAAAMAAAAIAAAACQAAAAMAAAAJAAAACgAAAAMAAAAK
+AAAACwAAAAMAAAALAAAADAAAAAMAAAAMAAAADQAAAAMAAAANAAAABAAAAAUAAAANAAAADgAA
+AAUAAAAOAAAAEQAAAAUAAAARAAAAEAAAAAUAAAAQAAAADwAAAAUAAAAPAAAABgAAAAYAAAAP
+AAAACwAAAAYAAAALAAAACgAAAAcAAAAJAAAACAAAAAsAAAAPAAAADAAAAAwAAAAPAAAAEAAA
+AAwAAAAQAAAAEQAAAAwAAAARAAAADgAAAAwAAAAOAAAADQAAAA==</SharedString>
 		<SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA=="></SharedString>
 	</SharedStrings>
 </roblox>
