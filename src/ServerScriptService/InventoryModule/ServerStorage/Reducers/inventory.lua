@@ -30,6 +30,7 @@ local reducer = Rodux.createReducer(initialState, {
         -- update client that inventory changed
         -- using a remoteEvent
         -- inventoryUpdatedRemote:FireClients(action)
+        print("Updating client that inventory changed")
         InventoryChanged:FireClient(action.player, newState[userId])
         return newState
     end,
@@ -48,7 +49,8 @@ local reducer = Rodux.createReducer(initialState, {
 
         local newState = RoduxUtils.deepmerge(RoduxUtils.deepcopy(state), tableUpdates)
 
-        ReplicatedStorage.InventoryChanged:FireClient(action.player, newState[userId])
+        print("Updating client that inventory loaded")
+        InventoryChanged:FireClient(action.player, newState[userId])
         return newState
     end,
 

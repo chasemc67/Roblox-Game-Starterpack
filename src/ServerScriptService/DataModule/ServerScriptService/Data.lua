@@ -1,7 +1,7 @@
 local playerService = game:GetService("Players")
 local dataService = game:GetService("DataStoreService")
 local ServerStorage = game:GetService("ServerStorage")
-local serverStore = require(ServerStorage.serverStore)
+local serverStore = require(ServerStorage:WaitForChild("serverStore"))
 local loadUser = require(ServerStorage:WaitForChild("Actions"):WaitForChild("loadUser"))
 local removeUser = require(ServerStorage:WaitForChild("Actions"):WaitForChild("removeUser"))
 
